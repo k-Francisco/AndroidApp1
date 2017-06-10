@@ -13,12 +13,13 @@ using Android.Support.Design.Widget;
 
 namespace AndroidApp1.Activities
 {
-    [Activity(Label = "Home", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/Icon")]
+    [Activity(Label = "Home")]
     public class MainActivity : BaseActivity
     {
 
         DrawerLayout drawerLayout;
         NavigationView navigationView;
+        
 
         protected override int LayoutResource
         {
@@ -94,6 +95,14 @@ namespace AndroidApp1.Activities
                 .Replace(Resource.Id.content_frame, fragment)
                 .Commit();
         }
+
+        //
+       
+
+
+        //
+
+
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
