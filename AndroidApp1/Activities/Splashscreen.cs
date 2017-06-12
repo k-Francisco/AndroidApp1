@@ -13,26 +13,32 @@ using Android.Support.V7.App;
 using Android.Content.PM;
 using AndroidApp1.Fragments;
 using Android.Preferences;
-using PScore;
+using System.Threading;
 
 namespace AndroidApp1.Activities
 {
-    [Activity(Label = "Project Server Mobile", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/Icon")]
+    [Activity(Label = "Project Server Mobile", 
+        MainLauncher = true, 
+        LaunchMode = LaunchMode.SingleTop, 
+        Icon = "@drawable/Icon")]
     public class Splashscreen : AppCompatActivity
     {
-        
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             SetContentView(Resource.Layout.activity_splash);
+
+            this.Window.AddFlags(WindowManagerFlags.Fullscreen);
 
             SupportFragmentManager.BeginTransaction()
                 .Replace(Resource.Id.fragmentContainer, new PslogoFragment())
                 .Commit();
 
-            checkCredentials();
+            ThreadPool.QueueUserWorkItem(delegate (object state)
+            {
+                Thread.Sleep(2000);
+                checkCredentials();
+            }, null);
         }
 
         public void checkCredentials() {
