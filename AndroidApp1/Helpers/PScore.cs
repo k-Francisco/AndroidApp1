@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -15,22 +16,33 @@ namespace PScore
         private string siteURL = "https://sharepointevo.sharepoint.com/sites/mobility", psRestUrl = "/_api/ProjectServer";
         public string rtFa { get; set; }
         public string FedAuth { get; set; }
-        HttpClient client;
-        HttpClientHandler handler;
+        HttpClient client, client2;
 
-        public PsCore(HttpClientHandler handler)
+        public PsCore(string rtFa, string FedAuth)
         {
-            this.handler = handler;
+            this.rtFa = rtFa;
+            this.FedAuth = FedAuth;
+        }
+
+        public HttpClientHandler getHandler() {
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.CookieContainer = new CookieContainer();
+            handler.CookieContainer.Add(new Cookie("rtFa", rtFa, "/", "sharepointevo.sharepoint.com"));
+            handler.CookieContainer.Add(new Cookie("FedAuth", FedAuth, "/", "sharepointevo.sharepoint.com"));
+
+            return handler;
         }
 
         //used for GetAsync
         public void setClient()
         {
-            if (client != null)
-                client = null;
+            //if (client != null)
+            //    client = null;
 
             var mediaType = new MediaTypeWithQualityHeaderValue("application/json");
             mediaType.Parameters.Add(new NameValueHeaderValue("odata", "verbose"));
+
+            HttpClientHandler handler = getHandler();
 
             client = new HttpClient(handler);
             client.DefaultRequestHeaders.Accept.Add(mediaType);
@@ -39,19 +51,21 @@ namespace PScore
 
         //used for PostAsync
         //method 0 = no additional headers, 1 = MERGE, 2 = PUT, 3 = DELETE
-        public void setClient(string formDigest, int method)
+        public void setClient2(string formDigest, int method)
         {
-            if (client != null)
-                client = null;
+            //if (client != null)
+            //    client = null;
 
             var mediaType = new MediaTypeWithQualityHeaderValue("application/json");
             mediaType.Parameters.Add(new NameValueHeaderValue("odata", "verbose"));
 
-            client = new HttpClient(handler);
-            client.DefaultRequestHeaders.Accept.Add(mediaType);
-            client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+            HttpClientHandler handler = getHandler();
+
+            client2 = new HttpClient(handler);
+            client2.DefaultRequestHeaders.Accept.Add(mediaType);
+            client2.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
             if (method == 1)
-                client.DefaultRequestHeaders.Add("X-HTTP-METHOD", "MERGE");
+                client2.DefaultRequestHeaders.Add("X-HTTP-METHOD", "MERGE");
 
         }
 
@@ -154,17 +168,18 @@ namespace PScore
             }
         }
 
-        public async Task<String> GetProjects()
+        public async Task<ProjectModel.RootObject> GetProjects()
         {
-
+            ProjectModel.RootObject projects = null;
             try
             {
                 var result = await client.GetStringAsync(siteURL + psRestUrl + "/Projects");
-                return result;
+                projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(result);
+                return projects;
             }
             catch (Exception e)
             {
-                return e.Message;
+                return projects;
             }
         }
 

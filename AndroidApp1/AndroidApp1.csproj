@@ -31,6 +31,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -120,10 +122,12 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\Splashscreen.cs" />
     <Compile Include="Adapters\Project.cs" />
+    <Compile Include="Fragments\LoaderFragment.cs" />
     <Compile Include="Fragments\ProjectFragment.cs" />
     <Compile Include="Fragments\LoadingFragment.cs" />
     <Compile Include="Fragments\Login.cs" />
     <Compile Include="Fragments\PslogoFragment.cs" />
+    <Compile Include="Helpers\DialogHelpers.cs" />
     <Compile Include="Helpers\LoginWebViewClient.cs" />
     <Compile Include="Helpers\PScore.cs" />
     <Compile Include="Models\FormDigest\FormDigestModel.cs" />
@@ -161,6 +165,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\loading_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\add_project_dialog.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -17,6 +17,7 @@ namespace AndroidApp1.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+
             View rootView = inflater.Inflate(Resource.Layout.loading_layout, null);
             return rootView;
         }

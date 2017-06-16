@@ -10,4 +10,9 @@
     <item>@drawable/ic_home_1</item>
     <item>@drawable/ic_home_2</item>
   </string-array>
+
+  <string-array name="ept_array">
+    <item>Enterprise Project</item>
+    <item>Sharepoint Tasks Lists</item>
+  </string-array>
 </resources>

@@ -18,6 +18,8 @@ using System.Net;
 using Android.Preferences;
 using Newtonsoft.Json;
 using PScore;
+using System.Threading.Tasks;
+using AndroidApp1.Helpers;
 
 namespace AndroidApp1.Activities
 {
@@ -26,7 +28,8 @@ namespace AndroidApp1.Activities
     {
         //fragments
         private static ProjectFragment projectFragment = new ProjectFragment();
-        private static LoadingFragment loader = new LoadingFragment();
+        private static LoaderFragment loader = new LoaderFragment();
+        private static DialogHelpers helpDialog = new DialogHelpers();
 
         //data
         private ProjectModel.RootObject projects;
@@ -37,9 +40,11 @@ namespace AndroidApp1.Activities
         //constants
         private const int PROJECT_DATA = 1;
 
+
+
+        FloatingActionButton fab;
         DrawerLayout drawerLayout;
         NavigationView navigationView;
-        HttpClientHandler handler = new HttpClientHandler();
         ISharedPreferences prefs;
         
 
@@ -53,9 +58,9 @@ namespace AndroidApp1.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            
             base.OnCreate(savedInstanceState);
             init(savedInstanceState); 
-
             
         }
 
@@ -104,17 +109,54 @@ namespace AndroidApp1.Activities
                 ListItemClicked(0);
             }
 
-            switchFragment(loader);
-            SupportActionBar.Title = "Projects";
+            
+            fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fab.Click += delegate {
 
+                //Android.Support.V7.App.AlertDialog addProjectDialog = helpDialog.AddProjectDialog(this, view);
+                //addProjectDialog.Show();
+                View view = LayoutInflater.Inflate(Resource.Layout.add_project_dialog, null);
+                Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(this).Create();
+                builder.SetView(view);
+                builder.SetTitle("Add Project");
+
+                TextInputLayout projectNameWrapper = view.FindViewById<TextInputLayout>(Resource.Id.projectNameWrapper);
+                TextInputLayout projectDescWrapper = view.FindViewById<TextInputLayout>(Resource.Id.projectDescWrapper);
+                EditText projectName = view.FindViewById<EditText>(Resource.Id.etProjectName);
+                EditText projectDesc = view.FindViewById<EditText>(Resource.Id.etProjectDescription);
+
+                projectNameWrapper.Hint = "Project Name";
+                projectDescWrapper.Hint = "Project Description";
+
+                Spinner spnrEPT = view.FindViewById<Spinner>(Resource.Id.spnrAddProject);
+
+                builder.SetCanceledOnTouchOutside(false);
+                builder.SetButton(-1, "SUBMIT",
+                    (submit, e) =>
+                    {
+                        Toast.MakeText(this, "adding shits", ToastLength.Short);
+                    //string ept;
+                    //if (spnrEPT.SelectedItem.Equals("Enterprise Project"))
+                    //    ept = "09fa52b4-059b-4527-926e-99f9be96437a";
+                    //else
+                    //    ept = "f4066fec-bd67-4db9-8e6f-9cb3d3b297a6";
+                    //String body = "{'parameters': {'Name': '"+projectName.Text+"', 'Description': '"+projectDesc.Text+"', 'EnterpriseProjectTypeId': '"+ept+"'} }";
+                    //bool success = await core.AddProjects(body);
+                    //if (success == true)
+                    //    Log.Info("kfsama", "project added");
+                    ////
+                    //else
+                    //    Log.Info("kfsama","error adding project");
+                    //    //Toast.MakeText(main, "There was an error adding the project", ToastLength.Short);
+                });
+                builder.SetButton(-2, "CANCEL", delegate { builder.Dismiss(); });
+                builder.Show();
+            };
 
             //setting the cookies
             var rtFa = Intent.GetStringExtra("rtFa");
             var FedAuth = Intent.GetStringExtra("FedAuth");
-            handler.CookieContainer = new CookieContainer();
-            handler.CookieContainer.Add(new Cookie("rtFa", rtFa, "/", "sharepointevo.sharepoint.com"));
-            handler.CookieContainer.Add(new Cookie("FedAuth", FedAuth, "/", "sharepointevo.sharepoint.com"));
-            core = new PsCore(handler);
+            core = new PsCore(rtFa, FedAuth);
 
             //setting formDigest
             prefs = PreferenceManager.GetDefaultSharedPreferences(this);
@@ -127,8 +169,14 @@ namespace AndroidApp1.Activities
                 editor.PutString("formDigest", data.D.GetContextWebInformation.FormDigestValue);
                 editor.Apply();
             }
+            else {
+                core.setClient();
+                core.setClient2(prefs.GetString("formDigest", null), 0);
+            }
+                
 
-            //checkData(PROJECT_DATA);
+            checkDataAsync(PROJECT_DATA);
+            switchFragment(loader);
 
         }
 
@@ -145,11 +193,12 @@ namespace AndroidApp1.Activities
             switch (position)
             {
                 case 0:
-                    switchFragment(loader);
+                    switchFragment(projectFragment);
                     SupportActionBar.Title = "Projects";
-                    checkData(PROJECT_DATA);
+                    //checkData(PROJECT_DATA);
                     break;
                 case 1:
+                    switchFragment(loader);
                     SupportActionBar.Title = "Approvals";
                     break;
                 case 2:
@@ -185,18 +234,27 @@ namespace AndroidApp1.Activities
                 .Commit();
         }
 
-
-
         //UI stuff end
 
         //data stuff
-        public void checkData(int whatData) {
 
-            switch (whatData) {
+        public PsCore getCore() {
+            return core;
+        }
+
+        public string getFormDigest() {
+            return prefs.GetString("formDigest",null);
+        }
+
+        public async void checkDataAsync(int whatData)
+        {
+
+            switch (whatData)
+            {
                 case 1:
 
                     if (projects == null)
-                        fillDataAsync(whatData);
+                        await fillDataAsync(whatData);
                     else
                         switchFragment(projectFragment);
 
@@ -204,19 +262,22 @@ namespace AndroidApp1.Activities
             }
         }
 
-        public async void fillDataAsync(int whatData)
+        public async Task<bool> fillDataAsync(int whatData)
         {
             //1 for projects
             if (whatData == 1)
             {
-                core.setClient();
-                var data = await core.GetProjects();
-                Log.Info("kfsama",data);
-                projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(data);
-                switchFragment(projectFragment);
+                projects = await core.GetProjects();
+                if(projects != null)
+                    switchFragment(projectFragment);
+                return true;
             }
+            else
+                return true;
 
         }
+
+        
 
         public ProjectModel.RootObject getProjectList() {
             return projects;

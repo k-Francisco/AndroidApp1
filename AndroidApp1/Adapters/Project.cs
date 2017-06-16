@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using Android.Graphics;
+using AndroidApp1.Activities;
 
 namespace AndroidApp1.Adapters
 {
@@ -68,8 +69,10 @@ namespace AndroidApp1.Adapters
 
         public EventHandler<int> itemClick;
         public Projects mProjects;
+        public MainActivity main;
 
-        public ProjectAdapter(Projects project) {
+        public ProjectAdapter(Projects project, MainActivity main) {
+            this.main = main;
             mProjects = project;
         }
 
@@ -85,14 +88,14 @@ namespace AndroidApp1.Adapters
             vh.work.Text = mProjects[position].mProjectWork;
             vh.duration.Text = mProjects[position].mProjectDuration;
             vh.fullDetails.Click += delegate { };
-            if (mProjects[position].isCheckedOut == true)
+            if (mProjects[position].isCheckedOut == false)
                 vh.status.SetBackgroundColor(Color.ParseColor("#30752F"));
             else
                 vh.status.SetBackgroundColor(Color.DarkRed);
         }
 
-        public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
-        {
+        public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType){
+
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.project_card, parent, false);
             ProjectViewHolder vh = new ProjectViewHolder(itemView, Onclick);
             return vh;

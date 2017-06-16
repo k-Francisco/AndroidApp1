@@ -6,6 +6,7 @@ using Android.Views;
 using AndroidApp1.Activities;
 using AndroidApp1.Adapters;
 using Android.Util;
+using System.Threading;
 
 namespace AndroidApp1.Fragments
 {
@@ -37,22 +38,23 @@ namespace AndroidApp1.Fragments
             mLayoutManager = new LinearLayoutManager(rootView.Context);
             mRecyclerView.SetLayoutManager(mLayoutManager);
 
-            mProjects = new Projects();
-            mProjectList = main.getProjectList();
-            for (int i = 0; i < mProjectList.D.Results.Count; i++) {
+                mProjects = new Projects();
+                mProjectList = main.getProjectList();
+                for (int i = 0; i < mProjectList.D.Results.Count; i++)
+                {
 
-                mProjects.addProjects(
-                    mProjectList.D.Results[i].Name,
-                    mProjectList.D.Results[i].PercentComplete.ToString(),
-                    "0h",
-                    "1d",
-                    mProjectList.D.Results[i].IsCheckedOut
-                    );
-            }
+                    mProjects.addProjects(
+                        mProjectList.D.Results[i].Name,
+                        mProjectList.D.Results[i].PercentComplete.ToString(),
+                        "0h",
+                        "1d",
+                        mProjectList.D.Results[i].IsCheckedOut
+                        );
+                }
 
-            mProjectAdapter = new ProjectAdapter(mProjects);
-            mProjectAdapter.itemClick += Adapter_ItemClick;
-            mRecyclerView.SetAdapter(mProjectAdapter);
+                mProjectAdapter = new ProjectAdapter(mProjects, main);
+                mProjectAdapter.itemClick += Adapter_ItemClick;
+                mRecyclerView.SetAdapter(mProjectAdapter);
 
             return rootView;
         }
