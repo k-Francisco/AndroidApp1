@@ -119,6 +119,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\DetailsActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\Splashscreen.cs" />
     <Compile Include="Adapters\Project.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Helpers\DialogHelpers.cs" />
     <Compile Include="Helpers\LoginWebViewClient.cs" />
     <Compile Include="Helpers\PScore.cs" />
+    <Compile Include="Models\CurrentUser\CurrentUserModel.cs" />
     <Compile Include="Models\FormDigest\FormDigestModel.cs" />
     <Compile Include="Models\Projects\ProjectModel.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -145,7 +147,9 @@
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\layout\fragment1.axml" />
     <AndroidResource Include="Resources\layout\fragment2.axml" />
-    <AndroidResource Include="Resources\layout\main.axml" />
+    <AndroidResource Include="Resources\layout\main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\nav_header.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -168,6 +172,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\add_project_dialog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\full_details.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

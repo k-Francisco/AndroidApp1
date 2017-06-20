@@ -2427,8 +2427,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07004e
 			public const int contentPanel = 2131165262;
 			
-			// aapt resource value: 0x7f07008c
-			public const int content_frame = 2131165324;
+			// aapt resource value: 0x7f070089
+			public const int content_frame = 2131165321;
 			
 			// aapt resource value: 0x7f070055
 			public const int custom = 2131165269;
@@ -2460,8 +2460,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070012
 			public const int disableHome = 2131165202;
 			
-			// aapt resource value: 0x7f070089
-			public const int drawer_layout = 2131165321;
+			// aapt resource value: 0x7f07008c
+			public const int drawer_layout = 2131165324;
 			
 			// aapt resource value: 0x7f070066
 			public const int edit_query = 2131165286;
@@ -2616,8 +2616,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07004d
 			public const int parentPanel = 2131165261;
 			
-			// aapt resource value: 0x7f070087
-			public const int pbLoading = 2131165319;
+			// aapt resource value: 0x7f07008a
+			public const int pbLoading = 2131165322;
 			
 			// aapt resource value: 0x7f070038
 			public const int pin = 2131165240;
@@ -2793,11 +2793,11 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070057
 			public const int title_template = 2131165271;
 			
-			// aapt resource value: 0x7f07008b
-			public const int toolbar = 2131165323;
+			// aapt resource value: 0x7f070088
+			public const int toolbar = 2131165320;
 			
-			// aapt resource value: 0x7f07008a
-			public const int toolbar_layout = 2131165322;
+			// aapt resource value: 0x7f070087
+			public const int toolbar_layout = 2131165319;
 			
 			// aapt resource value: 0x7f070029
 			public const int top = 2131165225;
@@ -2847,8 +2847,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700ae
 			public const int visible = 2131165358;
 			
-			// aapt resource value: 0x7f070088
-			public const int webView = 2131165320;
+			// aapt resource value: 0x7f07008b
+			public const int webView = 2131165323;
 			
 			// aapt resource value: 0x7f070027
 			public const int withText = 2131165223;
@@ -3051,82 +3051,85 @@ namespace AndroidApp1
 			public const int fragment2 = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int loading_layout = 2130903086;
+			public const int full_details = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int login_screen = 2130903087;
+			public const int loading_layout = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int main = 2130903088;
+			public const int login_screen = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int nav_header = 2130903089;
+			public const int main = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_action = 2130903090;
+			public const int nav_header = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int notification_action_tombstone = 2130903091;
+			public const int notification_action = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int notification_media_action = 2130903092;
+			public const int notification_action_tombstone = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int notification_media_cancel_action = 2130903093;
+			public const int notification_media_action = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int notification_template_big_media = 2130903094;
+			public const int notification_media_cancel_action = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int notification_template_big_media_custom = 2130903095;
+			public const int notification_template_big_media = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int notification_template_big_media_narrow = 2130903096;
+			public const int notification_template_big_media_custom = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int notification_template_big_media_narrow_custom = 2130903097;
+			public const int notification_template_big_media_narrow = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int notification_template_custom_big = 2130903098;
+			public const int notification_template_big_media_narrow_custom = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int notification_template_icon_group = 2130903099;
+			public const int notification_template_custom_big = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int notification_template_lines_media = 2130903100;
+			public const int notification_template_icon_group = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int notification_template_media = 2130903101;
+			public const int notification_template_lines_media = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int notification_template_media_custom = 2130903102;
+			public const int notification_template_media = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int notification_template_part_chronometer = 2130903103;
+			public const int notification_template_media_custom = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int notification_template_part_time = 2130903104;
+			public const int notification_template_part_chronometer = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int project_card = 2130903105;
+			public const int notification_template_part_time = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int pslogo_fragment = 2130903106;
+			public const int project_card = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int select_dialog_item_material = 2130903107;
+			public const int pslogo_fragment = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int select_dialog_multichoice_material = 2130903108;
+			public const int select_dialog_item_material = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int select_dialog_singlechoice_material = 2130903109;
+			public const int select_dialog_multichoice_material = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int support_simple_spinner_dropdown_item = 2130903110;
+			public const int select_dialog_singlechoice_material = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int toolbar = 2130903111;
+			public const int support_simple_spinner_dropdown_item = 2130903111;
+			
+			// aapt resource value: 0x7f030048
+			public const int toolbar = 2130903112;
 			
 			static Layout()
 			{

@@ -27,6 +27,15 @@
             android:layout_height="wrap_content"
             android:hint="Project Description" />
     </android.support.design.widget.TextInputLayout>
+
+  <TextView
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project Type"
+        style="@style/TextAppearance.Design.Hint"
+        android:textColor="#95a5a6"/>
+  
     <Spinner
         android:id="@+id/spnrAddProject"
         android:layout_width="match_parent"

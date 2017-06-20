@@ -18,6 +18,7 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.v7
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Newtonsoft.Json.xml
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Annotations.dll.stamp
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Compat.dll.stamp
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Core.UI.dll.stamp
@@ -49,6 +50,7 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\empty_recyclevi
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\project_card.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\loading_layout.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_project_dialog.xml
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\full_details.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\colors.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\integers.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\strings.xml
@@ -86,7 +88,6 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\approval
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\R.cs.flag
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\uploadflags.txt
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb
-E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\android\assets\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb

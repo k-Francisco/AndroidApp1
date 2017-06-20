@@ -13,6 +13,7 @@ using AndroidApp1.Activities;
 using Android.Support.Design.Widget;
 using PScore;
 using Android.Util;
+using Android.Graphics;
 
 namespace AndroidApp1.Helpers
 {
@@ -36,27 +37,46 @@ namespace AndroidApp1.Helpers
             projectNameWrapper.Hint = "Project Name";
             projectDescWrapper.Hint = "Project Description";
 
-            Spinner spnrEPT = view.FindViewById<Spinner>(Resource.Id.spnrAddProject);
-
-            builder.SetCanceledOnTouchOutside(false);
-            builder.SetButton(-1, "SUBMIT",
-                (submit, e) =>
+            projectName.Click += (sender, e) => {
+                if (projectName.IsFocused)
                 {
-                    Toast.MakeText(main, "adding shits", ToastLength.Short);
-                    //string ept;
-                    //if (spnrEPT.SelectedItem.Equals("Enterprise Project"))
-                    //    ept = "09fa52b4-059b-4527-926e-99f9be96437a";
-                    //else
-                    //    ept = "f4066fec-bd67-4db9-8e6f-9cb3d3b297a6";
-                    //String body = "{'parameters': {'Name': '"+projectName.Text+"', 'Description': '"+projectDesc.Text+"', 'EnterpriseProjectTypeId': '"+ept+"'} }";
-                    //bool success = await core.AddProjects(body);
-                    //if (success == true)
-                    //    Log.Info("kfsama", "project added");
-                    ////
-                    //else
-                    //    Log.Info("kfsama","error adding project");
-                    //    //Toast.MakeText(main, "There was an error adding the project", ToastLength.Short);
-                });
+                    projectName.Background.ClearColorFilter();
+                }
+            };
+            
+
+            Spinner spnrEPT = view.FindViewById<Spinner>(Resource.Id.spnrAddProject);
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetButton(-1, "SUBMIT", async delegate
+            {
+
+                if (projectName.Text != "")
+                {
+
+                    string ept;
+                    if (spnrEPT.SelectedItem.Equals("Enterprise Project"))
+                        ept = "09fa52b4-059b-4527-926e-99f9be96437a";
+                    else
+                        ept = "f4066fec-bd67-4db9-8e6f-9cb3d3b297a6";
+
+                    String body = "{'parameters': {'Name': '" + projectName.Text + "', 'Description': '" + projectDesc.Text + "', 'EnterpriseProjectTypeId': '" + ept + "'} }";
+                    bool success = await core.AddProjects(body);
+                    Toast.MakeText(main, "Adding Project ...", ToastLength.Short).Show();
+                    if (success == true)
+                        Toast.MakeText(main, "Project added successfully", ToastLength.Short).Show();
+                    else
+                        Toast.MakeText(main, "There was an error adding the project", ToastLength.Short).Show();
+
+                }
+
+                else
+                {
+                    projectName.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn);
+                    projectName.RequestFocus();
+                    return;
+                }
+
+            });
             builder.SetButton(-2, "CANCEL", delegate { builder.Dismiss();});
 
             return builder;

@@ -30,6 +30,10 @@ AndroidApp1.Adapters.ProjectAdapter, AndroidApp1;md5cfbaa3d833033370af6e1c1593bc
 AndroidApp1.Adapters.ProjectAdapter, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectAdapter
 AndroidApp1.Adapters.ProjectAdapter;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectAdapter
 androidapp1.adapters.ProjectAdapter;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectAdapter
+AndroidApp1.Activities.DetailsActivity, AndroidApp1;md53efdd954dced941f1cccdd6377b3a9c5.DetailsActivity
+AndroidApp1.Activities.DetailsActivity, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53efdd954dced941f1cccdd6377b3a9c5.DetailsActivity
+AndroidApp1.Activities.DetailsActivity;md53efdd954dced941f1cccdd6377b3a9c5.DetailsActivity
+androidapp1.activities.DetailsActivity;md53efdd954dced941f1cccdd6377b3a9c5.DetailsActivity
 AndroidApp1.Activities.MainActivity, AndroidApp1;md53efdd954dced941f1cccdd6377b3a9c5.MainActivity
 AndroidApp1.Activities.MainActivity, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53efdd954dced941f1cccdd6377b3a9c5.MainActivity
 AndroidApp1.Activities.MainActivity;md53efdd954dced941f1cccdd6377b3a9c5.MainActivity

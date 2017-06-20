@@ -24,7 +24,7 @@ namespace AndroidApp1.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            RetainInstance = true;
             // Create your fragment here
         }
 
@@ -38,8 +38,10 @@ namespace AndroidApp1.Fragments
             mLayoutManager = new LinearLayoutManager(rootView.Context);
             mRecyclerView.SetLayoutManager(mLayoutManager);
 
-                mProjects = new Projects();
-                mProjectList = main.getProjectList();
+
+            mProjects = new Projects();
+            mProjectList = main.getProjectList();
+            if (mProjectList != null)
                 for (int i = 0; i < mProjectList.D.Results.Count; i++)
                 {
 
@@ -52,8 +54,8 @@ namespace AndroidApp1.Fragments
                         );
                 }
 
-                mProjectAdapter = new ProjectAdapter(mProjects, main);
-                mProjectAdapter.itemClick += Adapter_ItemClick;
+            mProjectAdapter = new ProjectAdapter(mProjects, main);
+            mProjectAdapter.itemClick += Adapter_ItemClick;
                 mRecyclerView.SetAdapter(mProjectAdapter);
 
             return rootView;

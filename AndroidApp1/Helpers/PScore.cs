@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Android.App;
+using Android.Util;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PScore
@@ -66,6 +69,23 @@ namespace PScore
             client2.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
             if (method == 1)
                 client2.DefaultRequestHeaders.Add("X-HTTP-METHOD", "MERGE");
+
+        }
+
+        public async Task<string> GetCurrentUser() {
+
+           
+            try
+            {
+                var result = await client.GetStringAsync(siteURL + "/_api/web/currentUser?");
+                Log.Info("kfsama", result);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
 
         }
 
@@ -168,18 +188,21 @@ namespace PScore
             }
         }
 
-        public async Task<ProjectModel.RootObject> GetProjects()
+        public async Task<string> GetProjects()
         {
-            ProjectModel.RootObject projects = null;
+
+            //ProjectModel.RootObject projects = null;
             try
             {
                 var result = await client.GetStringAsync(siteURL + psRestUrl + "/Projects");
-                projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(result);
-                return projects;
+                Log.Info("kfsama",result);
+                //projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(result);
+                
+                return result;
             }
             catch (Exception e)
             {
-                return projects;
+                return e.Message;
             }
         }
 
@@ -205,7 +228,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects/Add", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects/Add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -214,6 +237,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama",e.Message);
                 return isSuccess;
             }
 

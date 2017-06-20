@@ -87,7 +87,9 @@ namespace AndroidApp1.Adapters
             vh.percentComplete.Text = mProjects[position].mProjectPercentComplete;
             vh.work.Text = mProjects[position].mProjectWork;
             vh.duration.Text = mProjects[position].mProjectDuration;
-            vh.fullDetails.Click += delegate { };
+            vh.fullDetails.Click += delegate {
+                main.seeDetails();
+            };
             if (mProjects[position].isCheckedOut == false)
                 vh.status.SetBackgroundColor(Color.ParseColor("#30752F"));
             else
