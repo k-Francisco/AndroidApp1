@@ -1146,44 +1146,44 @@ namespace AndroidApp1
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f090053
-			public const int abc_background_cache_hint_selector_material_dark = 2131296339;
-			
-			// aapt resource value: 0x7f090054
-			public const int abc_background_cache_hint_selector_material_light = 2131296340;
-			
 			// aapt resource value: 0x7f090055
-			public const int abc_btn_colored_borderless_text_material = 2131296341;
+			public const int abc_background_cache_hint_selector_material_dark = 2131296341;
 			
 			// aapt resource value: 0x7f090056
-			public const int abc_btn_colored_text_material = 2131296342;
+			public const int abc_background_cache_hint_selector_material_light = 2131296342;
 			
 			// aapt resource value: 0x7f090057
-			public const int abc_color_highlight_material = 2131296343;
+			public const int abc_btn_colored_borderless_text_material = 2131296343;
 			
 			// aapt resource value: 0x7f090058
-			public const int abc_hint_foreground_material_dark = 2131296344;
+			public const int abc_btn_colored_text_material = 2131296344;
 			
 			// aapt resource value: 0x7f090059
-			public const int abc_hint_foreground_material_light = 2131296345;
+			public const int abc_color_highlight_material = 2131296345;
+			
+			// aapt resource value: 0x7f09005a
+			public const int abc_hint_foreground_material_dark = 2131296346;
+			
+			// aapt resource value: 0x7f09005b
+			public const int abc_hint_foreground_material_light = 2131296347;
 			
 			// aapt resource value: 0x7f090005
 			public const int abc_input_method_navigation_guard = 2131296261;
 			
-			// aapt resource value: 0x7f09005a
-			public const int abc_primary_text_disable_only_material_dark = 2131296346;
-			
-			// aapt resource value: 0x7f09005b
-			public const int abc_primary_text_disable_only_material_light = 2131296347;
-			
 			// aapt resource value: 0x7f09005c
-			public const int abc_primary_text_material_dark = 2131296348;
+			public const int abc_primary_text_disable_only_material_dark = 2131296348;
 			
 			// aapt resource value: 0x7f09005d
-			public const int abc_primary_text_material_light = 2131296349;
+			public const int abc_primary_text_disable_only_material_light = 2131296349;
 			
 			// aapt resource value: 0x7f09005e
-			public const int abc_search_url_text = 2131296350;
+			public const int abc_primary_text_material_dark = 2131296350;
+			
+			// aapt resource value: 0x7f09005f
+			public const int abc_primary_text_material_light = 2131296351;
+			
+			// aapt resource value: 0x7f090060
+			public const int abc_search_url_text = 2131296352;
 			
 			// aapt resource value: 0x7f090006
 			public const int abc_search_url_text_normal = 2131296262;
@@ -1194,32 +1194,32 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f090008
 			public const int abc_search_url_text_selected = 2131296264;
 			
-			// aapt resource value: 0x7f09005f
-			public const int abc_secondary_text_material_dark = 2131296351;
-			
-			// aapt resource value: 0x7f090060
-			public const int abc_secondary_text_material_light = 2131296352;
-			
 			// aapt resource value: 0x7f090061
-			public const int abc_tint_btn_checkable = 2131296353;
+			public const int abc_secondary_text_material_dark = 2131296353;
 			
 			// aapt resource value: 0x7f090062
-			public const int abc_tint_default = 2131296354;
+			public const int abc_secondary_text_material_light = 2131296354;
 			
 			// aapt resource value: 0x7f090063
-			public const int abc_tint_edittext = 2131296355;
+			public const int abc_tint_btn_checkable = 2131296355;
 			
 			// aapt resource value: 0x7f090064
-			public const int abc_tint_seek_thumb = 2131296356;
+			public const int abc_tint_default = 2131296356;
 			
 			// aapt resource value: 0x7f090065
-			public const int abc_tint_spinner = 2131296357;
+			public const int abc_tint_edittext = 2131296357;
 			
 			// aapt resource value: 0x7f090066
-			public const int abc_tint_switch_thumb = 2131296358;
+			public const int abc_tint_seek_thumb = 2131296358;
 			
 			// aapt resource value: 0x7f090067
-			public const int abc_tint_switch_track = 2131296359;
+			public const int abc_tint_spinner = 2131296359;
+			
+			// aapt resource value: 0x7f090068
+			public const int abc_tint_switch_thumb = 2131296360;
+			
+			// aapt resource value: 0x7f090069
+			public const int abc_tint_switch_track = 2131296361;
 			
 			// aapt resource value: 0x7f09004c
 			public const int accent = 2131296332;
@@ -1284,8 +1284,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f09003f
 			public const int design_bottom_navigation_shadow_color = 2131296319;
 			
-			// aapt resource value: 0x7f090068
-			public const int design_error = 2131296360;
+			// aapt resource value: 0x7f09006a
+			public const int design_error = 2131296362;
 			
 			// aapt resource value: 0x7f090040
 			public const int design_fab_shadow_end_color = 2131296320;
@@ -1317,8 +1317,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f090049
 			public const int design_textinput_error_color_light = 2131296329;
 			
-			// aapt resource value: 0x7f090069
-			public const int design_tint_password_toggle = 2131296361;
+			// aapt resource value: 0x7f09006b
+			public const int design_tint_password_toggle = 2131296363;
 			
 			// aapt resource value: 0x7f090017
 			public const int dim_foreground_disabled_material_dark = 2131296279;
@@ -1386,8 +1386,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f09002a
 			public const int material_grey_900 = 2131296298;
 			
-			// aapt resource value: 0x7f09006a
-			public const int menu_text_color = 2131296362;
+			// aapt resource value: 0x7f09006c
+			public const int menu_text_color = 2131296364;
 			
 			// aapt resource value: 0x7f090004
 			public const int notification_action_color_filter = 2131296260;
@@ -1431,6 +1431,12 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f090034
 			public const int primary_text_disabled_material_light = 2131296308;
 			
+			// aapt resource value: 0x7f090053
+			public const int refresher_1 = 2131296339;
+			
+			// aapt resource value: 0x7f090054
+			public const int refresher_2 = 2131296340;
+			
 			// aapt resource value: 0x7f090035
 			public const int ripple_material_dark = 2131296309;
 			
@@ -1458,11 +1464,11 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f09003c
 			public const int switch_thumb_disabled_material_light = 2131296316;
 			
-			// aapt resource value: 0x7f09006b
-			public const int switch_thumb_material_dark = 2131296363;
+			// aapt resource value: 0x7f09006d
+			public const int switch_thumb_material_dark = 2131296365;
 			
-			// aapt resource value: 0x7f09006c
-			public const int switch_thumb_material_light = 2131296364;
+			// aapt resource value: 0x7f09006e
+			public const int switch_thumb_material_light = 2131296366;
 			
 			// aapt resource value: 0x7f09003d
 			public const int switch_thumb_normal_material_dark = 2131296317;
@@ -2183,119 +2189,128 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f020075
-			public const int avd_hide_password_1 = 2130837621;
+			// aapt resource value: 0x7f020078
+			public const int avd_hide_password_1 = 2130837624;
 			
-			// aapt resource value: 0x7f020076
-			public const int avd_hide_password_2 = 2130837622;
+			// aapt resource value: 0x7f020079
+			public const int avd_hide_password_2 = 2130837625;
 			
-			// aapt resource value: 0x7f020077
-			public const int avd_hide_password_3 = 2130837623;
+			// aapt resource value: 0x7f02007a
+			public const int avd_hide_password_3 = 2130837626;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f020078
-			public const int avd_show_password_1 = 2130837624;
+			// aapt resource value: 0x7f02007b
+			public const int avd_show_password_1 = 2130837627;
 			
-			// aapt resource value: 0x7f020079
-			public const int avd_show_password_2 = 2130837625;
+			// aapt resource value: 0x7f02007c
+			public const int avd_show_password_2 = 2130837628;
 			
-			// aapt resource value: 0x7f02007a
-			public const int avd_show_password_3 = 2130837626;
+			// aapt resource value: 0x7f02007d
+			public const int avd_show_password_3 = 2130837629;
 			
 			// aapt resource value: 0x7f020056
-			public const int design_bottom_navigation_item_background = 2130837590;
+			public const int delete = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int design_fab_background = 2130837591;
+			public const int design_bottom_navigation_item_background = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int design_ic_visibility = 2130837592;
+			public const int design_fab_background = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int design_ic_visibility_off = 2130837593;
+			public const int design_ic_visibility = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int design_password_eye = 2130837594;
+			public const int design_ic_visibility_off = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int design_snackbar_background = 2130837595;
+			public const int design_password_eye = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_home_1 = 2130837596;
+			public const int design_snackbar_background = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_home_2 = 2130837597;
+			public const int ic_home_1 = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_menu = 2130837598;
+			public const int ic_home_2 = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int Icon = 2130837599;
+			public const int ic_menu = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int logout_nav = 2130837600;
+			public const int Icon = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int menu_background_color = 2130837601;
+			public const int logout_nav = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int nav_back = 2130837602;
+			public const int menu_background_color = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int navigation_empty_icon = 2130837603;
+			public const int nav_back = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_action_background = 2130837604;
+			public const int navigation_empty_icon = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notification_bg = 2130837605;
+			public const int notification_action_background = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int notification_bg_low = 2130837606;
+			public const int notification_bg = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int notification_bg_low_normal = 2130837607;
+			public const int notification_bg_low = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notification_bg_low_pressed = 2130837608;
+			public const int notification_bg_low_normal = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notification_bg_normal = 2130837609;
+			public const int notification_bg_low_pressed = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notification_bg_normal_pressed = 2130837610;
+			public const int notification_bg_normal = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int notification_icon_background = 2130837611;
-			
-			// aapt resource value: 0x7f020073
-			public const int notification_template_icon_bg = 2130837619;
-			
-			// aapt resource value: 0x7f020074
-			public const int notification_template_icon_low_bg = 2130837620;
+			public const int notification_bg_normal_pressed = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int notification_tile_bg = 2130837612;
+			public const int notification_icon_background = 2130837612;
+			
+			// aapt resource value: 0x7f020076
+			public const int notification_template_icon_bg = 2130837622;
+			
+			// aapt resource value: 0x7f020077
+			public const int notification_template_icon_low_bg = 2130837623;
 			
 			// aapt resource value: 0x7f02006d
-			public const int notify_panel_notification_icon_bg = 2130837613;
+			public const int notification_tile_bg = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int project_nav = 2130837614;
+			public const int notify_panel_notification_icon_bg = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int ps_logo = 2130837615;
+			public const int project_nav = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int settings_nav = 2130837616;
+			public const int ps_logo = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int tasks_nav = 2130837617;
+			public const int refresh = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int timesheet_nav = 2130837618;
+			public const int settings_nav = 2130837618;
+			
+			// aapt resource value: 0x7f020073
+			public const int tasks_nav = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int timesheet_nav = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int tools = 2130837621;
 			
 			static Drawable()
 			{
@@ -2310,8 +2325,8 @@ namespace AndroidApp1
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070094
-			public const int action0 = 2131165332;
+			// aapt resource value: 0x7f070095
+			public const int action0 = 2131165333;
 			
 			// aapt resource value: 0x7f070064
 			public const int action_bar = 2131165284;
@@ -2334,17 +2349,17 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070041
 			public const int action_bar_title = 2131165249;
 			
-			// aapt resource value: 0x7f070091
-			public const int action_container = 2131165329;
+			// aapt resource value: 0x7f070092
+			public const int action_container = 2131165330;
 			
 			// aapt resource value: 0x7f070065
 			public const int action_context_bar = 2131165285;
 			
-			// aapt resource value: 0x7f070098
-			public const int action_divider = 2131165336;
+			// aapt resource value: 0x7f070099
+			public const int action_divider = 2131165337;
 			
-			// aapt resource value: 0x7f070092
-			public const int action_image = 2131165330;
+			// aapt resource value: 0x7f070093
+			public const int action_image = 2131165331;
 			
 			// aapt resource value: 0x7f070003
 			public const int action_menu_divider = 2131165187;
@@ -2361,11 +2376,11 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070043
 			public const int action_mode_close_button = 2131165251;
 			
-			// aapt resource value: 0x7f070093
-			public const int action_text = 2131165331;
+			// aapt resource value: 0x7f070094
+			public const int action_text = 2131165332;
 			
-			// aapt resource value: 0x7f0700a1
-			public const int actions = 2131165345;
+			// aapt resource value: 0x7f0700a2
+			public const int actions = 2131165346;
 			
 			// aapt resource value: 0x7f070044
 			public const int activity_chooser_view_content = 2131165252;
@@ -2391,14 +2406,14 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070028
 			public const int bottom = 2131165224;
 			
-			// aapt resource value: 0x7f0700ad
-			public const int btnProjectFullDetails = 2131165357;
+			// aapt resource value: 0x7f0700ae
+			public const int btnProjectFullDetails = 2131165358;
 			
 			// aapt resource value: 0x7f07004b
 			public const int buttonPanel = 2131165259;
 			
-			// aapt resource value: 0x7f070095
-			public const int cancel_action = 2131165333;
+			// aapt resource value: 0x7f070096
+			public const int cancel_action = 2131165334;
 			
 			// aapt resource value: 0x7f070030
 			public const int center = 2131165232;
@@ -2412,8 +2427,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07005b
 			public const int checkbox = 2131165275;
 			
-			// aapt resource value: 0x7f07009d
-			public const int chronometer = 2131165341;
+			// aapt resource value: 0x7f07009e
+			public const int chronometer = 2131165342;
 			
 			// aapt resource value: 0x7f070039
 			public const int clip_horizontal = 2131165241;
@@ -2469,8 +2484,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070021
 			public const int end = 2131165217;
 			
-			// aapt resource value: 0x7f0700a7
-			public const int end_padder = 2131165351;
+			// aapt resource value: 0x7f0700a8
+			public const int end_padder = 2131165352;
 			
 			// aapt resource value: 0x7f07002a
 			public const int enterAlways = 2131165226;
@@ -2493,8 +2508,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07005a
 			public const int expanded_menu = 2131165274;
 			
-			// aapt resource value: 0x7f07008d
-			public const int fab = 2131165325;
+			// aapt resource value: 0x7f07008e
+			public const int fab = 2131165326;
 			
 			// aapt resource value: 0x7f07003b
 			public const int fill = 2131165243;
@@ -2520,8 +2535,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070049
 			public const int icon = 2131165257;
 			
-			// aapt resource value: 0x7f0700a2
-			public const int icon_group = 2131165346;
+			// aapt resource value: 0x7f0700a3
+			public const int icon_group = 2131165347;
 			
 			// aapt resource value: 0x7f070025
 			public const int ifRoom = 2131165221;
@@ -2529,8 +2544,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070046
 			public const int image = 2131165254;
 			
-			// aapt resource value: 0x7f07009e
-			public const int info = 2131165342;
+			// aapt resource value: 0x7f07009f
+			public const int info = 2131165343;
 			
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
@@ -2541,11 +2556,11 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070034
 			public const int left = 2131165236;
 			
-			// aapt resource value: 0x7f0700a3
-			public const int line1 = 2131165347;
+			// aapt resource value: 0x7f0700a4
+			public const int line1 = 2131165348;
 			
-			// aapt resource value: 0x7f0700a5
-			public const int line3 = 2131165349;
+			// aapt resource value: 0x7f0700a6
+			public const int line3 = 2131165350;
 			
 			// aapt resource value: 0x7f07000f
 			public const int listMode = 2131165199;
@@ -2553,11 +2568,11 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070048
 			public const int list_item = 2131165256;
 			
-			// aapt resource value: 0x7f0700af
-			public const int masked = 2131165359;
+			// aapt resource value: 0x7f0700b0
+			public const int masked = 2131165360;
 			
-			// aapt resource value: 0x7f070097
-			public const int media_actions = 2131165335;
+			// aapt resource value: 0x7f070098
+			public const int media_actions = 2131165336;
 			
 			// aapt resource value: 0x7f070022
 			public const int middle = 2131165218;
@@ -2565,29 +2580,35 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07003e
 			public const int mini = 2131165246;
 			
+			// aapt resource value: 0x7f0700b2
+			public const int mnDelete = 2131165362;
+			
+			// aapt resource value: 0x7f0700b1
+			public const int mnEdit = 2131165361;
+			
 			// aapt resource value: 0x7f07001a
 			public const int multiply = 2131165210;
 			
-			// aapt resource value: 0x7f0700b0
-			public const int nav_home_1 = 2131165360;
-			
-			// aapt resource value: 0x7f0700b1
-			public const int nav_home_2 = 2131165361;
-			
-			// aapt resource value: 0x7f0700b2
-			public const int nav_home_3 = 2131165362;
-			
 			// aapt resource value: 0x7f0700b3
-			public const int nav_home_4 = 2131165363;
+			public const int nav_home_1 = 2131165363;
 			
 			// aapt resource value: 0x7f0700b4
-			public const int nav_home_5 = 2131165364;
+			public const int nav_home_2 = 2131165364;
 			
 			// aapt resource value: 0x7f0700b5
-			public const int nav_home_6 = 2131165365;
+			public const int nav_home_3 = 2131165365;
 			
-			// aapt resource value: 0x7f07008e
-			public const int nav_view = 2131165326;
+			// aapt resource value: 0x7f0700b6
+			public const int nav_home_4 = 2131165366;
+			
+			// aapt resource value: 0x7f0700b7
+			public const int nav_home_5 = 2131165367;
+			
+			// aapt resource value: 0x7f0700b8
+			public const int nav_home_6 = 2131165368;
+			
+			// aapt resource value: 0x7f07008f
+			public const int nav_view = 2131165327;
 			
 			// aapt resource value: 0x7f07007f
 			public const int navigation_header_container = 2131165311;
@@ -2601,14 +2622,14 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070010
 			public const int normal = 2131165200;
 			
-			// aapt resource value: 0x7f0700a0
-			public const int notification_background = 2131165344;
+			// aapt resource value: 0x7f0700a1
+			public const int notification_background = 2131165345;
+			
+			// aapt resource value: 0x7f07009b
+			public const int notification_main_column = 2131165339;
 			
 			// aapt resource value: 0x7f07009a
-			public const int notification_main_column = 2131165338;
-			
-			// aapt resource value: 0x7f070099
-			public const int notification_main_column_container = 2131165337;
+			public const int notification_main_column_container = 2131165338;
 			
 			// aapt resource value: 0x7f070037
 			public const int parallax = 2131165239;
@@ -2640,14 +2661,17 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070085
 			public const int recyclerView = 2131165317;
 			
+			// aapt resource value: 0x7f07008d
+			public const int refresher = 2131165325;
+			
 			// aapt resource value: 0x7f070035
 			public const int right = 2131165237;
 			
-			// aapt resource value: 0x7f07009f
-			public const int right_icon = 2131165343;
+			// aapt resource value: 0x7f0700a0
+			public const int right_icon = 2131165344;
 			
-			// aapt resource value: 0x7f07009b
-			public const int right_side = 2131165339;
+			// aapt resource value: 0x7f07009c
+			public const int right_side = 2131165340;
 			
 			// aapt resource value: 0x7f07001b
 			public const int screen = 2131165211;
@@ -2745,8 +2769,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070036
 			public const int start = 2131165238;
 			
-			// aapt resource value: 0x7f070096
-			public const int status_bar_latest_event_content = 2131165334;
+			// aapt resource value: 0x7f070097
+			public const int status_bar_latest_event_content = 2131165335;
 			
 			// aapt resource value: 0x7f07005e
 			public const int submenuarrow = 2131165278;
@@ -2757,11 +2781,11 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070011
 			public const int tabMode = 2131165201;
 			
-			// aapt resource value: 0x7f0700a6
-			public const int text = 2131165350;
+			// aapt resource value: 0x7f0700a7
+			public const int text = 2131165351;
 			
-			// aapt resource value: 0x7f0700a4
-			public const int text2 = 2131165348;
+			// aapt resource value: 0x7f0700a5
+			public const int text2 = 2131165349;
 			
 			// aapt resource value: 0x7f070052
 			public const int textSpacerNoButtons = 2131165266;
@@ -2781,8 +2805,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07000d
 			public const int textinput_error = 2131165197;
 			
-			// aapt resource value: 0x7f07009c
-			public const int time = 2131165340;
+			// aapt resource value: 0x7f07009d
+			public const int time = 2131165341;
 			
 			// aapt resource value: 0x7f07004a
 			public const int title = 2131165258;
@@ -2814,23 +2838,23 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07000b
 			public const int transition_scene_layoutid_cache = 2131165195;
 			
+			// aapt resource value: 0x7f070091
+			public const int tvEmail = 2131165329;
+			
 			// aapt resource value: 0x7f070090
-			public const int tvEmail = 2131165328;
+			public const int tvName = 2131165328;
 			
-			// aapt resource value: 0x7f07008f
-			public const int tvName = 2131165327;
-			
-			// aapt resource value: 0x7f0700ac
-			public const int tvProjectDuration = 2131165356;
-			
-			// aapt resource value: 0x7f0700a9
-			public const int tvProjectName = 2131165353;
+			// aapt resource value: 0x7f0700ad
+			public const int tvProjectDuration = 2131165357;
 			
 			// aapt resource value: 0x7f0700aa
-			public const int tvProjectPercentComplete = 2131165354;
+			public const int tvProjectName = 2131165354;
 			
 			// aapt resource value: 0x7f0700ab
-			public const int tvProjectWork = 2131165355;
+			public const int tvProjectPercentComplete = 2131165355;
+			
+			// aapt resource value: 0x7f0700ac
+			public const int tvProjectWork = 2131165356;
 			
 			// aapt resource value: 0x7f070009
 			public const int up = 2131165193;
@@ -2838,14 +2862,14 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070018
 			public const int useLogo = 2131165208;
 			
-			// aapt resource value: 0x7f0700a8
-			public const int vCheckedOutStatus = 2131165352;
+			// aapt resource value: 0x7f0700a9
+			public const int vCheckedOutStatus = 2131165353;
 			
 			// aapt resource value: 0x7f07000e
 			public const int view_offset_helper = 2131165198;
 			
-			// aapt resource value: 0x7f0700ae
-			public const int visible = 2131165358;
+			// aapt resource value: 0x7f0700af
+			public const int visible = 2131165359;
 			
 			// aapt resource value: 0x7f07008b
 			public const int webView = 2131165323;
@@ -3145,7 +3169,10 @@ namespace AndroidApp1
 		{
 			
 			// aapt resource value: 0x7f0e0000
-			public const int nav_menu = 2131623936;
+			public const int details_menu = 2131623936;
+			
+			// aapt resource value: 0x7f0e0001
+			public const int nav_menu = 2131623937;
 			
 			static Menu()
 			{

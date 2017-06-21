@@ -18,7 +18,6 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.v7
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Newtonsoft.Json.xml
-E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Annotations.dll.stamp
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Compat.dll.stamp
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Core.UI.dll.stamp
@@ -85,9 +84,11 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\settings
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\tasks_nav.png
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\timesheet_nav.png
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\approvals_nav.png
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\menu\details_menu.xml
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\tools.png
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\delete.png
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-mdpi\refresh.png
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\R.cs.flag
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\uploadflags.txt
-E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb
-E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\android\assets\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb

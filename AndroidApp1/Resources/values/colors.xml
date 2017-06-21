@@ -10,4 +10,8 @@
   <color name="secondaryText">#727272</color>
   <color name="divider">#B6B6B6</color>
   <color name="activated_color">#30752F</color>
+  
+  <!--refresher colors-->
+  <color name="refresher_1">#1abc9c</color>
+  <color name="refresher_2">#16a085</color>
 </resources>

@@ -7,6 +7,7 @@ using AndroidApp1.Activities;
 using AndroidApp1.Adapters;
 using Android.Util;
 using System.Threading;
+using Android.Support.V4.Widget;
 
 namespace AndroidApp1.Fragments
 {
@@ -63,7 +64,7 @@ namespace AndroidApp1.Fragments
 
         private void Adapter_ItemClick(object sender, int e)
         {
-            Log.Info("Kfsama", "item clicked at position " + e);
+            Log.Info("kfsama", "item clicked at position " + e);
         }
     }
 }

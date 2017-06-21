@@ -273,7 +273,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/deleteObject()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/deleteObject()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -282,6 +282,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 

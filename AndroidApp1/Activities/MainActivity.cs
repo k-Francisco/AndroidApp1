@@ -21,6 +21,7 @@ using PScore;
 using System.Threading.Tasks;
 using AndroidApp1.Helpers;
 using System.Threading;
+using Android.Runtime;
 
 namespace AndroidApp1.Activities
 {
@@ -40,12 +41,18 @@ namespace AndroidApp1.Activities
 
         //constants
         private const int PROJECT_DATA = 1;
+        private const int REQUEST_CODE = 1;
+        
+        //json strings
+        string projectJson;
 
-
+        //ints
+        private int tbModified = 0;
 
         FloatingActionButton fab;
         DrawerLayout drawerLayout;
         NavigationView navigationView;
+        SwipeRefreshLayout refresh;
         ISharedPreferences prefs;
         
 
@@ -61,7 +68,8 @@ namespace AndroidApp1.Activities
         {
             
             base.OnCreate(savedInstanceState);
-            init(savedInstanceState); 
+            init(savedInstanceState);
+            
             
         }
 
@@ -118,6 +126,13 @@ namespace AndroidApp1.Activities
                 View view = LayoutInflater.Inflate(Resource.Layout.add_project_dialog, null);
                 Android.Support.V7.App.AlertDialog addProjectDialog = helpDialog.AddProjectDialog(this, view);
                 addProjectDialog.Show();
+            };
+
+            refresh = FindViewById<SwipeRefreshLayout>(Resource.Id.refresher);
+            refresh.SetColorScheme(Resource.Color.refresher_1, Resource.Color.refresher_2);
+            refresh.Refresh += delegate {
+                refreshData();
+                refresh.Refreshing = false;
             };
 
             //setting the cookies
@@ -214,9 +229,13 @@ namespace AndroidApp1.Activities
                 .Commit();
         }
 
-        public void seeDetails() {
+        public void seeDetails(int position) {
+            tbModified = position;
             Intent intent = new Intent(this, typeof(DetailsActivity));
-            StartActivity(intent);
+            intent.PutExtra("projects",projectJson);
+            intent.PutExtra("position", position.ToString());
+            intent.PutExtra("title", projects.D.Results[position].Name);
+            StartActivityForResult(intent, REQUEST_CODE);
         }
 
         //UI stuff end
@@ -252,22 +271,59 @@ namespace AndroidApp1.Activities
             //1 for projects
             if (whatData == 1)
             {
-                var data = await core.GetProjects();
+                projectJson = await core.GetProjects();
                 ThreadPool.QueueUserWorkItem(state =>
                 {
-                    projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(data);
+                    projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectJson);
                     RunOnUiThread(() => switchFragment(projectFragment));
                 });
             }
 
         }
 
-        
+        private async void ModifyProject(int identifier)
+        {
+            switch (identifier)
+            {
+
+                case 1:
+                    Toast.MakeText(this, "Deleting Project", ToastLength.Short);
+                    string body = "";
+                    bool isSuccess = await core.DeleteProject(body, projects.D.Results[tbModified].Id);
+                    if (isSuccess)
+                    {
+                        Toast.MakeText(this, "Project Successfully Deleted!", ToastLength.Short).Show();
+                        refreshData();
+                    }
+                    else
+                        Toast.MakeText(this, "There was an error deleting the project", ToastLength.Short).Show();
+                    break;
+            }
+        }
+
+        public void refreshData() {
+            projects = null;
+            checkDataAsync(PROJECT_DATA);
+            switchFragment(loader);
+        }
+
 
         public ProjectModel.RootObject getProjectList() {
             return projects;
         }
         //data stuff end
+
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            
+            if (resultCode == Result.Ok)
+            {
+                int identifier = data.GetIntExtra("identifier", 0);
+                ModifyProject(identifier);
+            }
+        }
 
 
         public override bool OnOptionsItemSelected(IMenuItem item)

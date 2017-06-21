@@ -220,6 +220,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\tasks_nav.png" />
     <AndroidResource Include="Resources\drawable-hdpi\timesheet_nav.png" />
     <AndroidResource Include="Resources\drawable-hdpi\approvals_nav.png" />
+    <AndroidResource Include="Resources\menu\details_menu.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\tools.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\delete.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\refresh.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
