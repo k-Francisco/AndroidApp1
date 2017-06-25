@@ -31,7 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -123,17 +123,20 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\Splashscreen.cs" />
     <Compile Include="Adapters\Project.cs" />
+    <Compile Include="Adapters\Tasks.cs" />
     <Compile Include="Fragments\LoaderFragment.cs" />
     <Compile Include="Fragments\ProjectFragment.cs" />
     <Compile Include="Fragments\LoadingFragment.cs" />
     <Compile Include="Fragments\Login.cs" />
     <Compile Include="Fragments\PslogoFragment.cs" />
+    <Compile Include="Fragments\TasksFragment.cs" />
     <Compile Include="Helpers\DialogHelpers.cs" />
     <Compile Include="Helpers\LoginWebViewClient.cs" />
     <Compile Include="Helpers\PScore.cs" />
     <Compile Include="Models\CurrentUser\CurrentUserModel.cs" />
     <Compile Include="Models\FormDigest\FormDigestModel.cs" />
     <Compile Include="Models\Projects\ProjectModel.cs" />
+    <Compile Include="Models\Tasks\TasksModel.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
@@ -175,6 +178,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\full_details.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\task_card.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\add_task_layout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

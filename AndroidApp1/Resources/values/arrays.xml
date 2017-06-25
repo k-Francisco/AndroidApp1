@@ -15,4 +15,10 @@
     <item>Enterprise Project</item>
     <item>Sharepoint Tasks Lists</item>
   </string-array>
+
+  <string-array name="add_task_array">
+    <item>Manual</item>
+    <item>Automatic</item>
+  </string-array>
+  
 </resources>

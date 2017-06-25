@@ -57,8 +57,7 @@ namespace AndroidApp1.Fragments
 
             mProjectAdapter = new ProjectAdapter(mProjects, main);
             mProjectAdapter.itemClick += Adapter_ItemClick;
-                mRecyclerView.SetAdapter(mProjectAdapter);
-
+            mRecyclerView.SetAdapter(mProjectAdapter);
             return rootView;
         }
 

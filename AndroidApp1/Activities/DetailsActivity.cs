@@ -22,7 +22,8 @@ namespace AndroidApp1.Activities
     public class DetailsActivity : AppCompatActivity
     {
         DialogHelpers dialogs = new DialogHelpers();
-        private ProjectModel.RootObject projectDetails;
+        private ProjectModel.RootObject details;
+        string projectTitle;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,8 +35,8 @@ namespace AndroidApp1.Activities
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             string position = Intent.GetStringExtra("position");
-            string projects = Intent.GetStringExtra("projects");
-            string projectTitle = Intent.GetStringExtra("title");
+            string json = Intent.GetStringExtra("json");
+            projectTitle = Intent.GetStringExtra("title");
 
             SupportActionBar.Title = projectTitle;
             //retrieving data
@@ -44,7 +45,7 @@ namespace AndroidApp1.Activities
                 .Commit();
 
             ThreadPool.QueueUserWorkItem(state => {
-                projectDetails = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projects);
+                details = JsonConvert.DeserializeObject<ProjectModel.RootObject>(json);
             });
 
         }
@@ -70,7 +71,7 @@ namespace AndroidApp1.Activities
                     return true;
 
                 case Resource.Id.mnDelete:
-                    dialogs.DeleteProjectDialog(this).Show();
+                    dialogs.DeleteProjectDialog(this, projectTitle).Show();
                     return true;
 
                 default:

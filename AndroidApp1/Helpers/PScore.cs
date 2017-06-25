@@ -78,8 +78,6 @@ namespace PScore
             try
             {
                 var result = await client.GetStringAsync(siteURL + "/_api/web/currentUser?");
-                Log.Info("kfsama", result);
-
                 return result;
             }
             catch (Exception e)
@@ -132,7 +130,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/CheckOut()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/CheckOut()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -141,6 +139,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 
@@ -153,7 +152,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/CheckIn()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/CheckIn()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -175,7 +174,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/Publish(true)", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/Publish(true)", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -195,9 +194,6 @@ namespace PScore
             try
             {
                 var result = await client.GetStringAsync(siteURL + psRestUrl + "/Projects");
-                Log.Info("kfsama",result);
-                //projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(result);
-                
                 return result;
             }
             catch (Exception e)
@@ -299,6 +295,7 @@ namespace PScore
             catch (Exception e)
             {
                 return e.Message;
+                Log.Info("kfsama", e.Message);
             }
 
         }
@@ -307,11 +304,11 @@ namespace PScore
         {
 
             Boolean isSuccess = false;
-            var contents = new StringContent(body, Encoding.UTF8, "application/json");
-
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/Tasks/Add", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('"+projectGUID+"')/Draft/Tasks/Add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -320,6 +317,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 
@@ -334,7 +332,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/Tasks('" + taskId + "')", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/Tasks('" + taskId + "')", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -356,7 +354,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/Tasks('" + taskId + "')/deleteObject()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/Tasks('" + taskId + "')/deleteObject()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -365,6 +363,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 

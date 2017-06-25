@@ -52,6 +52,9 @@ namespace AndroidApp1.Adapters
         public TextView duration { get; set; }
         public View status { get; set; }
         public Button fullDetails { get; set; }
+        public Button projectCheckOut { get; set; }
+        public Button projectCheckIn { get; set; }
+        public Button projectPublish { get; set; }
 
         public ProjectViewHolder(View itemView, Action<int> listener) : base(itemView) {
 
@@ -61,6 +64,9 @@ namespace AndroidApp1.Adapters
             duration = itemView.FindViewById<TextView>(Resource.Id.tvProjectDuration);
             status = itemView.FindViewById<View>(Resource.Id.vCheckedOutStatus);
             fullDetails = itemView.FindViewById<Button>(Resource.Id.btnProjectFullDetails);
+            projectCheckOut = itemView.FindViewById<Button>(Resource.Id.btnProjectCheckOut);
+            projectCheckIn = itemView.FindViewById<Button>(Resource.Id.btnProjectCheckIn);
+            projectPublish = itemView.FindViewById<Button>(Resource.Id.btnProjectPublish);
         }
 
     }
@@ -88,9 +94,12 @@ namespace AndroidApp1.Adapters
             vh.work.Text = mProjects[position].mProjectWork;
             vh.duration.Text = mProjects[position].mProjectDuration;
             vh.fullDetails.Click += delegate {
-                main.seeDetails(position);
+                main.seeDetails(1,position);
                 
             };
+            vh.projectCheckOut.Click += delegate { main.projectChecks(1, position); };
+            vh.projectCheckIn.Click += delegate { main.projectChecks(2, position); };
+            vh.projectPublish.Click += delegate { main.projectChecks(3, position); };
             if (mProjects[position].isCheckedOut == false)
                 vh.status.SetBackgroundColor(Color.ParseColor("#30752F"));
             else

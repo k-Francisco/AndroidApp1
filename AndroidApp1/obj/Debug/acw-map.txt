@@ -22,6 +22,10 @@ AndroidApp1.Fragments.PslogoFragment, AndroidApp1;md50db97c31e6ac55a8c8cfa113390
 AndroidApp1.Fragments.PslogoFragment, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50db97c31e6ac55a8c8cfa113390e4784.PslogoFragment
 AndroidApp1.Fragments.PslogoFragment;md50db97c31e6ac55a8c8cfa113390e4784.PslogoFragment
 androidapp1.fragments.PslogoFragment;md50db97c31e6ac55a8c8cfa113390e4784.PslogoFragment
+AndroidApp1.Fragments.TasksFragment, AndroidApp1;md50db97c31e6ac55a8c8cfa113390e4784.TasksFragment
+AndroidApp1.Fragments.TasksFragment, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50db97c31e6ac55a8c8cfa113390e4784.TasksFragment
+AndroidApp1.Fragments.TasksFragment;md50db97c31e6ac55a8c8cfa113390e4784.TasksFragment
+androidapp1.fragments.TasksFragment;md50db97c31e6ac55a8c8cfa113390e4784.TasksFragment
 AndroidApp1.Adapters.ProjectViewHolder, AndroidApp1;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectViewHolder
 AndroidApp1.Adapters.ProjectViewHolder, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectViewHolder
 AndroidApp1.Adapters.ProjectViewHolder;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectViewHolder
@@ -30,6 +34,14 @@ AndroidApp1.Adapters.ProjectAdapter, AndroidApp1;md5cfbaa3d833033370af6e1c1593bc
 AndroidApp1.Adapters.ProjectAdapter, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectAdapter
 AndroidApp1.Adapters.ProjectAdapter;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectAdapter
 androidapp1.adapters.ProjectAdapter;md5cfbaa3d833033370af6e1c1593bcc66b.ProjectAdapter
+AndroidApp1.Adapters.TasksViewHolder, AndroidApp1;md5cfbaa3d833033370af6e1c1593bcc66b.TasksViewHolder
+AndroidApp1.Adapters.TasksViewHolder, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cfbaa3d833033370af6e1c1593bcc66b.TasksViewHolder
+AndroidApp1.Adapters.TasksViewHolder;md5cfbaa3d833033370af6e1c1593bcc66b.TasksViewHolder
+androidapp1.adapters.TasksViewHolder;md5cfbaa3d833033370af6e1c1593bcc66b.TasksViewHolder
+AndroidApp1.Adapters.TasksAdapter, AndroidApp1;md5cfbaa3d833033370af6e1c1593bcc66b.TasksAdapter
+AndroidApp1.Adapters.TasksAdapter, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cfbaa3d833033370af6e1c1593bcc66b.TasksAdapter
+AndroidApp1.Adapters.TasksAdapter;md5cfbaa3d833033370af6e1c1593bcc66b.TasksAdapter
+androidapp1.adapters.TasksAdapter;md5cfbaa3d833033370af6e1c1593bcc66b.TasksAdapter
 AndroidApp1.Activities.DetailsActivity, AndroidApp1;md53efdd954dced941f1cccdd6377b3a9c5.DetailsActivity
 AndroidApp1.Activities.DetailsActivity, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53efdd954dced941f1cccdd6377b3a9c5.DetailsActivity
 AndroidApp1.Activities.DetailsActivity;md53efdd954dced941f1cccdd6377b3a9c5.DetailsActivity
