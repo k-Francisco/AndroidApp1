@@ -33,12 +33,15 @@ namespace AndroidApp1.Activities
         private static ProjectFragment projectFragment = new ProjectFragment();
         private static LoaderFragment loader = new LoaderFragment();
         private static TasksFragment taskFragment = new TasksFragment();
+        private static TimesheetFragment timesheetFragment = new TimesheetFragment();
         private static DialogHelpers helpDialog;
+        
 
         //data
         private ProjectModel.RootObject projects;
         private List<Taskmodel.RootObject> tasks;
         private List<string> projectsWithTasks = new List<string> { };
+        private TimesheetPeriod.RootObject timesheetPeriods;
 
         //core
         private PsCore core;
@@ -46,6 +49,7 @@ namespace AndroidApp1.Activities
         //constants
         private const int PROJECT_DATA = 1;
         private const int TASKS_DATA = 2;
+        private const int TIMESHEET_DATA = 3;
         private const int REQUEST_CODE = 1;
         
         //json strings
@@ -152,8 +156,10 @@ namespace AndroidApp1.Activities
 
             core.setClient();
             string context = await core.GetFormDigest("");
-            var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
-            core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
+            ThreadPool.QueueUserWorkItem(state => {
+                var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
+                core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
+            });
 
             ThreadPool.QueueUserWorkItem(async state =>
             {
@@ -199,7 +205,6 @@ namespace AndroidApp1.Activities
                 case 2:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
-
                     SupportActionBar.Title = "My Tasks";
                     fabfunctionidentifier = 2;
                     refreshIdentifier = 2;
@@ -207,6 +212,7 @@ namespace AndroidApp1.Activities
                     break;
                 case 3:
                     SupportActionBar.Title = "Timesheets";
+                    checkDataAsync(TIMESHEET_DATA);
                     break;
                 case 4:
                     SupportActionBar.Title = "Settings";
@@ -323,6 +329,13 @@ namespace AndroidApp1.Activities
                     else
                         switchFragment(taskFragment);
                     break;
+
+                case 3:
+                    if (timesheetPeriods == null)
+                        fillDataAsync(whatData);
+                    else
+                        switchFragment(timesheetFragment);
+                    break;
             }
         }
 
@@ -364,6 +377,19 @@ namespace AndroidApp1.Activities
                         if (tasks.Count > 0) {
                             RunOnUiThread(() =>{ switchFragment(taskFragment); refresh.Refreshing = false; });
                         }
+                    });
+                    break;
+
+                case 3:
+                    refresh.Refreshing = true;
+                    ThreadPool.QueueUserWorkItem(async state =>
+                    {
+                        var data = await core.GetTimesheetPeriods();
+                        timesheetPeriods = JsonConvert.DeserializeObject<TimesheetPeriod.RootObject>(data);
+                        RunOnUiThread(() => {
+                            switchFragment(timesheetFragment);
+                            refresh.Refreshing = false;
+                        });
                     });
                     break;
             }
@@ -533,6 +559,10 @@ namespace AndroidApp1.Activities
 
         public List<string> getProjectNamesWithTasks() {
             return projectsWithTasks;
+        }
+
+        public TimesheetPeriod.RootObject getTimesheetPeriods() {
+            return timesheetPeriods;
         }
         //data stuff end
 

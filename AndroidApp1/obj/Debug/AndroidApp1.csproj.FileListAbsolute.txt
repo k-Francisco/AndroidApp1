@@ -96,5 +96,7 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\uploadflags.txt
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\android\assets\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_card.xml
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_fragment.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb

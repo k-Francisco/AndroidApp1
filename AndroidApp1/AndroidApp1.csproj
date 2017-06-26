@@ -130,13 +130,16 @@
     <Compile Include="Fragments\Login.cs" />
     <Compile Include="Fragments\PslogoFragment.cs" />
     <Compile Include="Fragments\TasksFragment.cs" />
+    <Compile Include="Fragments\TimesheetFragment.cs" />
     <Compile Include="Helpers\DialogHelpers.cs" />
     <Compile Include="Helpers\LoginWebViewClient.cs" />
     <Compile Include="Helpers\PScore.cs" />
     <Compile Include="Models\CurrentUser\CurrentUserModel.cs" />
     <Compile Include="Models\FormDigest\FormDigestModel.cs" />
+    <Compile Include="Models\ProjectData\ProjectDataModel.cs" />
     <Compile Include="Models\Projects\ProjectModel.cs" />
     <Compile Include="Models\Tasks\TasksModel.cs" />
+    <Compile Include="Models\TimesheetPeriod\TimesheetPeriodModel.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
@@ -187,6 +190,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\edit_task_dialog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\timesheet_line_card.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\timesheet_fragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
