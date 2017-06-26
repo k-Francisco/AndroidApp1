@@ -149,25 +149,16 @@ namespace AndroidApp1.Activities
 
             //setting formDigest
             prefs = PreferenceManager.GetDefaultSharedPreferences(this);
-            if (prefs.GetString("formDigest", null) == null)
-            {
-                core.setClient();
-                string context = await core.GetFormDigest("");
-                var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
-                ISharedPreferencesEditor editor = prefs.Edit();
-                editor.PutString("formDigest", data.D.GetContextWebInformation.FormDigestValue);
-                editor.Apply();
-                core.setClient2(data.D.GetContextWebInformation.FormDigestValue, 0);
-            }
-            else {
-                core.setClient();
-                core.setClient2(prefs.GetString("formDigest", null), 0);
-            }
+
+            core.setClient();
+            string context = await core.GetFormDigest("");
+            var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
+            core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
 
             ThreadPool.QueueUserWorkItem(async state =>
             {
-                var data = await core.GetCurrentUser();
-                var currentUser = JsonConvert.DeserializeObject<CurrentUser.RootObject>(data);
+                var data2 = await core.GetCurrentUser();
+                var currentUser = JsonConvert.DeserializeObject<CurrentUser.RootObject>(data2);
                 RunOnUiThread(() => {
                     userName.Text = currentUser.D.Title;
                     userEmail.Text = currentUser.D.Email;
@@ -193,6 +184,8 @@ namespace AndroidApp1.Activities
             switch (position)
             {
                 case 0:
+                    if (refresh.Refreshing)
+                        refresh.Refreshing = false;
                     refreshIdentifier = 1;
                     fabfunctionidentifier = 1;
                     switchFragment(projectFragment);
@@ -204,6 +197,9 @@ namespace AndroidApp1.Activities
                     SupportActionBar.Title = "Resources";
                     break;
                 case 2:
+                    if (refresh.Refreshing)
+                        refresh.Refreshing = false;
+
                     SupportActionBar.Title = "My Tasks";
                     fabfunctionidentifier = 2;
                     refreshIdentifier = 2;
@@ -304,9 +300,9 @@ namespace AndroidApp1.Activities
 
         //data stuff
 
-        public string getFormDigest() {
-            return prefs.GetString("formDigest",null);
-        }
+        //public string getFormDigest() {
+        //    return prefs.GetString("formDigest",null);
+        //}
 
         public void checkDataAsync(int whatData)
         {
@@ -451,14 +447,13 @@ namespace AndroidApp1.Activities
             }
         }
 
-        public void ModifyTask(int identifier, string projectName, string taskName) {
+        public void ModifyTask(int identifier, string projectName, string taskName, string body) {
             //1 = delete task
             //2 = edit task
             switch (identifier) {
 
                 case 1:
                     Toast.MakeText(this, "Deleting task...", ToastLength.Short).Show();
-                    string body = "";
                     string projectId = null;
                     string taskId = null;
                     ThreadPool.QueueUserWorkItem(async state =>
@@ -493,6 +488,18 @@ namespace AndroidApp1.Activities
                     });
                     break;
                 case 2:
+                    Toast.MakeText(this, "Updating task...", ToastLength.Short).Show();
+
+                    ThreadPool.QueueUserWorkItem(async state =>
+                    {
+                        core.AddHeaders(2);
+                        bool success = await core.UpdateTask(body, projectName, taskName);
+                        if (success)
+                            RunOnUiThread(() => { Toast.MakeText(this, "Successfully Updated!", ToastLength.Short).Show(); core.AddHeaders(1); });
+                        else
+                            RunOnUiThread(()=> { Toast.MakeText(this, "There was an error updating the task", ToastLength.Short).Show(); });
+                    });
+
                     break;
             }
 

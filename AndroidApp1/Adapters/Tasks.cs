@@ -98,7 +98,7 @@ namespace AndroidApp1.Adapters
             vh.taskWork.Text = mTasks[position].mtasksWork;
             vh.taskDuration.Text = mTasks[position].mTasksDuration;
             vh.deleteTask.Click += delegate { dialogs.DeleteTaskDialog(main, mTasks[position].mTaskProjectName, mTasks[position].mTaskName).Show(); };
-            vh.editTask.Click += delegate { };
+            vh.editTask.Click += delegate { dialogs.EditTaskDialog(main, mTasks[position].mTaskProjectName, mTasks[position].mTaskName).Show(); };
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

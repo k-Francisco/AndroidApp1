@@ -52,6 +52,7 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_project_dia
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\full_details.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\task_card.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_task_layout.xml
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\edit_task_dialog.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\colors.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\integers.xml
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\strings.xml
@@ -94,5 +95,6 @@ E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\R.cs.flag
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\uploadflags.txt
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\android\assets\AndroidApp1.dll.mdb
+E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.dll.mdb
 E:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb

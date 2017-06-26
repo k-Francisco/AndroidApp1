@@ -54,7 +54,7 @@ namespace PScore
 
         //used for PostAsync
         //method 0 = no additional headers, 1 = MERGE, 2 = PUT, 3 = DELETE
-        public void setClient2(string formDigest, int method)
+        public void setClient2(string formDigest)
         {
             //if (client != null)
             //    client = null;
@@ -67,9 +67,20 @@ namespace PScore
             client2 = new HttpClient(handler);
             client2.DefaultRequestHeaders.Accept.Add(mediaType);
             client2.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
-            if (method == 1)
-                client2.DefaultRequestHeaders.Add("X-HTTP-METHOD", "MERGE");
+     
+        }
 
+        public void AddHeaders(int method) {
+            switch (method) {
+                //clear headers
+                case 1:
+                    client2.DefaultRequestHeaders.Remove("X-HTTP-METHOD");
+                    break;
+                //add merge header
+                case 2:
+                    client2.DefaultRequestHeaders.Add("X-HTTP-METHOD", "MERGE");
+                    break;
+            }
         }
 
         public async Task<string> GetCurrentUser() {
@@ -183,6 +194,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama",e.Message);
                 return isSuccess;
             }
         }
@@ -286,7 +298,6 @@ namespace PScore
 
         public async Task<String> GetTasks(string projectGUID)
         {
-
             try
             {
                 var result = await client.GetStringAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Tasks");
@@ -328,7 +339,9 @@ namespace PScore
         {
 
             Boolean isSuccess = false;
-            var contents = new StringContent(body, Encoding.UTF8, "application/json");
+            //var contents = new StringContent(body, Encoding.UTF8, "application/json");
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
 
             try
             {
@@ -341,6 +354,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 

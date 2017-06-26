@@ -89,6 +89,7 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
+
         public Android.Support.V7.App.AlertDialog DeleteProjectDialog(DetailsActivity details, string title) {
 
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
@@ -100,6 +101,7 @@ namespace AndroidApp1.Helpers
 
             return builder;
         }
+
 
         public Android.Support.V7.App.AlertDialog AddTaskDialog(MainActivity main,PsCore core,View view, ProjectModel.RootObject projects) {
 
@@ -182,6 +184,7 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
+
         public Android.Support.V7.App.AlertDialog DeleteTaskDialog(MainActivity main, string projectName, string taskName)
         {
 
@@ -189,8 +192,134 @@ namespace AndroidApp1.Helpers
             builder.SetTitle(taskName);
             builder.SetMessage("Are you sure you want to delete this task?");
             builder.SetCanceledOnTouchOutside(false);
-            builder.SetButton(-2, "DELETE", delegate { main.ModifyTask(1, projectName, taskName); });
+            builder.SetButton(-2, "DELETE", delegate { main.ModifyTask(1, projectName, taskName, ""); });
             builder.SetButton(-1, "CANCEL", delegate { builder.Dismiss(); });
+
+            return builder;
+        }
+
+
+        public Android.Support.V7.App.AlertDialog EditTaskDialog(MainActivity main, string projectName, string taskName) {
+
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.edit_task_dialog, null);
+            builder.SetView(view);
+            builder.SetTitle("Edit Task");
+            builder.Window.SetSoftInputMode(SoftInput.AdjustResize);
+
+            EditText taskNameEdit = view.FindViewById<EditText>(Resource.Id.etTaskNameEdit);
+            EditText taskNotes = view.FindViewById<EditText>(Resource.Id.etTaskNotesEdit);
+            EditText taskStartDate = view.FindViewById<EditText>(Resource.Id.etTaskStartDateEdit);
+            EditText taskFinishDate = view.FindViewById<EditText>(Resource.Id.etTaskFinishDateEdit);
+            EditText taskWork = view.FindViewById<EditText>(Resource.Id.etTaskWorkEdit);
+            EditText taskPercentComplete = view.FindViewById<EditText>(Resource.Id.etTaskPercentCompleteEdit);
+
+            taskStartDate.Click += delegate {
+                DateTime today = DateTime.Today;
+                DatePickerDialog datePicker = new DatePickerDialog(main, (sender, e) => { taskStartDate.Text = e.Date.ToShortDateString() + " " + e.Date.ToShortTimeString(); }, today.Year, today.Month - 1, today.Day);
+                datePicker.DatePicker.MinDate = today.Millisecond;
+                datePicker.Show();
+            };
+
+            taskFinishDate.Click += delegate
+            {
+                DateTime today = DateTime.Today;
+                DatePickerDialog datePicker = new DatePickerDialog(main, (sender, e) => { taskFinishDate.Text = e.Date.ToShortDateString() + " " + e.Date.ToShortTimeString(); }, today.Year, today.Month - 1, today.Day);
+                datePicker.DatePicker.MinDate = today.Millisecond;
+                datePicker.Show();
+            };
+
+            Spinner taskScheduling = view.FindViewById<Spinner>(Resource.Id.spnrTaskSchedulingEdit);
+
+            string scheduling = null;
+            bool isManual = false;
+            string projectid = null;
+            string taskid = null;
+            List<Taskmodel.RootObject> taskList = main.getTaskList();
+            ProjectModel.RootObject projects = main.getProjectList();
+
+            for (int i = 0; i < projects.D.Results.Count; i++) {
+                if (projects.D.Results[i].Name.Equals(projectName)) {
+                    projectid = projects.D.Results[i].Id;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < taskList.Count; i++) {
+                for (int j = 0; j < taskList[i].D.Results.Count; j++) {
+                    if (taskList[i].D.Results[j].Name.Equals(taskName)) {
+                        taskid = taskList[i].D.Results[j].Id;
+                        /////////////////////////////
+                        taskNameEdit.Hint = taskList[i].D.Results[j].Name;
+                        taskNotes.Hint = taskList[i].D.Results[j].Notes.ToString();
+                        taskStartDate.Hint = taskList[i].D.Results[j].Start.ToString();
+                        taskFinishDate.Hint = taskList[i].D.Results[j].Finish.ToString();
+                        taskWork.Hint = taskList[i].D.Results[j].Work;
+                        taskPercentComplete.Hint = taskList[i].D.Results[j].PercentComplete.ToString();
+
+                        if (taskList[i].D.Results[j].IsManual)
+                        {
+                            taskScheduling.SetSelection(0);
+                            scheduling = "Manual";
+                            isManual = true;
+                        }
+
+                        else
+                        {
+                            taskScheduling.SetSelection(1);
+                            scheduling = "Automatic";
+                            isManual = false;
+                        }
+                            
+                        /////////////////////////////
+                        break;
+                    }
+                }
+            }
+
+            StringBuilder body = new StringBuilder();
+            string intro = "{ \"__metadata\":{ \"type\":\"PS.DraftTask\"},";
+            List<string> inputs = new List<string> { };
+
+            builder.SetButton(-1, "CANCEL", delegate { builder.Dismiss(); });
+            builder.SetButton(-2, "EDIT", delegate {
+
+                if (taskNameEdit.Text != "" && taskNameEdit.Text != taskNameEdit.Hint)
+                    inputs.Add("'Name':'" + taskNameEdit.Text + "'");
+
+                if (taskNotes.Text != "" && taskNotes.Text != taskNotes.Hint)
+                    inputs.Add("'Notes':'"+taskNotes.Text+"'");
+
+                if (taskStartDate.Text != "" && taskStartDate.Text != taskStartDate.Hint)
+                    inputs.Add("'Start':'" + taskStartDate.Text + "'");
+
+                if (taskFinishDate.Text != "" && taskFinishDate.Text != taskFinishDate.Hint)
+                    inputs.Add("'Finish':'" + taskFinishDate.Text + "'");
+
+                if (taskPercentComplete.Text != "" && taskPercentComplete.Text != taskPercentComplete.Hint)
+                    inputs.Add("'PercentComplete':'" + taskPercentComplete.Text + "'");
+
+                if (taskWork.Text != "" && taskWork.Text != taskWork.Hint)
+                    inputs.Add("'Work':'" + taskWork.Text + "h'");
+
+                if (!taskScheduling.SelectedItem.Equals(scheduling))
+                    inputs.Add("'IsManual':'" + !isManual + "'");
+
+                if(inputs.Count != 0)
+                    body.Append(intro);
+
+                for (int i = 0; i < inputs.Count; i++) {
+                    if (i != inputs.Count - 1)
+                    {
+                        body.Append(inputs[i] + ",");
+                    }
+                    else {
+                        body.Append(inputs[i] + "}");
+                    }
+                }
+                main.ModifyTask(2, projectid, taskid, body.ToString());
+                    
+            });
 
             return builder;
         }
