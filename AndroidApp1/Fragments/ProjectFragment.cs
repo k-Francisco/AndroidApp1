@@ -8,6 +8,7 @@ using AndroidApp1.Adapters;
 using Android.Util;
 using System.Threading;
 using Android.Support.V4.Widget;
+using System.Text;
 
 namespace AndroidApp1.Fragments
 {
@@ -19,6 +20,7 @@ namespace AndroidApp1.Fragments
         Projects mProjects;
         ProjectAdapter mProjectAdapter;
         ProjectModel.RootObject mProjectList;
+        ProjectData.RootObject mProjectServer;
         MainActivity main;
 
 
@@ -42,17 +44,32 @@ namespace AndroidApp1.Fragments
 
             mProjects = new Projects();
             mProjectList = main.getProjectList();
+            mProjectServer = main.getProjectServerList();
             if (mProjectList != null)
                 for (int i = 0; i < mProjectList.D.Results.Count; i++)
                 {
+                    StringBuilder work = new StringBuilder();
+                    work.Append(mProjectList.D.Results[i].ProjectWork.TrimEnd(new char[] { '0' , '.'}));
+                    if (work.ToString().Equals(""))
+                        work.Append("0");
 
-                    mProjects.addProjects(
-                        mProjectList.D.Results[i].Name,
-                        mProjectList.D.Results[i].PercentComplete.ToString(),
-                        "0h",
-                        "1d",
-                        mProjectList.D.Results[i].IsCheckedOut
-                        );
+                    StringBuilder temp = new StringBuilder();
+                    temp.Append(mProjectList.D.Results[i].ProjectDuration.TrimEnd(new char[] { '0', '.' }));
+                    if (temp.ToString().Equals("")) {
+                        temp.Append("0");
+                    }
+                    int duration = Convert.ToInt32(temp.ToString())/8;
+                    for (int j =0; j < mProjectServer.D.Results.Count; j++) {
+                        if (mProjectServer.D.Results[j].Name.Equals(mProjectList.D.Results[i].ProjectName)) {
+                            mProjects.addProjects(
+                            mProjectList.D.Results[i].ProjectName,
+                            mProjectList.D.Results[i].ProjectPercentCompleted.ToString(),
+                            work.ToString() + "h",
+                            duration.ToString() + "d",
+                            mProjectServer.D.Results[j].IsCheckedOut);
+                        }
+                    }
+                    
                 }
 
             mProjectAdapter = new ProjectAdapter(mProjects, main);

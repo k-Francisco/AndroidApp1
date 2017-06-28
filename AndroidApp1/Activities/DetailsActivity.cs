@@ -23,7 +23,7 @@ namespace AndroidApp1.Activities
     {
         DialogHelpers dialogs = new DialogHelpers();
         private ProjectModel.RootObject details;
-        string projectTitle;
+        string projectTitle, json;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,7 +35,7 @@ namespace AndroidApp1.Activities
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             string position = Intent.GetStringExtra("position");
-            string json = Intent.GetStringExtra("json");
+            json = Intent.GetStringExtra("json");
             projectTitle = Intent.GetStringExtra("title");
 
             SupportActionBar.Title = projectTitle;
@@ -53,6 +53,15 @@ namespace AndroidApp1.Activities
         public void deleteProject() {
             Intent intent = new Intent();
             intent.PutExtra("identifier", 1);
+            intent.PutExtra("body", "");
+            SetResult(Result.Ok, intent);
+            Finish();
+        }
+
+        public void EditProject(string body) {
+            Intent intent = new Intent();
+            intent.PutExtra("identifier",2);
+            intent.PutExtra("body", body);
             SetResult(Result.Ok, intent);
             Finish();
         }
@@ -67,7 +76,8 @@ namespace AndroidApp1.Activities
                     return true;
 
                 case Resource.Id.mnEdit:
-                    
+                    View view = LayoutInflater.Inflate(Resource.Layout.edit_project_dialog, null);
+                    dialogs.EditProjectDialog(this, view, json);
                     return true;
 
                 case Resource.Id.mnDelete:

@@ -15,6 +15,7 @@ using PScore;
 using Android.Util;
 using Android.Graphics;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace AndroidApp1.Helpers
 {
@@ -90,6 +91,24 @@ namespace AndroidApp1.Helpers
         }
 
 
+        public Android.Support.V7.App.AlertDialog EditProjectDialog(DetailsActivity details, View view, string projectJson) {
+
+            string body = "";
+
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
+            builder.SetTitle("Edit Project");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+
+            ThreadPool.QueueUserWorkItem(state => {
+                var data = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectJson);
+
+            });
+
+            return builder;
+        }
+
+
         public Android.Support.V7.App.AlertDialog DeleteProjectDialog(DetailsActivity details, string title) {
 
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
@@ -143,7 +162,7 @@ namespace AndroidApp1.Helpers
             Spinner projectNames = view.FindViewById<Spinner>(Resource.Id.spnrAddTask);
             List<string> projectNameList = new List<string> { };
             for (int i = 0; i < projects.D.Results.Count; i++) {
-                projectNameList.Add(projects.D.Results[i].Name);
+                projectNameList.Add(projects.D.Results[i].ProjectName);
             }
             var spinnerAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, projectNameList);
             projectNames.Adapter = spinnerAdapter;
@@ -157,8 +176,8 @@ namespace AndroidApp1.Helpers
                 string temp = projectNames.SelectedItem.ToString();
                 for (int i = 0; i < projects.D.Results.Count; i++)
                 {
-                    if (temp == projects.D.Results[i].Name) {
-                        projectId = projects.D.Results[i].Id;
+                    if (temp == projects.D.Results[i].ProjectName) {
+                        projectId = projects.D.Results[i].ProjectId;
                         break;
                     }
                 }
@@ -239,8 +258,8 @@ namespace AndroidApp1.Helpers
             ProjectModel.RootObject projects = main.getProjectList();
 
             for (int i = 0; i < projects.D.Results.Count; i++) {
-                if (projects.D.Results[i].Name.Equals(projectName)) {
-                    projectid = projects.D.Results[i].Id;
+                if (projects.D.Results[i].ProjectName.Equals(projectName)) {
+                    projectid = projects.D.Results[i].ProjectId;
                     break;
                 }
             }

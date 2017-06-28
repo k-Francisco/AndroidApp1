@@ -11,7 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
-namespace AndroidApp1.Models.ProjectData
+namespace ProjectData
 {
     public class RootObject
     {
@@ -25,220 +25,173 @@ namespace AndroidApp1.Models.ProjectData
     }
     public class Result
     {
+        //_api/ProjectServer/Projects
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
-        [JsonProperty("AssignmentBaselines")]
-        public AssignmentBaselines AssignmentBaselines { get; set; }
+        [JsonProperty("CheckedOutBy")]
+        public CheckedOutBy CheckedOutBy { get; set; }
+        [JsonProperty("CustomFields")]
+        public CustomFields CustomFields { get; set; }
+        [JsonProperty("Engagements")]
+        public Engagements Engagements { get; set; }
+        [JsonProperty("EnterpriseProjectType")]
+        public EnterpriseProjectType EnterpriseProjectType { get; set; }
+        [JsonProperty("UserPermissions")]
+        public UserPermissions UserPermissions { get; set; }
+        [JsonProperty("Phase")]
+        public Phase Phase { get; set; }
+        [JsonProperty("ProjectSummaryTask")]
+        public ProjectSummaryTask ProjectSummaryTask { get; set; }
+        [JsonProperty("QueueJobs")]
+        public QueueJobs QueueJobs { get; set; }
+        [JsonProperty("Stage")]
+        public Stage Stage { get; set; }
         [JsonProperty("Assignments")]
         public Assignments Assignments { get; set; }
-        [JsonProperty("Deliverables")]
-        public Deliverables Deliverables { get; set; }
-        [JsonProperty("Dependencies")]
-        public Dependencies Dependencies { get; set; }
-        [JsonProperty("Issues")]
-        public Issues Issues { get; set; }
-        [JsonProperty("Risks")]
-        public Risks Risks { get; set; }
-        [JsonProperty("StagesInfo")]
-        public StagesInfo StagesInfo { get; set; }
+        [JsonProperty("Calendar")]
+        public Calendar Calendar { get; set; }
+        [JsonProperty("Draft")]
+        public Draft Draft { get; set; }
+        [JsonProperty("EntityLinks")]
+        public EntityLinks EntityLinks { get; set; }
+        [JsonProperty("IncludeCustomFields")]
+        public IncludeCustomFields IncludeCustomFields { get; set; }
+        [JsonProperty("Owner")]
+        public Owner Owner { get; set; }
+        [JsonProperty("ProjectResources")]
+        public ProjectResources ProjectResources { get; set; }
+        [JsonProperty("TaskLinks")]
+        public TaskLinks TaskLinks { get; set; }
         [JsonProperty("Tasks")]
         public Tasks Tasks { get; set; }
-        [JsonProperty("ProjectId")]
-        public string ProjectId { get; set; }
-        [JsonProperty("EnterpriseProjectTypeDescription")]
-        public string EnterpriseProjectTypeDescription { get; set; }
-        [JsonProperty("EnterpriseProjectTypeId")]
-        public string EnterpriseProjectTypeId { get; set; }
-        [JsonProperty("EnterpriseProjectTypeIsDefault")]
-        public bool EnterpriseProjectTypeIsDefault { get; set; }
-        [JsonProperty("EnterpriseProjectTypeName")]
-        public string EnterpriseProjectTypeName { get; set; }
-        [JsonProperty("OptimizerCommitDate")]
-        public object OptimizerCommitDate { get; set; }
-        [JsonProperty("OptimizerDecisionAliasLookupTableId")]
-        public object OptimizerDecisionAliasLookupTableId { get; set; }
-        [JsonProperty("OptimizerDecisionAliasLookupTableValueId")]
-        public object OptimizerDecisionAliasLookupTableValueId { get; set; }
-        [JsonProperty("OptimizerDecisionID")]
-        public object OptimizerDecisionID { get; set; }
-        [JsonProperty("OptimizerDecisionName")]
-        public object OptimizerDecisionName { get; set; }
-        [JsonProperty("OptimizerSolutionName")]
-        public object OptimizerSolutionName { get; set; }
-        [JsonProperty("ParentProjectId")]
-        public object ParentProjectId { get; set; }
-        [JsonProperty("PlannerCommitDate")]
-        public object PlannerCommitDate { get; set; }
-        [JsonProperty("PlannerDecisionAliasLookupTableId")]
-        public object PlannerDecisionAliasLookupTableId { get; set; }
-        [JsonProperty("PlannerDecisionAliasLookupTableValueId")]
-        public object PlannerDecisionAliasLookupTableValueId { get; set; }
-        [JsonProperty("PlannerDecisionID")]
-        public object PlannerDecisionID { get; set; }
-        [JsonProperty("PlannerDecisionName")]
-        public object PlannerDecisionName { get; set; }
-        [JsonProperty("PlannerEndDate")]
-        public object PlannerEndDate { get; set; }
-        [JsonProperty("PlannerSolutionName")]
-        public object PlannerSolutionName { get; set; }
-        [JsonProperty("PlannerStartDate")]
-        public object PlannerStartDate { get; set; }
-        [JsonProperty("ProjectActualCost")]
-        public string ProjectActualCost { get; set; }
-        [JsonProperty("ProjectActualDuration")]
-        public string ProjectActualDuration { get; set; }
-        [JsonProperty("ProjectActualFinishDate")]
-        public object ProjectActualFinishDate { get; set; }
-        [JsonProperty("ProjectActualOvertimeCost")]
-        public string ProjectActualOvertimeCost { get; set; }
-        [JsonProperty("ProjectActualOvertimeWork")]
-        public string ProjectActualOvertimeWork { get; set; }
-        [JsonProperty("ProjectActualRegularCost")]
-        public string ProjectActualRegularCost { get; set; }
-        [JsonProperty("ProjectActualRegularWork")]
-        public string ProjectActualRegularWork { get; set; }
-        [JsonProperty("ProjectActualStartDate")]
-        public DateTime ProjectActualStartDate { get; set; }
-        [JsonProperty("ProjectActualWork")]
-        public string ProjectActualWork { get; set; }
-        [JsonProperty("ProjectACWP")]
-        public string ProjectACWP { get; set; }
-        [JsonProperty("ProjectAuthorName")]
-        public string ProjectAuthorName { get; set; }
-        [JsonProperty("ProjectBCWP")]
-        public string ProjectBCWP { get; set; }
-        [JsonProperty("ProjectBCWS")]
-        public string ProjectBCWS { get; set; }
-        [JsonProperty("ProjectBudgetCost")]
-        public string ProjectBudgetCost { get; set; }
-        [JsonProperty("ProjectBudgetWork")]
-        public string ProjectBudgetWork { get; set; }
-        [JsonProperty("ProjectCalculationsAreStale")]
-        public bool ProjectCalculationsAreStale { get; set; }
-        [JsonProperty("ProjectCalendarDuration")]
-        public int ProjectCalendarDuration { get; set; }
-        [JsonProperty("ProjectCategoryName")]
-        public object ProjectCategoryName { get; set; }
-        [JsonProperty("ProjectCompanyName")]
-        public object ProjectCompanyName { get; set; }
-        [JsonProperty("ProjectCost")]
-        public string ProjectCost { get; set; }
-        [JsonProperty("ProjectCostVariance")]
-        public string ProjectCostVariance { get; set; }
-        [JsonProperty("ProjectCPI")]
-        public string ProjectCPI { get; set; }
-        [JsonProperty("ProjectCreatedDate")]
-        public DateTime ProjectCreatedDate { get; set; }
-        [JsonProperty("ProjectCurrency")]
-        public string ProjectCurrency { get; set; }
-        [JsonProperty("ProjectCV")]
-        public string ProjectCV { get; set; }
-        [JsonProperty("ProjectCVP")]
-        public string ProjectCVP { get; set; }
-        [JsonProperty("ProjectDescription")]
-        public string ProjectDescription { get; set; }
-        [JsonProperty("ProjectDuration")]
-        public string ProjectDuration { get; set; }
-        [JsonProperty("ProjectDurationVariance")]
-        public string ProjectDurationVariance { get; set; }
-        [JsonProperty("ProjectEAC")]
-        public string ProjectEAC { get; set; }
-        [JsonProperty("ProjectEarlyFinish")]
-        public DateTime ProjectEarlyFinish { get; set; }
-        [JsonProperty("ProjectEarlyStart")]
-        public DateTime ProjectEarlyStart { get; set; }
-        [JsonProperty("ProjectEarnedValueIsStale")]
-        public bool ProjectEarnedValueIsStale { get; set; }
-        [JsonProperty("ProjectEnterpriseFeatures")]
-        public bool ProjectEnterpriseFeatures { get; set; }
-        [JsonProperty("ProjectFinishDate")]
-        public DateTime ProjectFinishDate { get; set; }
-        [JsonProperty("ProjectFinishVariance")]
-        public string ProjectFinishVariance { get; set; }
-        [JsonProperty("ProjectFixedCost")]
-        public string ProjectFixedCost { get; set; }
-        [JsonProperty("ProjectIdentifier")]
-        public string ProjectIdentifier { get; set; }
-        [JsonProperty("ProjectKeywords")]
-        public object ProjectKeywords { get; set; }
-        [JsonProperty("ProjectLateFinish")]
-        public DateTime ProjectLateFinish { get; set; }
-        [JsonProperty("ProjectLateStart")]
-        public DateTime ProjectLateStart { get; set; }
-        [JsonProperty("ProjectLastPublishedDate")]
-        public DateTime ProjectLastPublishedDate { get; set; }
-        [JsonProperty("ProjectManagerName")]
-        public object ProjectManagerName { get; set; }
-        [JsonProperty("ProjectModifiedDate")]
-        public DateTime ProjectModifiedDate { get; set; }
-        [JsonProperty("ProjectName")]
-        public string ProjectName { get; set; }
-        [JsonProperty("ProjectOvertimeCost")]
-        public string ProjectOvertimeCost { get; set; }
-        [JsonProperty("ProjectOvertimeWork")]
-        public string ProjectOvertimeWork { get; set; }
-        [JsonProperty("ProjectOwnerId")]
-        public string ProjectOwnerId { get; set; }
-        [JsonProperty("ProjectOwnerName")]
-        public string ProjectOwnerName { get; set; }
-        [JsonProperty("ProjectPercentCompleted")]
-        public int ProjectPercentCompleted { get; set; }
-        [JsonProperty("ProjectPercentWorkCompleted")]
-        public int ProjectPercentWorkCompleted { get; set; }
-        [JsonProperty("ProjectRegularCost")]
-        public string ProjectRegularCost { get; set; }
-        [JsonProperty("ProjectRegularWork")]
-        public string ProjectRegularWork { get; set; }
-        [JsonProperty("ProjectRemainingCost")]
-        public string ProjectRemainingCost { get; set; }
-        [JsonProperty("ProjectRemainingDuration")]
-        public string ProjectRemainingDuration { get; set; }
-        [JsonProperty("ProjectRemainingOvertimeCost")]
-        public string ProjectRemainingOvertimeCost { get; set; }
-        [JsonProperty("ProjectRemainingOvertimeWork")]
-        public string ProjectRemainingOvertimeWork { get; set; }
-        [JsonProperty("ProjectRemainingRegularCost")]
-        public string ProjectRemainingRegularCost { get; set; }
-        [JsonProperty("ProjectRemainingRegularWork")]
-        public string ProjectRemainingRegularWork { get; set; }
-        [JsonProperty("ProjectRemainingWork")]
-        public string ProjectRemainingWork { get; set; }
-        [JsonProperty("ProjectResourcePlanWork")]
-        public string ProjectResourcePlanWork { get; set; }
-        [JsonProperty("ProjectSPI")]
-        public string ProjectSPI { get; set; }
-        [JsonProperty("ProjectStartDate")]
-        public DateTime ProjectStartDate { get; set; }
-        [JsonProperty("ProjectStartVariance")]
-        public string ProjectStartVariance { get; set; }
-        [JsonProperty("ProjectStatusDate")]
-        public object ProjectStatusDate { get; set; }
-        [JsonProperty("ProjectSubject")]
-        public object ProjectSubject { get; set; }
-        [JsonProperty("ProjectSV")]
-        public string ProjectSV { get; set; }
-        [JsonProperty("ProjectSVP")]
-        public string ProjectSVP { get; set; }
-        [JsonProperty("ProjectTCPI")]
-        public string ProjectTCPI { get; set; }
-        [JsonProperty("ProjectTitle")]
-        public string ProjectTitle { get; set; }
+        //
+        [JsonProperty("ApprovedEnd")]
+        public DateTime ApprovedEnd { get; set; }
+        [JsonProperty("ApprovedStart")]
+        public DateTime ApprovedStart { get; set; }
+        [JsonProperty("CalculateActualCosts")]
+        public bool CalculateActualCosts { get; set; }
+        [JsonProperty("CalculatesActualCosts")]
+        public bool CalculatesActualCosts { get; set; }
+        [JsonProperty("CheckedOutDate")]
+        public DateTime CheckedOutDate { get; set; }
+        [JsonProperty("CheckOutDescription")]
+        public string CheckOutDescription { get; set; }
+        [JsonProperty("CheckOutId")]
+        public string CheckOutId { get; set; }
+        [JsonProperty("CreatedDate")]
+        public DateTime CreatedDate { get; set; }
+        [JsonProperty("CriticalSlackLimit")]
+        public int CriticalSlackLimit { get; set; }
+        [JsonProperty("DefaultFinishTime")]
+        public DateTime DefaultFinishTime { get; set; }
+        [JsonProperty("DefaultOvertimeRateUnits")]
+        public int DefaultOvertimeRateUnits { get; set; }
+        [JsonProperty("DefaultStandardRateUnits")]
+        public int DefaultStandardRateUnits { get; set; }
+        [JsonProperty("DefaultStartTime")]
+        public DateTime DefaultStartTime { get; set; }
+        [JsonProperty("HonorConstraints")]
+        public bool HonorConstraints { get; set; }
+        [JsonProperty("Id")]
+        public string Id { get; set; }
+        [JsonProperty("IsCheckedOut")]
+        public bool IsCheckedOut { get; set; }
+        [JsonProperty("LastPublishedDate")]
+        public DateTime LastPublishedDate { get; set; }
+        [JsonProperty("LastSavedDate")]
+        public DateTime LastSavedDate { get; set; }
+        [JsonProperty("MoveActualIfLater")]
+        public bool MoveActualIfLater { get; set; }
+        [JsonProperty("MoveActualToStatus")]
+        public bool MoveActualToStatus { get; set; }
+        [JsonProperty("MoveRemainingIfEarlier")]
+        public bool MoveRemainingIfEarlier { get; set; }
+        [JsonProperty("MoveRemainingToStatus")]
+        public bool MoveRemainingToStatus { get; set; }
+        [JsonProperty("MultipleCriticalPaths")]
+        public bool MultipleCriticalPaths { get; set; }
+        [JsonProperty("OptimizerDecision")]
+        public int OptimizerDecision { get; set; }
+        [JsonProperty("PercentComplete")]
+        public int PercentComplete { get; set; }
+        [JsonProperty("PlannerDecision")]
+        public int PlannerDecision { get; set; }
         [JsonProperty("ProjectType")]
         public int ProjectType { get; set; }
-        [JsonProperty("ProjectVAC")]
-        public string ProjectVAC { get; set; }
-        [JsonProperty("ProjectWork")]
-        public string ProjectWork { get; set; }
-        [JsonProperty("ProjectWorkspaceInternalUrl")]
-        public object ProjectWorkspaceInternalUrl { get; set; }
-        [JsonProperty("ProjectWorkVariance")]
-        public string ProjectWorkVariance { get; set; }
-        [JsonProperty("ResourcePlanUtilizationDate")]
-        public object ResourcePlanUtilizationDate { get; set; }
-        [JsonProperty("ResourcePlanUtilizationType")]
-        public int ResourcePlanUtilizationType { get; set; }
-        [JsonProperty("ProjectDepartments")]
-        public object ProjectDepartments { get; set; }
+        [JsonProperty("ScheduledFromStart")]
+        public bool ScheduledFromStart { get; set; }
+        [JsonProperty("SplitInProgress")]
+        public bool SplitInProgress { get; set; }
+        [JsonProperty("SpreadActualCostsToStatus")]
+        public bool SpreadActualCostsToStatus { get; set; }
+        [JsonProperty("SpreadPercentCompleteToStatus")]
+        public bool SpreadPercentCompleteToStatus { get; set; }
+        [JsonProperty("SummaryTaskId")]
+        public string SummaryTaskId { get; set; }
+        [JsonProperty("CurrencyCode")]
+        public string CurrencyCode { get; set; }
+        [JsonProperty("CurrencyDigits")]
+        public int CurrencyDigits { get; set; }
+        [JsonProperty("CurrencyPosition")]
+        public int CurrencyPosition { get; set; }
+        [JsonProperty("CurrencySymbol")]
+        public string CurrencySymbol { get; set; }
+        [JsonProperty("CurrentDate")]
+        public DateTime CurrentDate { get; set; }
+        [JsonProperty("DaysPerMonth")]
+        public int DaysPerMonth { get; set; }
+        [JsonProperty("DefaultEffortDriven")]
+        public bool DefaultEffortDriven { get; set; }
+        [JsonProperty("DefaultEstimatedDuration")]
+        public bool DefaultEstimatedDuration { get; set; }
+        [JsonProperty("DefaultFixedCostAccrual")]
+        public int DefaultFixedCostAccrual { get; set; }
+        [JsonProperty("DefaultOvertimeRate")]
+        public int DefaultOvertimeRate { get; set; }
+        [JsonProperty("DefaultStandardRate")]
+        public int DefaultStandardRate { get; set; }
+        [JsonProperty("DefaultTaskType")]
+        public int DefaultTaskType { get; set; }
+        [JsonProperty("DefaultWorkFormat")]
+        public int DefaultWorkFormat { get; set; }
+        [JsonProperty("Description")]
+        public string Description { get; set; }
+        [JsonProperty("FinishDate")]
+        public DateTime FinishDate { get; set; }
+        [JsonProperty("FiscalYearStartMonth")]
+        public int FiscalYearStartMonth { get; set; }
+        [JsonProperty("MinutesPerDay")]
+        public int MinutesPerDay { get; set; }
+        [JsonProperty("MinutesPerWeek")]
+        public int MinutesPerWeek { get; set; }
+        [JsonProperty("Name")]
+        public string Name { get; set; }
+        [JsonProperty("NewTasksAreManual")]
+        public bool NewTasksAreManual { get; set; }
+        [JsonProperty("NumberFiscalYearFromStart")]
+        public bool NumberFiscalYearFromStart { get; set; }
+        [JsonProperty("ProjectIdentifier")]
+        public string ProjectIdentifier { get; set; }
+        [JsonProperty("ProtectedActualsSynch")]
+        public bool ProtectedActualsSynch { get; set; }
+        [JsonProperty("ShowEstimatedDurations")]
+        public bool ShowEstimatedDurations { get; set; }
+        [JsonProperty("StartDate")]
+        public DateTime StartDate { get; set; }
+        [JsonProperty("StatusDate")]
+        public DateTime StatusDate { get; set; }
+        [JsonProperty("TrackingMode")]
+        public int TrackingMode { get; set; }
+        [JsonProperty("UtilizationDate")]
+        public DateTime UtilizationDate { get; set; }
+        [JsonProperty("UtilizationType")]
+        public int UtilizationType { get; set; }
+        [JsonProperty("WeekStartDay")]
+        public int WeekStartDay { get; set; }
+        [JsonProperty("WinprojVersion")]
+        public string WinprojVersion { get; set; }
+
     }
     public class Metadata
     {
@@ -249,7 +202,7 @@ namespace AndroidApp1.Models.ProjectData
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-    public class AssignmentBaselines
+    public class CheckedOutBy
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
@@ -259,32 +212,82 @@ namespace AndroidApp1.Models.ProjectData
         [JsonProperty("uri")]
         public string Uri { get; set; }
     }
+    public class CustomFields
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class Engagements
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class EnterpriseProjectType
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class UserPermissions
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class Phase
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class ProjectSummaryTask
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class QueueJobs
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class Stage
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
     public class Assignments
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
     }
-    public class Deliverables
+    public class Calendar
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
     }
-    public class Dependencies
+    public class Draft
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
     }
-    public class Issues
+    public class EntityLinks
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
     }
-    public class Risks
+    public class IncludeCustomFields
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
     }
-    public class StagesInfo
+    public class Owner
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class ProjectResources
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+    public class TaskLinks
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }

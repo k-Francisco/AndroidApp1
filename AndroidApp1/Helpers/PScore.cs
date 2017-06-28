@@ -205,11 +205,22 @@ namespace PScore
             //ProjectModel.RootObject projects = null;
             try
             {
-                var result = await client.GetStringAsync(siteURL + psRestUrl + "/Projects");
+                var result = await client.GetStringAsync("https://sharepointevo.sharepoint.com/sites/mobility/_api/ProjectData/Projects");
                 return result;
             }
             catch (Exception e)
             {
+                return e.Message;
+            }
+        }
+
+        public async Task<string> GetProjectServer() {
+
+            try {
+                var result = await client.GetStringAsync(siteURL + psRestUrl + "/Projects");
+                return result;
+            }
+            catch (Exception e) {
                 return e.Message;
             }
         }

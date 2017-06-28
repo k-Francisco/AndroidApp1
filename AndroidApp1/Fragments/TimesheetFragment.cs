@@ -46,17 +46,13 @@ namespace AndroidApp1.Fragments
                     if (periodList.D.Results[i].Start.Date.AddDays(j).Equals(DateTime.Now.Date)) {
                         currentDayPosition = i;
                     }
-                }
-                //if (periodList.D.Results[i].Start.Date.Equals(DateTime.Now.Date)) {
-                //    currentDayPosition = i;
-                //}
-                    
+                }     
             }
             var periodAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, periodTemp);
             period.Adapter = periodAdapter;
             period.SetSelection(currentDayPosition);
             period.ItemSelected += (sender, e) => { fillPeriodDays(periodDays, e.Position); };
-
+            
             return view;
 
         }

@@ -86,6 +86,11 @@ namespace AndroidApp1.Adapters
             get { return mProjects.numHome; }
         }
 
+        //public override int GetItemViewType(int position)
+        //{
+        //    return base.GetItemViewType(position);
+        //}
+
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             ProjectViewHolder vh = holder as ProjectViewHolder;

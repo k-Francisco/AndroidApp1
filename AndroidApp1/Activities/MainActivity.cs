@@ -39,6 +39,7 @@ namespace AndroidApp1.Activities
 
         //data
         private ProjectModel.RootObject projects;
+        private ProjectData.RootObject pServer;
         private List<Taskmodel.RootObject> tasks;
         private List<string> projectsWithTasks = new List<string> { };
         private TimesheetPeriod.RootObject timesheetPeriods;
@@ -293,7 +294,7 @@ namespace AndroidApp1.Activities
                     intent = new Intent(this, typeof(DetailsActivity));
                     intent.PutExtra("json", projectJson);
                     intent.PutExtra("position", position.ToString());
-                    intent.PutExtra("title", projects.D.Results[position].Name);
+                    intent.PutExtra("title", projects.D.Results[position].ProjectName);
                     StartActivityForResult(intent, REQUEST_CODE);
                     break;
                 //tasks
@@ -316,7 +317,7 @@ namespace AndroidApp1.Activities
             {
                 case 1:
 
-                    if (projects == null)
+                    if (projects == null && pServer == null)
                         fillDataAsync(whatData);
                     else
                         switchFragment(projectFragment);
@@ -349,10 +350,13 @@ namespace AndroidApp1.Activities
 
                 case 1:
                         refresh.Refreshing = true;
-                        projectJson = await core.GetProjects();
-                        ThreadPool.QueueUserWorkItem(state =>
+                    projectJson = await core.GetProjects();
+                    var temp = await core.GetProjectServer();
+
+                    ThreadPool.QueueUserWorkItem(state =>
                         {
                             projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectJson);
+                            pServer = JsonConvert.DeserializeObject<ProjectData.RootObject>(temp);
                             RunOnUiThread(() => { switchFragment(projectFragment); refresh.Refreshing = false; });
                         });
                     break;
@@ -360,10 +364,10 @@ namespace AndroidApp1.Activities
                     refresh.Refreshing = true; 
                     tasks = new List<Taskmodel.RootObject> { };
                     for (int i = 0; i<projects.D.Results.Count; i++) {
-                            string data = await core.GetTasks(projects.D.Results[i].Id);
+                            string data = await core.GetTasks(projects.D.Results[i].ProjectId);
                         if (data.Length > 20) {
                             taskJson.Add(data);
-                            projectsWithTasks.Add(projects.D.Results[i].Name);
+                            projectsWithTasks.Add(projects.D.Results[i].ProjectName);
                         }
                             
                     }
@@ -405,7 +409,7 @@ namespace AndroidApp1.Activities
                     Toast.MakeText(this, "Checking out Project", ToastLength.Short).Show();
                     ThreadPool.QueueUserWorkItem(async state =>
                     {
-                        bool success = await core.CheckOut(body, projects.D.Results[tbModified].Id);
+                        bool success = await core.CheckOut(body, projects.D.Results[tbModified].ProjectId);
                         if (success) {
                             RunOnUiThread(()=> { Toast.MakeText(this, "Successfully checked out!", ToastLength.Short).Show(); refreshData(PROJECT_DATA); }); 
                         }
@@ -419,7 +423,7 @@ namespace AndroidApp1.Activities
                     Toast.MakeText(this, "Checking in Project", ToastLength.Short).Show();
                     ThreadPool.QueueUserWorkItem(async state =>
                     {
-                        bool success = await core.CheckIn(body, projects.D.Results[tbModified].Id);
+                        bool success = await core.CheckIn(body, projects.D.Results[tbModified].ProjectId);
                         if (success)
                         {
                             RunOnUiThread(() => { Toast.MakeText(this, "Successfully checked in!", ToastLength.Short).Show(); refreshData(PROJECT_DATA); });
@@ -434,7 +438,7 @@ namespace AndroidApp1.Activities
                     Toast.MakeText(this, "Publishing Project", ToastLength.Short).Show();
                     ThreadPool.QueueUserWorkItem(async state =>
                     {
-                        bool success = await core.Publish(body, projects.D.Results[tbModified].Id);
+                        bool success = await core.Publish(body, projects.D.Results[tbModified].ProjectId);
                         if (success)
                         {
                             RunOnUiThread(() => { Toast.MakeText(this, "Successfully published!", ToastLength.Short).Show(); refreshData(PROJECT_DATA); });
@@ -449,7 +453,7 @@ namespace AndroidApp1.Activities
             
         }
 
-        private async void ModifyProject(int identifier)
+        private async void ModifyProject(int identifier, string body)
         {
             switch (identifier)
             {
@@ -457,8 +461,7 @@ namespace AndroidApp1.Activities
                 //2 = edit project
                 case 1:
                     Toast.MakeText(this, "Deleting Project", ToastLength.Short);
-                    string body = "";
-                    bool isSuccess = await core.DeleteProject(body, projects.D.Results[tbModified].Id);
+                    bool isSuccess = await core.DeleteProject(body, projects.D.Results[tbModified].ProjectId);
                     if (isSuccess)
                     {
                         Toast.MakeText(this, "Project Successfully Deleted!", ToastLength.Short).Show();
@@ -486,9 +489,9 @@ namespace AndroidApp1.Activities
                     {
                         for (int i = 0; i < projects.D.Results.Count; i++)
                         {
-                            if (projects.D.Results[i].Name.Equals(projectName))
+                            if (projects.D.Results[i].ProjectName.Equals(projectName))
                             {
-                                projectId = projects.D.Results[i].Id;
+                                projectId = projects.D.Results[i].ProjectId;
                                 break;
                             }
                         }
@@ -536,6 +539,7 @@ namespace AndroidApp1.Activities
                 case 1:
                     projects = null;
                     projectJson = null;
+                    pServer = null;
                     checkDataAsync(PROJECT_DATA);
                     break;
                 case 2:
@@ -564,6 +568,10 @@ namespace AndroidApp1.Activities
         public TimesheetPeriod.RootObject getTimesheetPeriods() {
             return timesheetPeriods;
         }
+
+        public ProjectData.RootObject getProjectServerList() {
+            return pServer;
+        }
         //data stuff end
 
 
@@ -574,7 +582,8 @@ namespace AndroidApp1.Activities
             if (resultCode == Result.Ok)
             {
                 int identifier = data.GetIntExtra("identifier", 0);
-                ModifyProject(identifier);
+                string body = data.GetStringExtra("body");
+                ModifyProject(identifier, body);
             }
         }
 
