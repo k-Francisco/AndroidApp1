@@ -11,12 +11,18 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AndroidApp1.Activities;
+using Android.Support.V7.Widget;
+using AndroidApp1.Adapters;
 
 namespace AndroidApp1.Fragments
 {
     public class TimesheetFragment : Fragment
     {
         TimesheetPeriod.RootObject periodList;
+        RecyclerView mRecyclerView;
+        TimesheetPeriodz mPeriodz;
+        TimesheetPeriodAdapter mPeriozAdapter;
+        RecyclerView.LayoutManager mLayoutManager;
         MainActivity main;
         List<string> days = new List<string> { };
 
@@ -29,10 +35,8 @@ namespace AndroidApp1.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View view = inflater.Inflate(Resource.Layout.timesheet_fragment, container, false);
+            View view = inflater.Inflate(Resource.Layout.empty_recycleview, container, false);
 
-            Spinner period = view.FindViewById<Spinner>(Resource.Id.spnrTimesheetPeriod);
-            Spinner periodDays = view.FindViewById<Spinner>(Resource.Id.spnrTimesheetPeriodDay);
             main = (Activity as MainActivity);
             periodList = main.getTimesheetPeriods();
 
@@ -45,19 +49,31 @@ namespace AndroidApp1.Fragments
                 for (int j = 0; j <= span.Days; j++) {
                     if (periodList.D.Results[i].Start.Date.AddDays(j).Equals(DateTime.Now.Date)) {
                         currentDayPosition = i;
+                        break;
                     }
                 }     
             }
-            var periodAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, periodTemp);
-            period.Adapter = periodAdapter;
-            period.SetSelection(currentDayPosition);
-            period.ItemSelected += (sender, e) => { fillPeriodDays(periodDays, e.Position); };
-            
+
+            mRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            mLayoutManager = new LinearLayoutManager(view.Context);
+            mRecyclerView.SetLayoutManager(mLayoutManager);
+
+            mPeriodz = new TimesheetPeriodz();
+            mPeriodz.addPeriod(periodTemp, currentDayPosition);
+
+            mPeriozAdapter = new TimesheetPeriodAdapter(mPeriodz, main, this);
+            mPeriozAdapter.itemClick += Adapter_ItemClick;
+            mRecyclerView.SetAdapter(mPeriozAdapter);
             return view;
 
         }
 
-        private void fillPeriodDays(Spinner periodDays, int position)
+        private void Adapter_ItemClick(object sender, int e)
+        {
+            Log.Info("kfsama", "item clicked at position " + e);
+        }
+
+        public void fillPeriodDays(Spinner periodDays, int position)
         {
             days.Clear();
             TimeSpan span = periodList.D.Results[position].End.Subtract(periodList.D.Results[position].Start);
@@ -68,9 +84,6 @@ namespace AndroidApp1.Fragments
 
             var daysAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, days);
             periodDays.Adapter = daysAdapter;
-
-            
-
         }
     }
 }

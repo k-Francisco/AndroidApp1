@@ -143,7 +143,6 @@ namespace AndroidApp1.Activities
             refresh.SetColorScheme(Resource.Color.refresher_1, Resource.Color.refresher_2);
             refresh.Refresh += delegate {
                 refreshData(refreshIdentifier);
-                //refresh.Refreshing = false;
             };
 
             //setting the cookies
@@ -212,7 +211,11 @@ namespace AndroidApp1.Activities
                     checkDataAsync(TASKS_DATA);
                     break;
                 case 3:
+                    if (refresh.Refreshing)
+                        refresh.Refreshing = false;
                     SupportActionBar.Title = "Timesheets";
+                    refreshIdentifier = 3;
+                    fabfunctionidentifier = 3;
                     checkDataAsync(TIMESHEET_DATA);
                     break;
                 case 4:
@@ -277,6 +280,9 @@ namespace AndroidApp1.Activities
                     view = LayoutInflater.Inflate(Resource.Layout.add_task_layout, null);
                     dialog = helpDialog.AddTaskDialog(this, core,view, projects);
                     dialog.Show();
+                    break;
+
+                case 3:
                     break;
             }
 
@@ -548,10 +554,17 @@ namespace AndroidApp1.Activities
                     taskJson.Clear();
                     checkDataAsync(TASKS_DATA);
                     break;
+                case 3:
+                    timesheetPeriods = null;
+                    checkDataAsync(TIMESHEET_DATA);
+                    break;
             }
             
         }
 
+        public PsCore getCore() {
+            return core;
+        }
 
         public ProjectModel.RootObject getProjectList() {
             return projects;

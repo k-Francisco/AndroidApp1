@@ -124,6 +124,7 @@
     <Compile Include="Activities\Splashscreen.cs" />
     <Compile Include="Adapters\Project.cs" />
     <Compile Include="Adapters\Tasks.cs" />
+    <Compile Include="Adapters\Timesheet.cs" />
     <Compile Include="Fragments\LoaderFragment.cs" />
     <Compile Include="Fragments\ProjectFragment.cs" />
     <Compile Include="Fragments\LoadingFragment.cs" />
