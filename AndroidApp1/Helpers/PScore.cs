@@ -417,7 +417,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/createTimesheet()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/createTimesheet()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -426,6 +426,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 
@@ -439,7 +440,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/submit(" + comment + ")", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/submit('" + comment + "')", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -448,6 +449,30 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
+                return isSuccess;
+            }
+
+        }
+
+        public async Task<bool> RecallTimesheet(string body, string periodId)
+        {
+
+            Boolean isSuccess = false;
+            var contents = new StringContent(body, Encoding.UTF8, "application/json");
+
+            try
+            {
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/recall()", contents);
+                var postResult = result.EnsureSuccessStatusCode();
+                if (postResult.IsSuccessStatusCode)
+                    isSuccess = true;
+
+                return isSuccess;
+            }
+            catch (Exception e)
+            {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 
@@ -476,7 +501,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/Lines/Add", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/Lines/Add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -497,7 +522,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/Lines('" + lineId + "')/deleteObject()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/Lines('" + lineId + "')/deleteObject()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -533,7 +558,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/Lines('" + lineId + "')/Work/Add", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('" + periodId + "')/Timesheet/Lines('" + lineId + "')/Work/Add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -554,7 +579,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/Projects('" + projectId + "')/Draft/Assignments/Add", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectId + "')/Draft/Assignments/Add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -591,7 +616,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/EnterpriseResources/add", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/EnterpriseResources/add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -612,7 +637,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/EnterpriseResources('" + enterpriseResourceId + "')/deleteObject()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/EnterpriseResources('" + enterpriseResourceId + "')/deleteObject()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -635,7 +660,7 @@ namespace PScore
 
             try
             {
-                var result = await client.PostAsync(siteURL + psRestUrl + "/EnterpriseResources('" + enterpriseResourceId + "')", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/EnterpriseResources('" + enterpriseResourceId + "')", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;

@@ -278,11 +278,12 @@ namespace AndroidApp1.Activities
                         dialog = null;
 
                     view = LayoutInflater.Inflate(Resource.Layout.add_task_layout, null);
-                    dialog = helpDialog.AddTaskDialog(this, core,view, projects);
+                    dialog = helpDialog.AddTaskDialog(this, core,view, pServer);
                     dialog.Show();
                     break;
 
                 case 3:
+                    timesheetFragment.ShowAddLineDialog();
                     break;
             }
 
@@ -352,6 +353,8 @@ namespace AndroidApp1.Activities
             clearFragment();
             oldFragment = null;
             //1 for projects
+            //2 for tasks
+            //3 for timesheet
             switch (whatData) {
 
                 case 1:
@@ -369,23 +372,28 @@ namespace AndroidApp1.Activities
                 case 2:
                     refresh.Refreshing = true; 
                     tasks = new List<Taskmodel.RootObject> { };
-                    for (int i = 0; i<projects.D.Results.Count; i++) {
-                            string data = await core.GetTasks(projects.D.Results[i].ProjectId);
-                        if (data.Length > 20) {
-                            taskJson.Add(data);
-                            projectsWithTasks.Add(projects.D.Results[i].ProjectName);
+                        for (int i = 0; i < pServer.D.Results.Count; i++)
+                        {
+                            string data = await core.GetTasks(pServer.D.Results[i].Id);
+                            if (data.Length > 20)
+                            {
+                                taskJson.Add(data);
+                                projectsWithTasks.Add(pServer.D.Results[i].Name);
+                            }
+
                         }
-                            
-                    }
-                    
+
+
                     ThreadPool.QueueUserWorkItem(state =>
                     {
-                        for (int i = 0; i < taskJson.Count; i++) {
+                        for (int i = 0; i < taskJson.Count; i++)
+                        {
                             tasks.Add(JsonConvert.DeserializeObject<Taskmodel.RootObject>(taskJson[i]));
                         }
 
-                        if (tasks.Count > 0) {
-                            RunOnUiThread(() =>{ switchFragment(taskFragment); refresh.Refreshing = false; });
+                        if (tasks.Count > 0)
+                        {
+                            RunOnUiThread(() => { switchFragment(taskFragment); refresh.Refreshing = false; });
                         }
                     });
                     break;

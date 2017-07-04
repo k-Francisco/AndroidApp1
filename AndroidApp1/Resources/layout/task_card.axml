@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="160dp"
     app:cardElevation="7dp"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="4dp">
@@ -113,6 +113,12 @@
                         android:text="Duration" />
                 </LinearLayout>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="2dp"
+                android:background="#30752F" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
