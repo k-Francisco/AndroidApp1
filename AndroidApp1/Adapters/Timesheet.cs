@@ -62,7 +62,9 @@ namespace AndroidApp1.Adapters
         }
 
         public void removeItems(TimesheetPeriodAdapter adapter) {
+            int items = numHome;
             periodList.Clear();
+            adapter.NotifyItemRangeRemoved(1, items - 1);
         }
 
         public int numHome {
@@ -147,7 +149,7 @@ namespace AndroidApp1.Adapters
                     vh1.mPeriod.Adapter = periodAdapter;
                     vh1.mPeriod.SetSelection((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition);
                     vh1.mPeriod.ItemSelected += (sender, e) => {
-                        //frag.fillPeriodDays(vh1.mPeriodDay, e.Position);
+                        frag.fillPeriodDays(e.Position);
                         frag.fillTimesheetLines(e.Position);
                     };
                     vh1.mSettings.Click += delegate { frag.OpenSettings((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition); };

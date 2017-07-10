@@ -2571,11 +2571,17 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700a0
 			public const int etTaskWorkEdit = 2131165344;
 			
-			// aapt resource value: 0x7f0700df
-			public const int etTimesheetComment = 2131165407;
+			// aapt resource value: 0x7f0700e3
+			public const int etTimesheetComment = 2131165411;
+			
+			// aapt resource value: 0x7f0700e1
+			public const int etTimesheetLineActual = 2131165409;
 			
 			// aapt resource value: 0x7f070086
 			public const int etTimesheetLineComment = 2131165318;
+			
+			// aapt resource value: 0x7f0700e2
+			public const int etTimesheetLinePlanned = 2131165410;
 			
 			// aapt resource value: 0x7f070084
 			public const int etTimesheetLineTaskName = 2131165316;
@@ -2655,8 +2661,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700a2
 			public const int lvTimesheetSettings = 2131165346;
 			
-			// aapt resource value: 0x7f0700e1
-			public const int masked = 2131165409;
+			// aapt resource value: 0x7f0700e5
+			public const int masked = 2131165413;
 			
 			// aapt resource value: 0x7f0700b6
 			public const int media_actions = 2131165366;
@@ -2667,32 +2673,32 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07003e
 			public const int mini = 2131165246;
 			
-			// aapt resource value: 0x7f0700e3
-			public const int mnDelete = 2131165411;
+			// aapt resource value: 0x7f0700e7
+			public const int mnDelete = 2131165415;
 			
-			// aapt resource value: 0x7f0700e2
-			public const int mnEdit = 2131165410;
+			// aapt resource value: 0x7f0700e6
+			public const int mnEdit = 2131165414;
 			
 			// aapt resource value: 0x7f07001a
 			public const int multiply = 2131165210;
 			
-			// aapt resource value: 0x7f0700e4
-			public const int nav_home_1 = 2131165412;
-			
-			// aapt resource value: 0x7f0700e5
-			public const int nav_home_2 = 2131165413;
-			
-			// aapt resource value: 0x7f0700e6
-			public const int nav_home_3 = 2131165414;
-			
-			// aapt resource value: 0x7f0700e7
-			public const int nav_home_4 = 2131165415;
-			
 			// aapt resource value: 0x7f0700e8
-			public const int nav_home_5 = 2131165416;
+			public const int nav_home_1 = 2131165416;
 			
 			// aapt resource value: 0x7f0700e9
-			public const int nav_home_6 = 2131165417;
+			public const int nav_home_2 = 2131165417;
+			
+			// aapt resource value: 0x7f0700ea
+			public const int nav_home_3 = 2131165418;
+			
+			// aapt resource value: 0x7f0700eb
+			public const int nav_home_4 = 2131165419;
+			
+			// aapt resource value: 0x7f0700ec
+			public const int nav_home_5 = 2131165420;
+			
+			// aapt resource value: 0x7f0700ed
+			public const int nav_home_6 = 2131165421;
 			
 			// aapt resource value: 0x7f0700ad
 			public const int nav_view = 2131165357;
@@ -2759,6 +2765,9 @@ namespace AndroidApp1
 			
 			// aapt resource value: 0x7f0700ba
 			public const int right_side = 2131165370;
+			
+			// aapt resource value: 0x7f0700df
+			public const int rvTimesheetLineHours = 2131165407;
 			
 			// aapt resource value: 0x7f07001b
 			public const int screen = 2131165211;
@@ -2997,6 +3006,9 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700de
 			public const int tvTimesheetComment = 2131165406;
 			
+			// aapt resource value: 0x7f0700e0
+			public const int tvTimesheetLineDay = 2131165408;
+			
 			// aapt resource value: 0x7f0700dc
 			public const int tvTimesheetProcessStatus = 2131165404;
 			
@@ -3021,8 +3033,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07000e
 			public const int view_offset_helper = 2131165198;
 			
-			// aapt resource value: 0x7f0700e0
-			public const int visible = 2131165408;
+			// aapt resource value: 0x7f0700e4
+			public const int visible = 2131165412;
 			
 			// aapt resource value: 0x7f0700a9
 			public const int webView = 2131165353;
@@ -3330,10 +3342,16 @@ namespace AndroidApp1
 			public const int timesheet_line_card = 2130903119;
 			
 			// aapt resource value: 0x7f030050
-			public const int timesheet_submit_comment_dialog = 2130903120;
+			public const int timesheet_line_dialog = 2130903120;
 			
 			// aapt resource value: 0x7f030051
-			public const int toolbar = 2130903121;
+			public const int timesheet_line_hours = 2130903121;
+			
+			// aapt resource value: 0x7f030052
+			public const int timesheet_submit_comment_dialog = 2130903122;
+			
+			// aapt resource value: 0x7f030053
+			public const int toolbar = 2130903123;
 			
 			static Layout()
 			{

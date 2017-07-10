@@ -2891,8 +2891,10 @@ containing a value of this type.
         public static final int etTaskStartDate=0x7f07007f;
         public static final int etTaskStartDateEdit=0x7f07009d;
         public static final int etTaskWorkEdit=0x7f0700a0;
-        public static final int etTimesheetComment=0x7f0700df;
+        public static final int etTimesheetComment=0x7f0700e3;
+        public static final int etTimesheetLineActual=0x7f0700e1;
         public static final int etTimesheetLineComment=0x7f070086;
+        public static final int etTimesheetLinePlanned=0x7f0700e2;
         public static final int etTimesheetLineTaskName=0x7f070084;
         public static final int exitUntilCollapsed=0x7f07002c;
         public static final int expand_activities_button=0x7f070045;
@@ -2919,19 +2921,19 @@ containing a value of this type.
         public static final int listMode=0x7f07000f;
         public static final int list_item=0x7f070048;
         public static final int lvTimesheetSettings=0x7f0700a2;
-        public static final int masked=0x7f0700e1;
+        public static final int masked=0x7f0700e5;
         public static final int media_actions=0x7f0700b6;
         public static final int middle=0x7f070022;
         public static final int mini=0x7f07003e;
-        public static final int mnDelete=0x7f0700e3;
-        public static final int mnEdit=0x7f0700e2;
+        public static final int mnDelete=0x7f0700e7;
+        public static final int mnEdit=0x7f0700e6;
         public static final int multiply=0x7f07001a;
-        public static final int nav_home_1=0x7f0700e4;
-        public static final int nav_home_2=0x7f0700e5;
-        public static final int nav_home_3=0x7f0700e6;
-        public static final int nav_home_4=0x7f0700e7;
-        public static final int nav_home_5=0x7f0700e8;
-        public static final int nav_home_6=0x7f0700e9;
+        public static final int nav_home_1=0x7f0700e8;
+        public static final int nav_home_2=0x7f0700e9;
+        public static final int nav_home_3=0x7f0700ea;
+        public static final int nav_home_4=0x7f0700eb;
+        public static final int nav_home_5=0x7f0700ec;
+        public static final int nav_home_6=0x7f0700ed;
         public static final int nav_view=0x7f0700ad;
         public static final int navigation_header_container=0x7f07008d;
         public static final int never=0x7f070026;
@@ -2954,6 +2956,7 @@ containing a value of this type.
         public static final int right=0x7f070035;
         public static final int right_icon=0x7f0700be;
         public static final int right_side=0x7f0700ba;
+        public static final int rvTimesheetLineHours=0x7f0700df;
         public static final int screen=0x7f07001b;
         public static final int scroll=0x7f07002d;
         public static final int scrollIndicatorDown=0x7f070053;
@@ -3033,6 +3036,7 @@ containing a value of this type.
         public static final int tvTaskWork=0x7f0700d3;
         public static final int tvTimesheetBillingCategory=0x7f0700db;
         public static final int tvTimesheetComment=0x7f0700de;
+        public static final int tvTimesheetLineDay=0x7f0700e0;
         public static final int tvTimesheetProcessStatus=0x7f0700dc;
         public static final int tvTimesheetProjectName=0x7f0700d9;
         public static final int tvTimesheetTaskName=0x7f0700da;
@@ -3041,7 +3045,7 @@ containing a value of this type.
         public static final int useLogo=0x7f070018;
         public static final int vCheckedOutStatus=0x7f0700c7;
         public static final int view_offset_helper=0x7f07000e;
-        public static final int visible=0x7f0700e0;
+        public static final int visible=0x7f0700e4;
         public static final int webView=0x7f0700a9;
         public static final int withText=0x7f070027;
         public static final int wrap_content=0x7f07001f;
@@ -3139,8 +3143,10 @@ containing a value of this type.
         public static final int task_card=0x7f03004d;
         public static final int timesheet_fragment=0x7f03004e;
         public static final int timesheet_line_card=0x7f03004f;
-        public static final int timesheet_submit_comment_dialog=0x7f030050;
-        public static final int toolbar=0x7f030051;
+        public static final int timesheet_line_dialog=0x7f030050;
+        public static final int timesheet_line_hours=0x7f030051;
+        public static final int timesheet_submit_comment_dialog=0x7f030052;
+        public static final int toolbar=0x7f030053;
     }
     public static final class menu {
         public static final int details_menu=0x7f0e0000;

@@ -16,6 +16,9 @@ using Android.Util;
 using Android.Graphics;
 using System.Threading;
 using Newtonsoft.Json;
+using AndroidApp1.Fragments;
+using Android.Support.V7.Widget;
+using AndroidApp1.Adapters;
 
 namespace AndroidApp1.Helpers
 {
@@ -373,6 +376,7 @@ namespace AndroidApp1.Helpers
                         builder.Dismiss();
                         break;
                     case 3:
+
                         break;
                 }
             };
@@ -418,7 +422,7 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
-        public Android.Support.V7.App.AlertDialog AddTimesheetLine(PsCore core, MainActivity main, string id) {
+        public Android.Support.V7.App.AlertDialog AddTimesheetLine(PsCore core, MainActivity main, string id, int position, TimesheetFragment frag) {
 
             View view = LayoutInflater.From(main).Inflate(Resource.Layout.add_timesheet_line, null);
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
@@ -457,19 +461,109 @@ namespace AndroidApp1.Helpers
                         body.Append(inputs[i] + ",");
                     else
                         body.Append(inputs[i] + "} }");
-
-
-                    if (body.ToString() != "")
-                    {
-                        Toast.MakeText(main, "Adding line...", ToastLength.Short).Show();
-                        bool success = await core.AddTimesheetLine(body.ToString(), id);
-                        if(success)
-                            Toast.MakeText(main, "Line successfully added!", ToastLength.Short).Show();
-                        else
-                            Toast.MakeText(main, "There was an error adding the line", ToastLength.Short).Show();
-                    }
                 }
 
+                if (body.ToString() != "")
+                {
+                    Toast.MakeText(main, "Adding line...", ToastLength.Short).Show();
+                    bool success = await core.AddTimesheetLine(body.ToString(), id);
+                    if (success)
+                    {
+                        Toast.MakeText(main, "Line successfully added!", ToastLength.Short).Show();
+                        //frag.fillTimesheetLines(position);
+                    }
+                    else
+                        Toast.MakeText(main, "There was an error adding the line", ToastLength.Short).Show();
+                }
+
+            });
+
+            return builder;
+        }
+
+        public Android.Support.V7.App.AlertDialog EditTimesheetLine(PsCore core, MainActivity main, string periodId, string lineId)
+        {
+
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.add_timesheet_line, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+            builder.SetTitle("Update Line");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+
+            TextInputLayout wrapperTaskName = view.FindViewById<TextInputLayout>(Resource.Id.timesheetLineWrapperTaskName);
+            TextInputLayout wrapperComments = view.FindViewById<TextInputLayout>(Resource.Id.timesheetLineCommentWrapper);
+            wrapperTaskName.Hint = "Task Name";
+            wrapperComments.Hint = "Comments";
+
+            EditText taskname = view.FindViewById<EditText>(Resource.Id.etTimesheetLineTaskName);
+            EditText comment = view.FindViewById<EditText>(Resource.Id.etTimesheetLineComment);
+
+
+            builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
+            builder.SetButton(-2, "Update", async delegate
+            {
+
+                if (taskname.Text != "") {
+                    string body = "{ \"__metadata\":{ \"type\":\"PS.TimeSheetLine\"}, 'TaskName':'"+taskname.Text+"'}";
+
+                    Toast.MakeText(main, "Updating line...", ToastLength.Short).Show();
+                    core.AddHeaders(2);
+                    bool success = await core.UpdateTimesheetLine(body, periodId, lineId);
+                    if (success)
+                    {
+                        core.AddHeaders(1);
+                        Toast.MakeText(main, "Line successfully Updated!", ToastLength.Short).Show();
+                    }
+                    else
+                        Toast.MakeText(main, "There was an error updating the line", ToastLength.Short).Show();
+                }
+
+            });
+
+            return builder;
+        }
+
+        public Android.Support.V7.App.AlertDialog ShowTimesheetWorkDialog(MainActivity main, PsCore core, string periodId, string lineId, TimesheetWork.RootObject work, List<DateTime> days)
+        {
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.timesheet_line_dialog, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+
+            RecyclerView recyclerView = view.FindViewById<RecyclerView>(Resource.Id.rvTimesheetLineHours);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.Context);
+            recyclerView.SetLayoutManager(layoutManager);
+
+            TimesheetWorkz workz = new TimesheetWorkz();
+                for (int i = 0; i < days.Count; i++)
+                {
+                    workz.addWork(days[i], "0h", "0h");
+                }
+
+            for (int i = 0; i < work.D.Results.Count; i++) {
+                workz.updateWork(work.D.Results[i].Start, work.D.Results[i].ActualWork, work.D.Results[i].PlannedWork);
+            }
+            
+
+            TimesheetWorkAdapter adapter = new TimesheetWorkAdapter(main, workz);
+            recyclerView.SetAdapter(adapter);
+
+            builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
+            builder.SetButton(-2, "DELETE", async delegate
+            {
+                Toast.MakeText(main, "Deleting line ...", ToastLength.Short).Show();
+                bool success = await core.DeleteTimesheetLine("", periodId, lineId);
+                if (success)
+                {
+                    Toast.MakeText(main, "Succesfully deleted line!", ToastLength.Short).Show();
+                }
+                else {
+                    Toast.MakeText(main, "There was a problem deleting the line", ToastLength.Short).Show();
+                }
+            });
+            builder.SetButton(-3, "EDIT", delegate {
+                EditTimesheetLine(core, main, periodId, lineId).Show();
+                builder.Dismiss();
             });
 
             return builder;

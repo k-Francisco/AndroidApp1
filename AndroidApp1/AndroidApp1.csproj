@@ -125,6 +125,7 @@
     <Compile Include="Adapters\Project.cs" />
     <Compile Include="Adapters\Tasks.cs" />
     <Compile Include="Adapters\Timesheet.cs" />
+    <Compile Include="Adapters\TimesheetWork.cs" />
     <Compile Include="Fragments\LoaderFragment.cs" />
     <Compile Include="Fragments\ProjectFragment.cs" />
     <Compile Include="Fragments\LoadingFragment.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Models\Tasks\TasksModel.cs" />
     <Compile Include="Models\TimesheetLines\TimesheetLinesModel.cs" />
     <Compile Include="Models\TimesheetPeriod\TimesheetPeriodModel.cs" />
+    <Compile Include="Models\TimesheetWork\TimesheetWorkModel.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
@@ -210,6 +212,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\add_timesheet_line.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\timesheet_line_hours.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\timesheet_line_dialog.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

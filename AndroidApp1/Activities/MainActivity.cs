@@ -199,7 +199,8 @@ namespace AndroidApp1.Activities
                     break;
                 case 1:
                     //switchFragment(loader);
-                    refresh.Refreshing = true;
+                    if (refresh.Refreshing)
+                        refresh.Refreshing = false;
                     SupportActionBar.Title = "Resources";
                     break;
                 case 2:
@@ -219,7 +220,9 @@ namespace AndroidApp1.Activities
                     checkDataAsync(TIMESHEET_DATA);
                     break;
                 case 4:
-                    SupportActionBar.Title = "Settings";
+                    if (refresh.Refreshing)
+                        refresh.Refreshing = false;
+                    SupportActionBar.Title = "Saved Timsheets";
                     break;
                 case 5:
                     prefs.Edit().Clear().Apply();

@@ -510,6 +510,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
         }
@@ -531,9 +532,33 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 
+        }
+
+        public async Task<bool> UpdateTimesheetLine(string body, string periodId, string lineId) {
+
+            Boolean isSuccess = false;
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
+
+            try {
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/TimesheetPeriods('"+periodId+"')/Timesheet/Lines('"+lineId+"')", contents);
+                var postResult = result.EnsureSuccessStatusCode();
+                if (postResult.IsSuccessStatusCode)
+                    isSuccess = true;
+
+                return isSuccess;
+            }
+            catch (Exception e) {
+
+                Log.Info("kfsama", e.Message);
+                return isSuccess;
+            }
+
+            
         }
 
         public async Task<String> GetTimesheetLineWork(string periodId, string lineId)
@@ -546,6 +571,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return e.Message;
             }
         }

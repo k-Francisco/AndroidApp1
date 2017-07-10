@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>04/07/2017 9:51:10 AM</xs:documentation>
+    <xs:documentation>11/07/2017 1:58:55 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1238,7 +1238,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -1702,7 +1701,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -2057,7 +2055,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -2412,7 +2409,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -5056,7 +5052,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -5411,7 +5406,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -5852,7 +5846,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -6447,7 +6440,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -6802,7 +6794,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -8140,7 +8131,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -8556,7 +8546,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -8911,7 +8900,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -9356,7 +9344,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -9953,7 +9940,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -10387,7 +10373,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -10945,7 +10930,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -11503,7 +11487,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -11858,7 +11841,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -12299,7 +12281,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -13151,7 +13132,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -13592,7 +13572,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -14033,7 +14012,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -14654,7 +14632,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -15192,7 +15169,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -16092,7 +16068,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -16447,7 +16422,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -16982,7 +16956,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -17540,7 +17513,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -17981,7 +17953,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -18539,7 +18510,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -19260,7 +19230,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -19615,7 +19584,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -22053,7 +22021,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -24171,7 +24138,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -24729,7 +24695,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -25084,7 +25049,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -25706,7 +25670,6 @@
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
             <xs:enumeration value="@drawable/refresh" />
-            <xs:enumeration value="@drawable/settings" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />

@@ -205,3 +205,5 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\empty_listview.
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\more.png
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_submit_comment_dialog.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_timesheet_line.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_hours.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_dialog.xml
