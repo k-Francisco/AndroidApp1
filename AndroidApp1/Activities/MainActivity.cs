@@ -34,6 +34,7 @@ namespace AndroidApp1.Activities
         private static LoaderFragment loader = new LoaderFragment();
         private static TasksFragment taskFragment = new TasksFragment();
         private static TimesheetFragment timesheetFragment = new TimesheetFragment();
+        private static SavedTimesheets savedTimesheets = new SavedTimesheets();
         private static DialogHelpers helpDialog;
         
 
@@ -52,7 +53,7 @@ namespace AndroidApp1.Activities
         private const int TASKS_DATA = 2;
         private const int TIMESHEET_DATA = 3;
         private const int REQUEST_CODE = 1;
-        
+
         //json strings
         string projectJson;
         List<string> taskJson = new List<string> { };
@@ -62,12 +63,20 @@ namespace AndroidApp1.Activities
         private int refreshIdentifier = 1;
         private int fabfunctionidentifier = 1;
 
+        //booleans
+        public bool willSwitch = true;
+
+        //cancellation token
+        CancellationTokenSource cts = new CancellationTokenSource();
+
         FloatingActionButton fab;
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         SwipeRefreshLayout refresh;
         ISharedPreferences prefs;
-        
+        TextView userName;
+
+
 
         protected override int LayoutResource
         {
@@ -96,7 +105,7 @@ namespace AndroidApp1.Activities
             //setup navigation view
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetCheckedItem(Resource.Id.nav_home_1);
-            TextView userName = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvName);
+            userName = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvName);
             TextView userEmail = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvEmail);
 
             //handle navigation
@@ -159,6 +168,7 @@ namespace AndroidApp1.Activities
             ThreadPool.QueueUserWorkItem(state => {
                 var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
                 core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
+                core.FormDigest = data.D.GetContextWebInformation.FormDigestValue;
             });
 
             ThreadPool.QueueUserWorkItem(async state =>
@@ -192,6 +202,8 @@ namespace AndroidApp1.Activities
                 case 0:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
+
+                    cts.Cancel();
                     refreshIdentifier = 1;
                     fabfunctionidentifier = 1;
                     switchFragment(projectFragment);
@@ -201,11 +213,13 @@ namespace AndroidApp1.Activities
                     //switchFragment(loader);
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
+                    cts.Cancel();
                     SupportActionBar.Title = "Resources";
                     break;
                 case 2:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
+                    cts.Cancel();
                     SupportActionBar.Title = "My Tasks";
                     fabfunctionidentifier = 2;
                     refreshIdentifier = 2;
@@ -214,6 +228,7 @@ namespace AndroidApp1.Activities
                 case 3:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
+                    cts.Cancel();
                     SupportActionBar.Title = "Timesheets";
                     refreshIdentifier = 3;
                     fabfunctionidentifier = 3;
@@ -350,7 +365,7 @@ namespace AndroidApp1.Activities
             }
         }
 
-        public async void fillDataAsync(int whatData)
+        public void fillDataAsync(int whatData)
         {
 
             clearFragment();
@@ -362,19 +377,33 @@ namespace AndroidApp1.Activities
 
                 case 1:
                         refresh.Refreshing = true;
-                    projectJson = await core.GetProjects();
-                    var temp = await core.GetProjectServer();
 
-                    ThreadPool.QueueUserWorkItem(state =>
+                    ThreadPool.QueueUserWorkItem(async state =>
                         {
+                            projectJson = await core.GetProjects();
+                            var temp = await core.GetProjectServer();
                             projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectJson);
                             pServer = JsonConvert.DeserializeObject<ProjectData.RootObject>(temp);
                             RunOnUiThread(() => { switchFragment(projectFragment); refresh.Refreshing = false; });
+
+                            //CancellationToken tok = (CancellationToken)state;
+                            //if (tok.IsCancellationRequested)
+                            //{
+                            //    projects = null;
+                            //    pServer = null;
+                            //    return;
+                            //}
                         });
                     break;
                 case 2:
                     refresh.Refreshing = true; 
                     tasks = new List<Taskmodel.RootObject> { };
+                        
+
+
+                    ThreadPool.QueueUserWorkItem(async state =>
+                    {
+
                         for (int i = 0; i < pServer.D.Results.Count; i++)
                         {
                             string data = await core.GetTasks(pServer.D.Results[i].Id);
@@ -386,9 +415,6 @@ namespace AndroidApp1.Activities
 
                         }
 
-
-                    ThreadPool.QueueUserWorkItem(state =>
-                    {
                         for (int i = 0; i < taskJson.Count; i++)
                         {
                             tasks.Add(JsonConvert.DeserializeObject<Taskmodel.RootObject>(taskJson[i]));
@@ -398,7 +424,7 @@ namespace AndroidApp1.Activities
                         {
                             RunOnUiThread(() => { switchFragment(taskFragment); refresh.Refreshing = false; });
                         }
-                    });
+                    }, cts.Token);
                     break;
 
                 case 3:
@@ -411,7 +437,7 @@ namespace AndroidApp1.Activities
                             switchFragment(timesheetFragment);
                             refresh.Refreshing = false;
                         });
-                    });
+                    }, cts.Token);
                     break;
             }
 
@@ -446,7 +472,7 @@ namespace AndroidApp1.Activities
                             RunOnUiThread(() => { Toast.MakeText(this, "Successfully checked in!", ToastLength.Short).Show(); refreshData(PROJECT_DATA); });
                         }
                         else
-                            RunOnUiThread(() => { Toast.MakeText(this, "There was an error checking out the project", ToastLength.Short).Show(); });
+                            RunOnUiThread(() => { Toast.MakeText(this, "There was an error checking in the project", ToastLength.Short).Show(); });
 
                     });
                     break;
@@ -541,7 +567,7 @@ namespace AndroidApp1.Activities
                         core.AddHeaders(2);
                         bool success = await core.UpdateTask(body, projectName, taskName);
                         if (success)
-                            RunOnUiThread(() => { Toast.MakeText(this, "Successfully Updated!", ToastLength.Short).Show(); core.AddHeaders(1); });
+                            RunOnUiThread(() => { Toast.MakeText(this, "Successfully Updated! Please publish the changes", ToastLength.Short).Show(); core.AddHeaders(1); });
                         else
                             RunOnUiThread(()=> { Toast.MakeText(this, "There was an error updating the task", ToastLength.Short).Show(); });
                     });
@@ -595,6 +621,10 @@ namespace AndroidApp1.Activities
 
         public ProjectData.RootObject getProjectServerList() {
             return pServer;
+        }
+
+        public string getUserName() {
+            return userName.Text;
         }
         //data stuff end
 

@@ -2679,6 +2679,9 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700e6
 			public const int mnEdit = 2131165414;
 			
+			// aapt resource value: 0x7f0700ee
+			public const int mnSave = 2131165422;
+			
 			// aapt resource value: 0x7f07001a
 			public const int multiply = 2131165210;
 			
@@ -3371,6 +3374,9 @@ namespace AndroidApp1
 			
 			// aapt resource value: 0x7f0e0001
 			public const int nav_menu = 2131623937;
+			
+			// aapt resource value: 0x7f0e0002
+			public const int timesheet_menu = 2131623938;
 			
 			static Menu()
 			{

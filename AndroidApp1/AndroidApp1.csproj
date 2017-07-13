@@ -122,6 +122,7 @@
     <Compile Include="Activities\DetailsActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\Splashscreen.cs" />
+    <Compile Include="Activities\TimesheetActivity.cs" />
     <Compile Include="Adapters\Project.cs" />
     <Compile Include="Adapters\Tasks.cs" />
     <Compile Include="Adapters\Timesheet.cs" />
@@ -131,12 +132,15 @@
     <Compile Include="Fragments\LoadingFragment.cs" />
     <Compile Include="Fragments\Login.cs" />
     <Compile Include="Fragments\PslogoFragment.cs" />
+    <Compile Include="Fragments\SavedTimesheets.cs" />
     <Compile Include="Fragments\TasksFragment.cs" />
     <Compile Include="Fragments\TimesheetFragment.cs" />
     <Compile Include="Helpers\DialogHelpers.cs" />
     <Compile Include="Helpers\LoginWebViewClient.cs" />
     <Compile Include="Helpers\PScore.cs" />
     <Compile Include="Models\CurrentUser\CurrentUserModel.cs" />
+    <Compile Include="Models\Custom Lists\CustomListsModel.cs" />
+    <Compile Include="Models\CustomFields\CustomFieldsModel.cs" />
     <Compile Include="Models\FormDigest\FormDigestModel.cs" />
     <Compile Include="Models\ProjectData\ProjectDataModel.cs" />
     <Compile Include="Models\Projects\ProjectModel.cs" />
@@ -268,6 +272,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\delete.png" />
     <AndroidResource Include="Resources\drawable-mdpi\refresh.png" />
     <AndroidResource Include="Resources\drawable-hdpi\more.png" />
+    <AndroidResource Include="Resources\menu\timesheet_menu.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

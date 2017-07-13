@@ -120,7 +120,6 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.v7
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\Newtonsoft.Json.xml
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Annotations.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Compat.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\XbdMerge\Xamarin.Android.Support.Core.UI.dll.stamp
@@ -159,6 +158,11 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\edit_task_dialo
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_card.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_fragment.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\edit_project_dialog.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\empty_listview.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_submit_comment_dialog.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_timesheet_line.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_hours.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_dialog.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\colors.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\integers.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\strings.xml
@@ -197,13 +201,10 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\menu\details_menu.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\tools.png
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\delete.png
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-mdpi\refresh.png
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\more.png
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\menu\timesheet_menu.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\R.cs.flag
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\uploadflags.txt
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\android\assets\AndroidApp1.dll.mdb
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\empty_listview.xml
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\more.png
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_submit_comment_dialog.xml
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_timesheet_line.xml
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_hours.xml
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\timesheet_line_dialog.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache

@@ -2927,6 +2927,7 @@ containing a value of this type.
         public static final int mini=0x7f07003e;
         public static final int mnDelete=0x7f0700e7;
         public static final int mnEdit=0x7f0700e6;
+        public static final int mnSave=0x7f0700ee;
         public static final int multiply=0x7f07001a;
         public static final int nav_home_1=0x7f0700e8;
         public static final int nav_home_2=0x7f0700e9;
@@ -3151,6 +3152,7 @@ containing a value of this type.
     public static final class menu {
         public static final int details_menu=0x7f0e0000;
         public static final int nav_menu=0x7f0e0001;
+        public static final int timesheet_menu=0x7f0e0002;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;

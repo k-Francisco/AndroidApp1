@@ -50,7 +50,7 @@ namespace AndroidApp1.Adapters
     public class TimesheetPeriodz {
 
         List<SupperClass> periodList = new List<SupperClass> { };
-
+        bool once = false;
         public TimesheetPeriodz(){}
 
         public void addPeriod(List<string> period, int current) {
@@ -65,6 +65,14 @@ namespace AndroidApp1.Adapters
             int items = numHome;
             periodList.Clear();
             adapter.NotifyItemRangeRemoved(1, items - 1);
+        }
+
+        public bool getBool() {
+            return once;
+        }
+
+        public void changeBool() {
+            once = true;
         }
 
         public int numHome {
@@ -148,11 +156,15 @@ namespace AndroidApp1.Adapters
                     var periodAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, (mTimesheetPeriod[position] as TimesheetPeriodModel).periodTemp);
                     vh1.mPeriod.Adapter = periodAdapter;
                     vh1.mPeriod.SetSelection((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition);
-                    vh1.mPeriod.ItemSelected += (sender, e) => {
-                        frag.fillPeriodDays(e.Position);
-                        frag.fillTimesheetLines(e.Position);
+                    vh1.mPeriod.ItemSelected += (sender, e) =>
+                    {
+                        frag.persist(e.Position);
                     };
-                    vh1.mSettings.Click += delegate { frag.OpenSettings((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition); };
+                    if (mTimesheetPeriod.getBool() == false) {
+                        vh1.mSettings.Click += delegate { frag.OpenSettings((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition); };
+                        mTimesheetPeriod.changeBool();
+                    }
+                    
                     break;
                 case 2:
                     TimesheetLineViewHolder vh2 = holder as TimesheetLineViewHolder;
@@ -163,6 +175,7 @@ namespace AndroidApp1.Adapters
                     vh2.mStatus.Text = (mTimesheetPeriod[position] as TimesheetLineModel).ProcessStatus;
                     vh2.mTotalWork.Text = (mTimesheetPeriod[position] as TimesheetLineModel).TotalWork;
                     vh2.ItemView.LongClick += (sender, e) => { frag.LongClick(position); };
+
                     break;
             }
             

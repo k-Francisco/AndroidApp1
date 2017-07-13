@@ -376,6 +376,34 @@ namespace AndroidApp1.Helpers
                         builder.Dismiss();
                         break;
                     case 3:
+                        //bool exists = false;
+                        //var response = await core.GetCustomLists();
+                        //var data = JsonConvert.DeserializeObject<Custom_Lists.RootObject>(response);
+                        //for (int i = 0; i < data.D.Results.Count; i++)
+                        //{
+                        //    if (data.D.Results[i].Id == id)
+                        //    {
+                        //        exists = true;
+                        //        break;
+                        //    }
+                        //}
+
+                        //    if (exists == false)
+                        //    {
+                        //        string body = "{'__metadata':{'type':'SP.List'}, 'AllowContentTypes': true, 'BaseTemplate':100, 'ContentTypesEnabled':true, 'Description':'My Description', 'Title':'"+username.Trim()+"_SavedTimesheets'}";
+
+                        //        bool isSuccess = await core.CreateCustomList(body);
+                        //        if (isSuccess)
+                        //            RunOnUiThread(()=> { Toast.MakeText(this, "LIST SUCCESSFULLY CREATED", ToastLength.Short).Show(); });
+                        //        else
+                        //            RunOnUiThread(() => { Toast.MakeText(this, "LIST CREATION ERROR", ToastLength.Short).Show(); });
+
+                        //    }
+                        //    else
+                        //    {
+                        //        //update list for user and in the shared prefs;
+                        //        //update the trigger for syncing saved timesheets
+                        //    }
 
                         break;
                 }
@@ -470,7 +498,7 @@ namespace AndroidApp1.Helpers
                     if (success)
                     {
                         Toast.MakeText(main, "Line successfully added!", ToastLength.Short).Show();
-                        //frag.fillTimesheetLines(position);
+                        frag.fillTimesheetLines(position);
                     }
                     else
                         Toast.MakeText(main, "There was an error adding the line", ToastLength.Short).Show();
@@ -504,7 +532,7 @@ namespace AndroidApp1.Helpers
             {
 
                 if (taskname.Text != "") {
-                    string body = "{ \"__metadata\":{ \"type\":\"PS.TimeSheetLine\"}, 'TaskName':'"+taskname.Text+"'}";
+                    string body = "{ \"__metadata\":{ \"type\":\"PS.TimeSheetLine\"}, 'TaskName':'"+taskname.Text+"', 'Comment':'"+ comment.Text+"'}";
 
                     Toast.MakeText(main, "Updating line...", ToastLength.Short).Show();
                     core.AddHeaders(2);
@@ -523,48 +551,67 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
-        public Android.Support.V7.App.AlertDialog ShowTimesheetWorkDialog(MainActivity main, PsCore core, string periodId, string lineId, TimesheetWork.RootObject work, List<DateTime> days)
+        public Android.Support.V7.App.AlertDialog ShowTimesheetWorkDialog(MainActivity main, PsCore core, string periodId, string lineId, string data, List<DateTime> days, int currentDayPosition, TimesheetFragment frag, string formDigest)
         {
-            View view = LayoutInflater.From(main).Inflate(Resource.Layout.timesheet_line_dialog, null);
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+
+            ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
+            List<string> items = new List<string> { "View Line Details", "Edit Line", "Delete Line", "Close" };
+            var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
+            lvOptions.Adapter = adapter;
+            lvOptions.ItemClick += (sender, e) =>
+            {
+                switch (e.Position)
+                {
+                    case 0:
+                        Intent intent = new Intent(main, typeof(TimesheetActivity));
+                        intent.PutExtra("periodId", JsonConvert.SerializeObject(periodId));
+                        intent.PutExtra("lineId", JsonConvert.SerializeObject(lineId));
+                        intent.PutExtra("lineWork", data);
+                        intent.PutExtra("days", JsonConvert.SerializeObject(days));
+                        intent.PutExtra("rtFa", core.getRtFa());
+                        intent.PutExtra("FedAuth", core.GetFedAuth());
+                        intent.PutExtra("FormDigest", formDigest);
+                        main.StartActivity(intent);
+                        builder.Dismiss();
+                        break;
+                    case 1:
+                        EditTimesheetLine(core, main, periodId, lineId).Show();
+                        break;
+                    case 2:
+
+                        ThreadPool.QueueUserWorkItem(async state =>
+                        {
+                            main.RunOnUiThread(()=> { Toast.MakeText(main, "Deleting line ...", ToastLength.Short).Show(); builder.Dismiss(); });
+                            bool success = await core.DeleteTimesheetLine("", periodId, lineId);
+                            if (success)
+                            {
+                                main.RunOnUiThread(() => {
+                                    Toast.MakeText(main, "Succesfully deleted line!", ToastLength.Short).Show();
+                                    frag.fillTimesheetLines(currentDayPosition);
+                                });
+                            }
+                            else
+                            {
+                                main.RunOnUiThread(() => {
+                                    Toast.MakeText(main, "There was a problem deleting the line", ToastLength.Short).Show();
+                                });
+                            }
+                        });
+
+                        break;
+                    case 3:
+                        builder.Dismiss();
+                        break;
+                }
+            };
+
+
+
+            builder.SetTitle("Options");
             builder.SetCanceledOnTouchOutside(false);
             builder.SetView(view);
-
-            RecyclerView recyclerView = view.FindViewById<RecyclerView>(Resource.Id.rvTimesheetLineHours);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.Context);
-            recyclerView.SetLayoutManager(layoutManager);
-
-            TimesheetWorkz workz = new TimesheetWorkz();
-                for (int i = 0; i < days.Count; i++)
-                {
-                    workz.addWork(days[i], "0h", "0h");
-                }
-
-            for (int i = 0; i < work.D.Results.Count; i++) {
-                workz.updateWork(work.D.Results[i].Start, work.D.Results[i].ActualWork, work.D.Results[i].PlannedWork);
-            }
-            
-
-            TimesheetWorkAdapter adapter = new TimesheetWorkAdapter(main, workz);
-            recyclerView.SetAdapter(adapter);
-
-            builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
-            builder.SetButton(-2, "DELETE", async delegate
-            {
-                Toast.MakeText(main, "Deleting line ...", ToastLength.Short).Show();
-                bool success = await core.DeleteTimesheetLine("", periodId, lineId);
-                if (success)
-                {
-                    Toast.MakeText(main, "Succesfully deleted line!", ToastLength.Short).Show();
-                }
-                else {
-                    Toast.MakeText(main, "There was a problem deleting the line", ToastLength.Short).Show();
-                }
-            });
-            builder.SetButton(-3, "EDIT", delegate {
-                EditTimesheetLine(core, main, periodId, lineId).Show();
-                builder.Dismiss();
-            });
 
             return builder;
         }

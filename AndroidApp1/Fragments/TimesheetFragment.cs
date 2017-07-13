@@ -36,6 +36,7 @@ namespace AndroidApp1.Fragments
         TimesheetLines.RootObject temp;
         TimesheetWork.RootObject work;
         List<string> periodTemp = new List<string> { };
+        int oldPosition;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,10 +47,10 @@ namespace AndroidApp1.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.empty_recycleview, container, false);
-            
             main = (Activity as MainActivity);
             core = main.getCore();
             periodList = main.getTimesheetPeriods();
+            oldPosition = -1;
 
             TimeSpan span;
             for (int i = 0; i < periodList.D.Results.Count; i++) {
@@ -82,9 +83,21 @@ namespace AndroidApp1.Fragments
             Log.Info("kfsama", "item clicked at position " + e);
         }
 
-        public void OpenSettings(int position) {
+        
+        public void persist(int position) {
 
-            dialogs.OpensSettingsDialog(core, main, periodList.D.Results[position].Id).Show();
+            if (position == oldPosition)
+                return;
+
+            oldPosition = position;
+
+            fillPeriodDays(position);
+            fillTimesheetLines(position);
+        }
+       
+        public void OpenSettings(int position) {
+           
+                dialogs.OpensSettingsDialog(core, main, periodList.D.Results[position].Id).Show();
         }
 
         public void LongClick(int position) {
@@ -97,9 +110,17 @@ namespace AndroidApp1.Fragments
                 try
                 {
                     var data = await core.GetTimesheetLineWork(periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id);
-                    work = JsonConvert.DeserializeObject<TimesheetWork.RootObject>(data);
                     main.RunOnUiThread(()=> {
-                        dialogs.ShowTimesheetWorkDialog(main, core, periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id, work, days).Show();
+                        dialogs.ShowTimesheetWorkDialog(main, core, periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id, data, days, currentDayPosition, this, core.FormDigest).Show();
+                        //dialogs2.Show();
+                        //Intent intent = new Intent(main, typeof(TimesheetActivity));
+                        //intent.PutExtra("periodId", periodList.D.Results[currentDayPosition].Id);
+                        //intent.PutExtra("lineId", temp.D.Results[position - 1].Id);
+                        //intent.PutExtra("lineWork", data);
+                        //intent.PutExtra("days", JsonConvert.SerializeObject(days));
+                        //intent.PutExtra("rtFa", core.getRtFa());
+                        //intent.PutExtra("FedAuth", core.GetFedAuth());
+                        //StartActivity(intent);
                     });
 
                 }

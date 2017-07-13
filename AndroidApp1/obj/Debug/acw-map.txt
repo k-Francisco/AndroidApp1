@@ -22,6 +22,10 @@ AndroidApp1.Fragments.PslogoFragment, AndroidApp1;md50db97c31e6ac55a8c8cfa113390
 AndroidApp1.Fragments.PslogoFragment, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50db97c31e6ac55a8c8cfa113390e4784.PslogoFragment
 AndroidApp1.Fragments.PslogoFragment;md50db97c31e6ac55a8c8cfa113390e4784.PslogoFragment
 androidapp1.fragments.PslogoFragment;md50db97c31e6ac55a8c8cfa113390e4784.PslogoFragment
+AndroidApp1.Fragments.SavedTimesheets, AndroidApp1;md50db97c31e6ac55a8c8cfa113390e4784.SavedTimesheets
+AndroidApp1.Fragments.SavedTimesheets, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50db97c31e6ac55a8c8cfa113390e4784.SavedTimesheets
+AndroidApp1.Fragments.SavedTimesheets;md50db97c31e6ac55a8c8cfa113390e4784.SavedTimesheets
+androidapp1.fragments.SavedTimesheets;md50db97c31e6ac55a8c8cfa113390e4784.SavedTimesheets
 AndroidApp1.Fragments.TasksFragment, AndroidApp1;md50db97c31e6ac55a8c8cfa113390e4784.TasksFragment
 AndroidApp1.Fragments.TasksFragment, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50db97c31e6ac55a8c8cfa113390e4784.TasksFragment
 AndroidApp1.Fragments.TasksFragment;md50db97c31e6ac55a8c8cfa113390e4784.TasksFragment
@@ -78,6 +82,10 @@ AndroidApp1.Activities.Splashscreen, AndroidApp1;md53efdd954dced941f1cccdd6377b3
 AndroidApp1.Activities.Splashscreen, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53efdd954dced941f1cccdd6377b3a9c5.Splashscreen
 AndroidApp1.Activities.Splashscreen;md53efdd954dced941f1cccdd6377b3a9c5.Splashscreen
 androidapp1.activities.Splashscreen;md53efdd954dced941f1cccdd6377b3a9c5.Splashscreen
+AndroidApp1.Activities.TimesheetActivity, AndroidApp1;md53efdd954dced941f1cccdd6377b3a9c5.TimesheetActivity
+AndroidApp1.Activities.TimesheetActivity, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53efdd954dced941f1cccdd6377b3a9c5.TimesheetActivity
+AndroidApp1.Activities.TimesheetActivity;md53efdd954dced941f1cccdd6377b3a9c5.TimesheetActivity
+androidapp1.activities.TimesheetActivity;md53efdd954dced941f1cccdd6377b3a9c5.TimesheetActivity
 AndroidApp1.Activities.BaseActivity, AndroidApp1;md53efdd954dced941f1cccdd6377b3a9c5.BaseActivity
 AndroidApp1.Activities.BaseActivity, AndroidApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53efdd954dced941f1cccdd6377b3a9c5.BaseActivity
 AndroidApp1.Activities.BaseActivity;md53efdd954dced941f1cccdd6377b3a9c5.BaseActivity

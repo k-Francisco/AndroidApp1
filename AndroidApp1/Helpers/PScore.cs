@@ -19,6 +19,7 @@ namespace PScore
         private string siteURL = "https://sharepointevo.sharepoint.com/sites/mobility", psRestUrl = "/_api/ProjectServer";
         public string rtFa { get; set; }
         public string FedAuth { get; set; }
+        public string FormDigest { get; set; }
         HttpClient client, client2;
 
         public PsCore(string rtFa, string FedAuth)
@@ -34,6 +35,14 @@ namespace PScore
             handler.CookieContainer.Add(new Cookie("FedAuth", FedAuth, "/", "sharepointevo.sharepoint.com"));
 
             return handler;
+        }
+
+        public string getRtFa() {
+            return rtFa;
+        }
+
+        public string GetFedAuth() {
+            return FedAuth;
         }
 
         //used for GetAsync
@@ -205,6 +214,7 @@ namespace PScore
             //ProjectModel.RootObject projects = null;
             try
             {
+                await Task.Delay(1000);
                 var result = await client.GetStringAsync("https://sharepointevo.sharepoint.com/sites/mobility/_api/ProjectData/Projects");
                 return result;
             }
@@ -247,6 +257,7 @@ namespace PScore
 
             try
             {
+                await Task.Delay(1000);
                 var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects/Add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
@@ -316,8 +327,8 @@ namespace PScore
             }
             catch (Exception e)
             {
-                return e.Message;
                 Log.Info("kfsama", e.Message);
+                return e.Message;
             }
 
         }
@@ -580,7 +591,8 @@ namespace PScore
         {
 
             Boolean isSuccess = false;
-            var contents = new StringContent(body, Encoding.UTF8, "application/json");
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
 
             try
             {
@@ -593,6 +605,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
         }
@@ -699,6 +712,40 @@ namespace PScore
             }
 
         }
+
+        public async Task<string> GetCustomLists() {
+
+            try
+            {
+                var result = await client.GetStringAsync(siteURL + "/_api/web/lists/?$filter=Hidden%20eq%20false%20and%20BaseType%20ne%201");
+                return result;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public async Task<bool> CreateCustomList(string body) {
+
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
+
+            bool isSuccess = false;
+            try
+            {
+                var result = await client2.PostAsync(siteURL + "/_api/web/lists", contents);
+                var postResult = result.EnsureSuccessStatusCode();
+                if (postResult.IsSuccessStatusCode)
+                    isSuccess = true;
+
+                return isSuccess;
+            }
+            catch (Exception e) {
+                Log.Info("kfsama", e.Message);
+                return isSuccess;
+            }
+        } 
 
     }
 }

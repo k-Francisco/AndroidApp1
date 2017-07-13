@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using AndroidApp1.Activities;
+using AndroidApp1.Fragments;
 
 namespace AndroidApp1.Adapters
 {
@@ -30,13 +31,15 @@ namespace AndroidApp1.Adapters
         }
 
         public void updateWork(DateTime start, string actual, string planned) {
-            var worker = workList.Where(w => w.actualHours == "0h").FirstOrDefault();
+            var worker = workList.Where(w => w.startDate == start).FirstOrDefault();
             if (worker != null) {
                 worker.startDate = start;
                 worker.actualHours = actual;
                 worker.plannedHours = planned;
             }
         }
+
+        public List<TimesheetWorkModel> getList() { return workList; }
 
         public int numHome {
             get { return workList.Count; }
@@ -58,7 +61,7 @@ namespace AndroidApp1.Adapters
             start = view.FindViewById<TextView>(Resource.Id.tvTimesheetLineDay);
             actual = view.FindViewById<EditText>(Resource.Id.etTimesheetLineActual);
             planned = view.FindViewById<EditText>(Resource.Id.etTimesheetLinePlanned);
-
+           
         }
     }
 
@@ -66,11 +69,8 @@ namespace AndroidApp1.Adapters
 
         public EventHandler<int> itemClick;
         public TimesheetWorkz mTimesheetWork;
-        public MainActivity main;
 
-        public TimesheetWorkAdapter(MainActivity main, TimesheetWorkz work) {
-
-            this.main = main;
+        public TimesheetWorkAdapter(TimesheetWorkz work) {
             this.mTimesheetWork = work;
         }
 
@@ -84,6 +84,7 @@ namespace AndroidApp1.Adapters
             vh.start.Text = mTimesheetWork[position].startDate.ToLongDateString();
             vh.actual.Hint = mTimesheetWork[position].actualHours;
             vh.planned.Hint = mTimesheetWork[position].plannedHours;
+            
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
