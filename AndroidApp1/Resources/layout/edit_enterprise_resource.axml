@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingBottom="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+  <android.support.design.widget.TextInputLayout
+      android:id="@+id/enterpriseResourceNameWrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/etEditEnterpriseResourceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Resource Name" />
+  </android.support.design.widget.TextInputLayout>
+  <android.support.design.widget.TextInputLayout
+      android:id="@+id/enterpriseResourceEmailWrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/etEditEnterpriseResourceEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Resource Email" />
+  </android.support.design.widget.TextInputLayout>
+  <android.support.design.widget.TextInputLayout
+      android:id="@+id/enterpriseResourceTSManagerWrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/etEditEnterpriseResourceManager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Timesheet Manager" />
+  </android.support.design.widget.TextInputLayout>
+  <TextView
+      android:layout_marginTop="2dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Resource Type"
+      style="@style/TextAppearance.Design.Hint"
+      android:textColor="#95a5a6" />
+  <Spinner
+      android:id="@+id/spnrEditEnterpriseResourceType"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      android:entries="@array/add_ER_array" />
+  <TextView
+  android:layout_marginTop="2dp"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Is Active"
+  style="@style/TextAppearance.Design.Hint"
+  android:textColor="#95a5a6" />
+  <Spinner
+      android:id="@+id/spnrEditEnterpriseResourceIsActive"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      android:entries="@array/edit_ER_array" />
+  <TextView
+      android:layout_marginTop="2dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Is Generic"
+      style="@style/TextAppearance.Design.Hint"
+      android:textColor="#95a5a6" />
+  <Spinner
+      android:id="@+id/spnrEditEnterpriseResourceIsGeneric"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      android:entries="@array/edit_ER_array" />
+</LinearLayout>

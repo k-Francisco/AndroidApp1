@@ -66,7 +66,8 @@ namespace AndroidApp1.Fragments
                             mProjectList.D.Results[i].ProjectPercentCompleted.ToString(),
                             work.ToString() + "h",
                             duration.ToString() + "d",
-                            mProjectServer.D.Results[j].IsCheckedOut);
+                            mProjectServer.D.Results[j].IsCheckedOut,
+                            mProjectList.D.Results[i].ProjectOwnerName);
                         }
                     }
                     

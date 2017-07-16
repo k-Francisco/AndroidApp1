@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>13/07/2017 11:12:12 AM</xs:documentation>
+    <xs:documentation>17/07/2017 3:27:39 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1204,6 +1204,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -1214,6 +1215,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -1237,7 +1239,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -1667,6 +1671,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -1677,6 +1682,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -1700,7 +1706,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -2021,6 +2029,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -2031,6 +2040,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -2054,7 +2064,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -2375,6 +2387,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -2385,6 +2398,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -2408,7 +2422,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -5018,6 +5034,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -5028,6 +5045,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -5051,7 +5069,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -5372,6 +5392,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -5382,6 +5403,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -5405,7 +5427,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -5812,6 +5836,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -5822,6 +5847,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -5845,7 +5871,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -6406,6 +6434,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -6416,6 +6445,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -6439,7 +6469,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -6760,6 +6792,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -6770,6 +6803,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -6793,7 +6827,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -8097,6 +8133,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -8107,6 +8144,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -8130,7 +8168,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -8512,6 +8552,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -8522,6 +8563,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -8545,7 +8587,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -8866,6 +8910,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -8876,6 +8921,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -8899,7 +8945,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -9310,6 +9358,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -9320,6 +9369,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -9343,7 +9393,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -9906,6 +9958,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -9916,6 +9969,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -9939,7 +9993,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -10339,6 +10395,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -10349,6 +10406,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -10372,7 +10430,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -10896,6 +10956,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -10906,6 +10967,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -10929,7 +10991,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -11453,6 +11517,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -11463,6 +11528,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -11486,7 +11552,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -11807,6 +11875,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -11817,6 +11886,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -11840,7 +11910,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -12247,6 +12319,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -12257,6 +12330,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -12280,7 +12354,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -13098,6 +13174,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -13108,6 +13185,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -13131,7 +13209,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -13538,6 +13618,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -13548,6 +13629,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -13571,7 +13653,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -13978,6 +14062,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -13988,6 +14073,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -14011,7 +14097,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -14598,6 +14686,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -14608,6 +14697,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -14631,7 +14721,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -15135,6 +15227,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -15145,6 +15238,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -15168,7 +15262,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -16034,6 +16130,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -16044,6 +16141,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -16067,7 +16165,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -16388,6 +16488,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -16398,6 +16499,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -16421,7 +16523,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -16922,6 +17026,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -16932,6 +17037,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -16955,7 +17061,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -17479,6 +17587,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -17489,6 +17598,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -17512,7 +17622,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -17919,6 +18031,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -17929,6 +18042,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -17952,7 +18066,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -18476,6 +18592,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -18486,6 +18603,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -18509,7 +18627,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -19196,6 +19316,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -19206,6 +19327,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -19229,7 +19351,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -19550,6 +19674,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -19560,6 +19685,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -19583,7 +19709,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -21987,6 +22115,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -21997,6 +22126,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -22020,7 +22150,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -24104,6 +24236,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -24114,6 +24247,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -24137,7 +24271,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -24661,6 +24797,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -24671,6 +24808,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -24694,7 +24832,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -25015,6 +25155,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -25025,6 +25166,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -25048,7 +25190,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />
@@ -25636,6 +25780,7 @@
             <xs:enumeration value="@drawable/abc_textfield_search_default_mtrl_alpha" />
             <xs:enumeration value="@drawable/abc_textfield_search_material" />
             <xs:enumeration value="@drawable/abc_vector_test" />
+            <xs:enumeration value="@drawable/add_user" />
             <xs:enumeration value="@drawable/approvals_nav" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
@@ -25646,6 +25791,7 @@
             <xs:enumeration value="@drawable/design_ic_visibility_off" />
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
+            <xs:enumeration value="@drawable/green_circle" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -25669,7 +25815,9 @@
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
             <xs:enumeration value="@drawable/project_nav" />
             <xs:enumeration value="@drawable/ps_logo" />
+            <xs:enumeration value="@drawable/red_circle" />
             <xs:enumeration value="@drawable/refresh" />
+            <xs:enumeration value="@drawable/remove_user" />
             <xs:enumeration value="@drawable/settings_nav" />
             <xs:enumeration value="@drawable/tasks_nav" />
             <xs:enumeration value="@drawable/timesheet_nav" />

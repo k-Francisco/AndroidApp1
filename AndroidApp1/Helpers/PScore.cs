@@ -745,7 +745,43 @@ namespace PScore
                 Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
-        } 
+        }
+
+        public async Task<string> GetProjectResources(string url)
+        {
+            try
+            {
+                var result = await client.GetStringAsync(url);
+                return result;
+            }
+            catch (Exception e) {
+                Log.Info("kfsama", e.Message);
+                return e.Message;
+            }
+        }
+
+        public async Task<bool> AddProjectResource(string body, string projectId, string enterpriseId) {
+
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
+
+            bool isSuccess = false;
+            try
+            {
+                var result = await client2.PostAsync(siteURL + "/_api/ProjectServer/Projects('"+projectId+"')/Draft/projectresources/addenterpriseresourcebyid('"+enterpriseId+"')", contents);
+                var postResult = result.EnsureSuccessStatusCode();
+                if (postResult.IsSuccessStatusCode)
+                    isSuccess = true;
+
+                return isSuccess;
+            }
+            catch (Exception e)
+            {
+                Log.Info("kfsama", e.Message);
+                return isSuccess;
+            }
+
+        }
 
     }
 }

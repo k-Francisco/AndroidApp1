@@ -35,7 +35,8 @@ namespace AndroidApp1.Activities
         private static TasksFragment taskFragment = new TasksFragment();
         private static TimesheetFragment timesheetFragment = new TimesheetFragment();
         private static SavedTimesheets savedTimesheets = new SavedTimesheets();
-        private static DialogHelpers helpDialog;
+        private static EnterpriseResourcesFragment enterpriseResourceFragment = new EnterpriseResourcesFragment();
+        public  DialogHelpers helpDialog { get; set; }
         
 
         //data
@@ -44,15 +45,17 @@ namespace AndroidApp1.Activities
         private List<Taskmodel.RootObject> tasks;
         private List<string> projectsWithTasks = new List<string> { };
         private TimesheetPeriod.RootObject timesheetPeriods;
+        public EnterpriseResources.RootObject enterpriseResources { get; set; }
 
         //core
-        private PsCore core;
+        public PsCore core { get; set; }
 
         //constants
         private const int PROJECT_DATA = 1;
         private const int TASKS_DATA = 2;
         private const int TIMESHEET_DATA = 3;
         private const int REQUEST_CODE = 1;
+        private const int RESOURCES_DATA = 4;
 
         //json strings
         string projectJson;
@@ -64,7 +67,7 @@ namespace AndroidApp1.Activities
         private int fabfunctionidentifier = 1;
 
         //booleans
-        public bool willSwitch = true;
+        bool willSwitch = false;
 
         //cancellation token
         CancellationTokenSource cts = new CancellationTokenSource();
@@ -203,35 +206,37 @@ namespace AndroidApp1.Activities
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
 
-                    cts.Cancel();
-                    refreshIdentifier = 1;
-                    fabfunctionidentifier = 1;
+                    
+                    refreshIdentifier = PROJECT_DATA;
+                    fabfunctionidentifier = PROJECT_DATA;
                     switchFragment(projectFragment);
                     SupportActionBar.Title = "Projects";
                     break;
                 case 1:
-                    //switchFragment(loader);
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
-                    cts.Cancel();
+                  
                     SupportActionBar.Title = "Resources";
+                    fabfunctionidentifier = RESOURCES_DATA;
+                    refreshIdentifier = RESOURCES_DATA;
+                    checkDataAsync(RESOURCES_DATA);
                     break;
                 case 2:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
-                    cts.Cancel();
+             
                     SupportActionBar.Title = "My Tasks";
-                    fabfunctionidentifier = 2;
-                    refreshIdentifier = 2;
+                    fabfunctionidentifier = TASKS_DATA;
+                    refreshIdentifier = TASKS_DATA;
                     checkDataAsync(TASKS_DATA);
                     break;
                 case 3:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
-                    cts.Cancel();
+               
                     SupportActionBar.Title = "Timesheets";
-                    refreshIdentifier = 3;
-                    fabfunctionidentifier = 3;
+                    refreshIdentifier = TIMESHEET_DATA;
+                    fabfunctionidentifier = TIMESHEET_DATA;
                     checkDataAsync(TIMESHEET_DATA);
                     break;
                 case 4:
@@ -303,6 +308,9 @@ namespace AndroidApp1.Activities
                 case 3:
                     timesheetFragment.ShowAddLineDialog();
                     break;
+                case 4:
+                    helpDialog.AddEnterpriseResource(this).Show();
+                    break;
             }
 
         }
@@ -317,10 +325,16 @@ namespace AndroidApp1.Activities
                         intent = null;
 
                     intent = new Intent(this, typeof(DetailsActivity));
-                    intent.PutExtra("json", projectJson);
-                    intent.PutExtra("position", position.ToString());
-                    intent.PutExtra("title", projects.D.Results[position].ProjectName);
-                    StartActivityForResult(intent, REQUEST_CODE);
+                    intent.PutExtra("projectData", JsonConvert.SerializeObject(projects));
+                    intent.PutExtra("projectServer", JsonConvert.SerializeObject(pServer));
+                    intent.PutExtra("title", pServer.D.Results[position].Name);
+                    intent.PutExtra("core", JsonConvert.SerializeObject(core));
+                    intent.PutExtra("formDigest", core.FormDigest);
+                    intent.PutExtra("url", pServer.D.Results[position].ProjectResources.Deferred.Uri);
+                    Log.Info("kfsama", pServer.D.Results[position].ProjectResources.Deferred.Uri);
+                    Log.Info("kfsama", pServer.D.Results[position].Name);
+                    Log.Info("kfsama", pServer.D.Results[position].Id);
+                    StartActivity(intent);
                     break;
                 //tasks
                 case 2:
@@ -362,6 +376,13 @@ namespace AndroidApp1.Activities
                     else
                         switchFragment(timesheetFragment);
                     break;
+
+                case 4:
+                    if (enterpriseResources == null)
+                        fillDataAsync(whatData);
+                    else
+                        switchFragment(enterpriseResourceFragment);
+                    break;
             }
         }
 
@@ -370,9 +391,11 @@ namespace AndroidApp1.Activities
 
             clearFragment();
             oldFragment = null;
+            willSwitch = false;
             //1 for projects
             //2 for tasks
             //3 for timesheet
+            //4 for enterprise resources
             switch (whatData) {
 
                 case 1:
@@ -384,8 +407,7 @@ namespace AndroidApp1.Activities
                             var temp = await core.GetProjectServer();
                             projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectJson);
                             pServer = JsonConvert.DeserializeObject<ProjectData.RootObject>(temp);
-                            RunOnUiThread(() => { switchFragment(projectFragment); refresh.Refreshing = false; });
-
+                            RunOnUiThread(() => { switchFragment(projectFragment); refresh.Refreshing = false; willSwitch = true; });
                             //CancellationToken tok = (CancellationToken)state;
                             //if (tok.IsCancellationRequested)
                             //{
@@ -422,7 +444,7 @@ namespace AndroidApp1.Activities
 
                         if (tasks.Count > 0)
                         {
-                            RunOnUiThread(() => { switchFragment(taskFragment); refresh.Refreshing = false; });
+                            RunOnUiThread(() => { switchFragment(taskFragment); refresh.Refreshing = false; willSwitch = true; });
                         }
                     }, cts.Token);
                     break;
@@ -436,8 +458,24 @@ namespace AndroidApp1.Activities
                         RunOnUiThread(() => {
                             switchFragment(timesheetFragment);
                             refresh.Refreshing = false;
+                            willSwitch = true;
                         });
                     }, cts.Token);
+                    break;
+
+                case 4:
+                    refresh.Refreshing = true;
+                    ThreadPool.QueueUserWorkItem(async state =>
+                    {
+                        var data = await core.GetEnterpriseResources();
+                        enterpriseResources = JsonConvert.DeserializeObject<EnterpriseResources.RootObject>(data);
+                        RunOnUiThread(()=> {
+                            switchFragment(enterpriseResourceFragment);
+                            refresh.Refreshing = false;
+                            willSwitch = true;
+                        });
+                    });
+
                     break;
             }
 
@@ -496,7 +534,7 @@ namespace AndroidApp1.Activities
             
         }
 
-        private async void ModifyProject(int identifier, string body)
+        public async void ModifyProject(int identifier, string body)
         {
             switch (identifier)
             {
@@ -577,6 +615,40 @@ namespace AndroidApp1.Activities
 
         }
 
+        public async void ModifyEnterpriseResources(int identifier, int position, string body)
+        {
+
+            switch (identifier)
+            {
+                case 1:
+                    Toast.MakeText(this, "Updating Enterprise Resource...", ToastLength.Short).Show();
+                    core.AddHeaders(2);
+                    bool isSuccess1 = await core.UpdateEnterpriseResource(body, enterpriseResources.D.Results[position].Id);
+                    if (isSuccess1)
+                    {
+                        Toast.MakeText(this, "Successfully updated!", ToastLength.Short).Show();
+                        enterpriseResources = null;
+                        checkDataAsync(RESOURCES_DATA);
+                    }
+                    else
+                        Toast.MakeText(this, "There was a problem updating the resource", ToastLength.Short).Show();
+
+                    core.AddHeaders(1);
+                    break;
+                case 2:
+                    Toast.MakeText(this, "Deleting Enterprise Resource...", ToastLength.Short).Show();
+                    bool isSuccess = await core.DeleteEnterpriseResource(body, enterpriseResources.D.Results[position].Id);
+                    if (isSuccess) {
+                        Toast.MakeText(this, "Successfully deleted!", ToastLength.Short).Show();
+                        enterpriseResources = null;
+                        checkDataAsync(RESOURCES_DATA);
+                    }
+                    else
+                        Toast.MakeText(this, "There was a problem deleting the resource", ToastLength.Short).Show();
+                    break;
+            }
+        }
+
         public void refreshData(int whatData) {
             switch (whatData) {
                 case 1:
@@ -594,6 +666,10 @@ namespace AndroidApp1.Activities
                 case 3:
                     timesheetPeriods = null;
                     checkDataAsync(TIMESHEET_DATA);
+                    break;
+                case 4:
+                    enterpriseResources = null;
+                    checkDataAsync(RESOURCES_DATA);
                     break;
             }
             
@@ -629,25 +705,13 @@ namespace AndroidApp1.Activities
         //data stuff end
 
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-            
-            if (resultCode == Result.Ok)
-            {
-                int identifier = data.GetIntExtra("identifier", 0);
-                string body = data.GetStringExtra("body");
-                ModifyProject(identifier, body);
-            }
-        }
-
-
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
+                    if(willSwitch == true)
+                        drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
                     return true;
             }
             return base.OnOptionsItemSelected(item);

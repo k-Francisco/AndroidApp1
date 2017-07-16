@@ -123,11 +123,15 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\Splashscreen.cs" />
     <Compile Include="Activities\TimesheetActivity.cs" />
+    <Compile Include="Adapters\EnterpriseResourcesAdapter.cs" />
     <Compile Include="Adapters\Project.cs" />
+    <Compile Include="Adapters\ProjectResources.cs" />
     <Compile Include="Adapters\Tasks.cs" />
     <Compile Include="Adapters\Timesheet.cs" />
     <Compile Include="Adapters\TimesheetWork.cs" />
+    <Compile Include="Fragments\EnterpriseResourcesFragment.cs" />
     <Compile Include="Fragments\LoaderFragment.cs" />
+    <Compile Include="Fragments\ProjectDetailsFragment.cs" />
     <Compile Include="Fragments\ProjectFragment.cs" />
     <Compile Include="Fragments\LoadingFragment.cs" />
     <Compile Include="Fragments\Login.cs" />
@@ -141,8 +145,10 @@
     <Compile Include="Models\CurrentUser\CurrentUserModel.cs" />
     <Compile Include="Models\Custom Lists\CustomListsModel.cs" />
     <Compile Include="Models\CustomFields\CustomFieldsModel.cs" />
+    <Compile Include="Models\EnterpriseResources\EnterpriseResourcesModel.cs" />
     <Compile Include="Models\FormDigest\FormDigestModel.cs" />
     <Compile Include="Models\ProjectData\ProjectDataModel.cs" />
+    <Compile Include="Models\ProjectResources\ProjectResourcesModel.cs" />
     <Compile Include="Models\Projects\ProjectModel.cs" />
     <Compile Include="Models\Tasks\TasksModel.cs" />
     <Compile Include="Models\TimesheetLines\TimesheetLinesModel.cs" />
@@ -224,6 +230,21 @@
     <AndroidResource Include="Resources\layout\timesheet_line_dialog.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\project_details_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\project_team_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\enterprise_resources_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\add_enterprise_resource_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\edit_enterprise_resource.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml">
@@ -273,6 +294,10 @@
     <AndroidResource Include="Resources\drawable-mdpi\refresh.png" />
     <AndroidResource Include="Resources\drawable-hdpi\more.png" />
     <AndroidResource Include="Resources\menu\timesheet_menu.xml" />
+    <AndroidResource Include="Resources\drawable\red_circle.xml" />
+    <AndroidResource Include="Resources\drawable\green_circle.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\add_user.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\remove_user.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

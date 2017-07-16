@@ -22,8 +22,57 @@ using AndroidApp1.Adapters;
 
 namespace AndroidApp1.Helpers
 {
-    class DialogHelpers
+    public class DialogHelpers
     {
+
+        public Android.Support.V7.App.AlertDialog ProjectOptionsDialog(MainActivity main, PsCore core, int position) {
+
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+
+            ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
+            List<string> items = new List<string> { "Check Out Project","Check In Project","Publish Project","Edit Project", "Delete Project", "Close"};
+            var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
+            lvOptions.Adapter = adapter;
+            lvOptions.ItemClick += (sender, e) =>
+            {
+                switch (e.Position)
+                {
+                    case 0:
+                        main.projectChecks(1, position);
+                        builder.Dismiss();
+                        break;
+                    case 1:
+                        main.projectChecks(2, position);
+                        builder.Dismiss();
+                        break;
+                    case 2:
+                        main.projectChecks(3, position);
+                        builder.Dismiss();
+                        break;
+                    case 3:
+                        EditProjectDialog(main).Show();
+                        builder.Dismiss();
+                        break;
+                    case 4:
+                        DeleteProjectDialog(main).Show();
+                        builder.Dismiss();
+                        break;
+                    case 5:
+                        builder.Dismiss();
+                        break;
+               
+                }
+            };
+
+
+
+            builder.SetTitle("Options");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+
+            return builder;
+        }
 
         public Android.Support.V7.App.AlertDialog AddProjectDialog(MainActivity main, PsCore core, View view)
         {
@@ -94,31 +143,23 @@ namespace AndroidApp1.Helpers
         }
 
 
-        public Android.Support.V7.App.AlertDialog EditProjectDialog(DetailsActivity details, View view, string projectJson) {
+        public Android.Support.V7.App.AlertDialog EditProjectDialog(MainActivity main) {
 
-            string body = "";
-
-            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
             builder.SetTitle("Edit Project");
             builder.SetCanceledOnTouchOutside(false);
-            builder.SetView(view);
 
-            ThreadPool.QueueUserWorkItem(state => {
-                var data = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectJson);
-
-            });
-
+            builder.SetButton(-1, "Close", delegate { builder.Dismiss(); });
             return builder;
         }
 
 
-        public Android.Support.V7.App.AlertDialog DeleteProjectDialog(DetailsActivity details, string title) {
+        public Android.Support.V7.App.AlertDialog DeleteProjectDialog(MainActivity main) {
 
-            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
-            builder.SetTitle(title);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
             builder.SetMessage("Are you sure you want to delete this project?");
             builder.SetCanceledOnTouchOutside(false);
-            builder.SetButton(-2, "DELETE", delegate { details.deleteProject(); });
+            builder.SetButton(-2, "DELETE", delegate { main.ModifyProject(1, ""); });
             builder.SetButton(-1, "CANCEL", delegate { builder.Dismiss(); });
 
             return builder;
@@ -352,7 +393,7 @@ namespace AndroidApp1.Helpers
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
 
             ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
-            List<string> items = new List<string> { "Timesheet Details","Submit Timesheet", "Recall Timesheet", "Save Timesheet" };
+            List<string> items = new List<string> {"Submit Timesheet", "Recall Timesheet", "Save Timesheet" };
             var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
             lvOptions.Adapter = adapter;
             lvOptions.ItemClick += async (sender, e) =>
@@ -360,12 +401,10 @@ namespace AndroidApp1.Helpers
                 switch (e.Position)
                 {
                     case 0:
-                        break;
-                    case 1:
                         SubmitTimesheet(core, main, id).Show();
                         builder.Dismiss();
                         break;
-                    case 2:
+                    case 1:
                         Toast.MakeText(main, "Recalling timesheet...!", ToastLength.Short).Show();
                         bool success = await core.RecallTimesheet("", id);
                         if (success) 
@@ -375,7 +414,7 @@ namespace AndroidApp1.Helpers
 
                         builder.Dismiss();
                         break;
-                    case 3:
+                    case 2:
                         //bool exists = false;
                         //var response = await core.GetCustomLists();
                         //var data = JsonConvert.DeserializeObject<Custom_Lists.RootObject>(response);
@@ -566,8 +605,8 @@ namespace AndroidApp1.Helpers
                 {
                     case 0:
                         Intent intent = new Intent(main, typeof(TimesheetActivity));
-                        intent.PutExtra("periodId", JsonConvert.SerializeObject(periodId));
-                        intent.PutExtra("lineId", JsonConvert.SerializeObject(lineId));
+                        intent.PutExtra("periodId", periodId);
+                        intent.PutExtra("lineId", lineId);
                         intent.PutExtra("lineWork", data);
                         intent.PutExtra("days", JsonConvert.SerializeObject(days));
                         intent.PutExtra("rtFa", core.getRtFa());
@@ -615,6 +654,188 @@ namespace AndroidApp1.Helpers
 
             return builder;
         }
+
+        public Android.Support.V7.App.AlertDialog AddEnterpriseResource(MainActivity main)
+        {
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.add_enterprise_resource_layout, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+
+            EditText rName = view.FindViewById<EditText>(Resource.Id.etAddEnterpriseResource);
+            Spinner rType = view.FindViewById<Spinner>(Resource.Id.spnrAddEnterpriseResource);
+
+            builder.SetButton(-2, "ADD", async delegate
+            {
+                if (rName.Text != "")
+                {
+                    Toast.MakeText(main, "Adding resource ...", ToastLength.Short).Show();
+                    string body = "{'parameters':{'Id':'" + Guid.NewGuid() + "', 'Name':'" + rName.Text + "', 'ResourceType':'" + (rType.SelectedItemPosition + 1).ToString() + "'}}";
+                    bool isSuccess = await main.core.AddEnterpriseResource(body);
+                    if (isSuccess)
+                    {
+                        Toast.MakeText(main, "Successfully added resource", ToastLength.Short).Show();
+                        main.enterpriseResources = null;
+                        main.checkDataAsync(4);
+                    }
+                    else
+                        Toast.MakeText(main, "There was a problem adding the resource", ToastLength.Short).Show();
+                }
+            });
+            builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
+            builder.SetTitle("Add Enterprise Resource");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+
+            return builder;
+        }
+
+        public Android.Support.V7.App.AlertDialog EditEnterpriseResource(MainActivity main, int position) {
+
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.edit_enterprise_resource, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+
+            EditText rName = view.FindViewById<EditText>(Resource.Id.etEditEnterpriseResourceName);
+            EditText rEmail = view.FindViewById<EditText>(Resource.Id.etEditEnterpriseResourceEmail);
+            EditText rManager = view.FindViewById<EditText>(Resource.Id.etEditEnterpriseResourceManager);
+
+            Spinner rType = view.FindViewById<Spinner>(Resource.Id.spnrEditEnterpriseResourceType);
+            Spinner rGeneric = view.FindViewById<Spinner>(Resource.Id.spnrEditEnterpriseResourceIsGeneric);
+            Spinner rActive = view.FindViewById<Spinner>(Resource.Id.spnrEditEnterpriseResourceIsActive);
+
+            StringBuilder body = new StringBuilder();
+            List<string> temp = new List<string> { };
+            builder.SetButton(-2, "Update", delegate {
+                body.Append("{ '__metadata': {'type': 'PS.EnterpriseResource' }, ");
+
+                if (rName.Text != "")
+                    temp.Add("'Name':'"+rName.Text+"'");
+
+                if (rEmail.Text != "")
+                    temp.Add("'Email':'" + rEmail.Text + "'");
+
+                temp.Add("'ResourceType':'" + (rType.SelectedItemPosition + 1).ToString() + "'");
+                temp.Add("'IsActive':'" + rActive.SelectedItem + "'");
+                temp.Add("'IsGeneric':'" + rGeneric.SelectedItem + "'");
+
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    if (i != temp.Count - 1)
+                    {
+                        body.Append(temp[i] + ",");
+                    }
+                    else
+                    {
+                        body.Append(temp[i] + "}");
+                    }
+                }
+                main.ModifyEnterpriseResources(1, position, body.ToString());
+
+            });
+            builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
+            builder.SetTitle("Edit Enterprise Resource");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+            return builder;
+
+        }
+
+        public Android.Support.V7.App.AlertDialog EnterpriseResourceOptions(MainActivity main, int position) {
+
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+
+            ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
+            List<string> items = new List<string> { "Edit Resource", "Delete Resource", "Close"};
+            var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
+            lvOptions.Adapter = adapter;
+
+            lvOptions.ItemClick += (sender, e) => {
+
+                switch (e.Position) {
+
+                    case 0:EditEnterpriseResource(main, position).Show();
+                        builder.Dismiss();
+                        break;
+                    case 1:main.ModifyEnterpriseResources(2, position, "");
+                        builder.Dismiss();
+                        break;
+                    case 2:builder.Dismiss();
+                        break;
+
+                }
+            };
+
+            builder.SetTitle("Options");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+
+            return builder;
+        }
+
+        public Android.Support.V7.App.AlertDialog AddResourceToProject(DetailsActivity details) {
+
+            View view = LayoutInflater.From(details).Inflate(Resource.Layout.empty_recycleview, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
+
+            RecyclerView mRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(view.Context);
+            mRecyclerView.SetLayoutManager(mLayoutManager);
+
+            Resourcez mResources = new Resourcez();
+            foreach (var item in details.mEnterprise.D.Results) {
+                mResources.addResources(item.Name);
+            }
+            DialogProjectResourceAdapter mProjectResourceAdapter = new DialogProjectResourceAdapter(mResources);
+            mRecyclerView.SetAdapter(mProjectResourceAdapter);
+
+            builder.SetButton(-2, "Add", delegate {
+                ThreadPool.QueueUserWorkItem(async state =>
+               {
+                   string id = "";
+                   var data = JsonConvert.DeserializeObject<ProjectData.RootObject>(details.projectServerJson);
+                   for (int i = 0; i < data.D.Results.Count; i++)
+                   {
+                       if (data.D.Results[i].Name.Equals(details.projectTitle))
+                           id = data.D.Results[i].Id;
+                   }
+
+                   for (int i = 0; i < mResources.temp1.Count; i++)
+                   {
+                       for (int j = 0; j < details.mEnterprise.D.Results.Count; j++)
+                       {
+                           if (mResources.temp1[i].Equals(details.mEnterprise.D.Results[j].Name))
+                           {
+                               details.RunOnUiThread(()=> {
+                                   Toast.MakeText(details, "Adding the resource...", ToastLength.Short).Show();
+                               });
+                               bool isSuccess = await details.core.AddProjectResource("", id, details.mEnterprise.D.Results[j].Id);
+                               if (isSuccess)
+                               {
+                                   details.RunOnUiThread(() =>
+                                   {
+                                       Toast.MakeText(details, "Successfully added the resource", ToastLength.Short).Show();
+                                       details.Finish();
+                                   });
+                               }
+                               else
+                                   details.RunOnUiThread(()=> {
+                                       Toast.MakeText(details, "There was a problem adding the resource", ToastLength.Short).Show();
+                                   });
+                               break;
+                           }
+                       }
+                   }
+                   builder.Dismiss();
+               });
+                
+            });
+            builder.SetButton(-1, "Close", delegate { builder.Dismiss(); });
+            builder.SetTitle("Add Resources");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+            return builder;
+        }
+
+
 
     }
 }

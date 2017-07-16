@@ -15,15 +15,23 @@ using Android.Util;
 using System.Threading;
 using Newtonsoft.Json;
 using AndroidApp1.Fragments;
+using PScore;
+using System.Threading.Tasks;
+
 
 namespace AndroidApp1.Activities
 {
     [Activity(Label = "DetailsActivity")]
     public class DetailsActivity : AppCompatActivity
-    {
+    {   
+        public string projectTitle { get; set; }
+        public string projectDataJson { get; set; }
+        public string projectServerJson { get; set; }
+        public string projectResources { get; set; }
         DialogHelpers dialogs = new DialogHelpers();
-        private ProjectModel.RootObject details;
-        string projectTitle, json;
+        public EnterpriseResources.RootObject mEnterprise { get; set; }
+        public PsCore core { get; set; }
+        ProjectDetailsFragment frag = new ProjectDetailsFragment();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,36 +42,37 @@ namespace AndroidApp1.Activities
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            string position = Intent.GetStringExtra("position");
-            json = Intent.GetStringExtra("json");
+            projectServerJson = Intent.GetStringExtra("projectServer");
+            projectDataJson = Intent.GetStringExtra("projectData");
             projectTitle = Intent.GetStringExtra("title");
-
+            core = JsonConvert.DeserializeObject<PsCore>(Intent.GetStringExtra("core"));
+            core.setClient();
+            core.setClient2(Intent.GetStringExtra("formDigest"));
+            
             SupportActionBar.Title = projectTitle;
+
+            GetTeamAsync();
             //retrieving data
             SupportFragmentManager.BeginTransaction()
-                .Replace(Resource.Id.content_frame, new LoadingFragment())
-                .Commit();
+                        .Replace(Resource.Id.content_frame, new LoaderFragment())
+                        .Commit();
 
-            ThreadPool.QueueUserWorkItem(state => {
-                details = JsonConvert.DeserializeObject<ProjectModel.RootObject>(json);
+        }
+
+        private void GetTeamAsync()
+        {
+            ThreadPool.QueueUserWorkItem(async state =>
+            {
+                projectResources = await core.GetProjectResources(Intent.GetStringExtra("url"));
+                var data = await core.GetEnterpriseResources();
+                mEnterprise = JsonConvert.DeserializeObject<EnterpriseResources.RootObject>(data);
+                RunOnUiThread(()=> {
+                    SupportFragmentManager.BeginTransaction()
+                        .Replace(Resource.Id.content_frame, frag)
+                        .Commit();
+                });
             });
-
-        }
-
-        public void deleteProject() {
-            Intent intent = new Intent();
-            intent.PutExtra("identifier", 1);
-            intent.PutExtra("body", "");
-            SetResult(Result.Ok, intent);
-            Finish();
-        }
-
-        public void EditProject(string body) {
-            Intent intent = new Intent();
-            intent.PutExtra("identifier",2);
-            intent.PutExtra("body", body);
-            SetResult(Result.Ok, intent);
-            Finish();
+            
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -71,17 +80,14 @@ namespace AndroidApp1.Activities
             switch (item.ItemId) {
 
                 case Android.Resource.Id.Home:
-                    SetResult(Result.Canceled);
                     Finish();
                     return true;
-
-                case Resource.Id.mnEdit:
-                    View view = LayoutInflater.Inflate(Resource.Layout.edit_project_dialog, null);
-                    dialogs.EditProjectDialog(this, view, json);
+                case Resource.Id.mnAdd:
+                    dialogs.AddResourceToProject(this).Show();
                     return true;
 
-                case Resource.Id.mnDelete:
-                    dialogs.DeleteProjectDialog(this, projectTitle).Show();
+                case Resource.Id.mnRemove:
+                    Android.Widget.Toast.MakeText(this, "to be implemented", Android.Widget.ToastLength.Short).Show() ;
                     return true;
 
                 default:
@@ -95,6 +101,5 @@ namespace AndroidApp1.Activities
             return true;
         }
 
-        
     }
 }

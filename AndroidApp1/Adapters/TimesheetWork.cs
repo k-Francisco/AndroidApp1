@@ -69,8 +69,10 @@ namespace AndroidApp1.Adapters
 
         public EventHandler<int> itemClick;
         public TimesheetWorkz mTimesheetWork;
+        public TimesheetActivity mTimesheetActivity;
 
-        public TimesheetWorkAdapter(TimesheetWorkz work) {
+        public TimesheetWorkAdapter(TimesheetWorkz work, TimesheetActivity timesheetActivity) {
+            this.mTimesheetActivity = timesheetActivity;
             this.mTimesheetWork = work;
         }
 
@@ -84,7 +86,10 @@ namespace AndroidApp1.Adapters
             vh.start.Text = mTimesheetWork[position].startDate.ToLongDateString();
             vh.actual.Hint = mTimesheetWork[position].actualHours;
             vh.planned.Hint = mTimesheetWork[position].plannedHours;
-            
+
+            vh.actual.TextChanged += (sender, e) => { mTimesheetActivity.setActualHours(e.Text.ToString(), mTimesheetWork[position].startDate); };
+            vh.planned.TextChanged += (sender, e) => { mTimesheetActivity.setPlannedHours(e.Text.ToString(), mTimesheetWork[position].startDate); };
+
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

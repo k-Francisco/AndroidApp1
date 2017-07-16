@@ -20,5 +20,16 @@
     <item>Manual</item>
     <item>Automatic</item>
   </string-array>
+
+  <string-array name="add_ER_array">
+    <item>Work</item>
+    <item>Material</item>
+    <item>Cost</item>
+  </string-array>
+
+  <string-array name="edit_ER_array">
+    <item>True</item>
+    <item>False</item>
+  </string-array>
   
 </resources>

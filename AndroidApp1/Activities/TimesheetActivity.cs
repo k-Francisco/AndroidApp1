@@ -23,14 +23,15 @@ namespace AndroidApp1.Activities
     [Activity(Label = "TimesheetActivity")]
     public class TimesheetActivity : AppCompatActivity
     {
-        string periodId;
-        string lineId;
+        string periodId = "";
+        string lineId = "";
         string rtFa = "";
         string FedAuth = "";
         List<DateTime> days;
         TimesheetWork.RootObject work;
         PsCore core;
-        string username;
+        StringBuilder body = new StringBuilder();
+        TimesheetWorkz workz;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -57,7 +58,7 @@ namespace AndroidApp1.Activities
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerView.SetLayoutManager(layoutManager);
 
-            TimesheetWorkz workz = new TimesheetWorkz();
+            workz = new TimesheetWorkz();
             for (int i = 0; i < days.Count; i++) {
                 workz.addWork(days[i], "0h", "0h");
             }
@@ -66,9 +67,55 @@ namespace AndroidApp1.Activities
                 workz.updateWork(work.D.Results[i].Start, work.D.Results[i].ActualWork, work.D.Results[i].PlannedWork);
             }
 
-            TimesheetWorkAdapter adapter = new TimesheetWorkAdapter(workz);
+            TimesheetWorkAdapter adapter = new TimesheetWorkAdapter(workz, this);
             recyclerView.SetAdapter(adapter);
 
+        }
+        List<TimesheetWorkModel> temp = new List<TimesheetWorkModel> { };
+        public void setActualHours(string actualHours, DateTime day) {
+
+            if (actualHours != "")
+            {
+                var temp2 = temp.Where(t => t.startDate == day).FirstOrDefault();
+                if (temp2 != null)
+                {
+                    temp2.actualHours = actualHours + "h";
+                }
+                else
+                {
+                    temp.Add(new TimesheetWorkModel() { actualHours = actualHours + "h", startDate = day, plannedHours = "0h" });
+                }
+            }
+            else {
+                var temp2 = temp.Where(t => t.startDate == day).FirstOrDefault();
+                if (temp2 != null)
+                {
+                    temp2.actualHours = "0h";
+                }
+            }
+        }
+
+        public void setPlannedHours(string plannedHours, DateTime day) {
+            if (plannedHours != "")
+            {
+                var temp2 = temp.Where(t => t.startDate == day).FirstOrDefault();
+                if (temp2 != null)
+                {
+                    temp2.plannedHours = plannedHours + "h";
+                }
+                else
+                {
+                    temp.Add(new TimesheetWorkModel() {  plannedHours = plannedHours + "h", startDate = day, actualHours = "0h" });
+                }
+            }
+            else
+            {
+                var temp2 = temp.Where(t => t.startDate == day).FirstOrDefault();
+                if (temp2 != null)
+                {
+                    temp2.plannedHours = "0h";
+                }
+            }
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -80,13 +127,37 @@ namespace AndroidApp1.Activities
                     return true;
 
                 case Resource.Id.mnSave:
-                   
+                    saveChangesAsync();
                     return true;
 
                 default: return base.OnOptionsItemSelected(item);
             }
         }
 
+        private async void saveChangesAsync()
+        {
+            Toast.MakeText(this, "Saving...", ToastLength.Short).Show();
+            int batchCount = 0;
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                body.Append("{'parameters':{'ActualWork':'" + temp[i].actualHours + "', 'PlannedWork':'" + temp[i].plannedHours + "', 'Start':'" + temp[i].startDate + "', 'NonBillableOvertimeWork':'0h', 'NonBillableWork':'0h', 'OvertimeWork':'0h'}}");
+                bool isSuccess = await core.AddTimesheetLineWork(body.ToString(), periodId, lineId);
+                if (isSuccess) 
+                    batchCount++;
+                
+                body.Clear();
+            }
+
+            if (batchCount == temp.Count)
+            {
+                Toast.MakeText(this, "Successfully updated the changes", ToastLength.Short).Show();
+                Finish();
+            }
+            else {
+                Toast.MakeText(this, "There was an error saving the changes", ToastLength.Short).Show();
+            }
+        }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
