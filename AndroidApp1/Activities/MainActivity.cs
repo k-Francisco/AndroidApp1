@@ -68,6 +68,7 @@ namespace AndroidApp1.Activities
 
         //booleans
         bool willSwitch = false;
+        bool online;
 
         //cancellation token
         CancellationTokenSource cts = new CancellationTokenSource();
@@ -160,6 +161,7 @@ namespace AndroidApp1.Activities
             //setting the cookies
             var rtFa = Intent.GetStringExtra("rtFa");
             var FedAuth = Intent.GetStringExtra("FedAuth");
+            online = Intent.GetBooleanExtra("connection", false);
             core = new PsCore(rtFa, FedAuth);
             helpDialog = new DialogHelpers();
 
@@ -167,22 +169,24 @@ namespace AndroidApp1.Activities
             prefs = PreferenceManager.GetDefaultSharedPreferences(this);
 
             core.setClient();
-            string context = await core.GetFormDigest("");
-            ThreadPool.QueueUserWorkItem(state => {
-                var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
-                core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
-                core.FormDigest = data.D.GetContextWebInformation.FormDigestValue;
-            });
-
-            ThreadPool.QueueUserWorkItem(async state =>
-            {
-                var data2 = await core.GetCurrentUser();
-                var currentUser = JsonConvert.DeserializeObject<CurrentUser.RootObject>(data2);
-                RunOnUiThread(() => {
-                    userName.Text = currentUser.D.Title;
-                    userEmail.Text = currentUser.D.Email;
+            if (online) {
+                string context = await core.GetFormDigest("");
+                ThreadPool.QueueUserWorkItem(state => {
+                    var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
+                    core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
+                    core.FormDigest = data.D.GetContextWebInformation.FormDigestValue;
                 });
-            });
+
+                ThreadPool.QueueUserWorkItem(async state =>
+                {
+                    var data2 = await core.GetCurrentUser();
+                    var currentUser = JsonConvert.DeserializeObject<CurrentUser.RootObject>(data2);
+                    RunOnUiThread(() => {
+                        userName.Text = currentUser.D.Title;
+                        userEmail.Text = currentUser.D.Email;
+                    });
+                });
+            }
 
             checkDataAsync(PROJECT_DATA);
             
@@ -352,38 +356,47 @@ namespace AndroidApp1.Activities
 
         public void checkDataAsync(int whatData)
         {
-            switch (whatData)
+            if (online)
             {
-                case 1:
+                switch (whatData)
+                {
+                    case 1:
 
-                    if (projects == null && pServer == null)
-                        fillDataAsync(whatData);
-                    else
-                        switchFragment(projectFragment);
+                        if (projects == null && pServer == null)
+                            fillDataAsync(whatData);
+                        else
+                            switchFragment(projectFragment);
 
-                    break;
+                        break;
 
-                case 2:
-                    if (tasks == null)
-                        fillDataAsync(whatData);
-                    else
-                        switchFragment(taskFragment);
-                    break;
+                    case 2:
+                        if (tasks == null)
+                            fillDataAsync(whatData);
+                        else
+                            switchFragment(taskFragment);
+                        break;
 
-                case 3:
-                    if (timesheetPeriods == null)
-                        fillDataAsync(whatData);
-                    else
-                        switchFragment(timesheetFragment);
-                    break;
+                    case 3:
+                        if (timesheetPeriods == null)
+                            fillDataAsync(whatData);
+                        else
+                            switchFragment(timesheetFragment);
+                        break;
 
-                case 4:
-                    if (enterpriseResources == null)
-                        fillDataAsync(whatData);
-                    else
-                        switchFragment(enterpriseResourceFragment);
-                    break;
+                    case 4:
+                        if (enterpriseResources == null)
+                            fillDataAsync(whatData);
+                        else
+                            switchFragment(enterpriseResourceFragment);
+                        break;
+                }
             }
+            else {
+                willSwitch = true;
+                switchFragment(new OfflineFragment());
+            }
+                
+            
         }
 
         public void fillDataAsync(int whatData)

@@ -131,6 +131,7 @@
     <Compile Include="Adapters\TimesheetWork.cs" />
     <Compile Include="Fragments\EnterpriseResourcesFragment.cs" />
     <Compile Include="Fragments\LoaderFragment.cs" />
+    <Compile Include="Fragments\OfflineFragment.cs" />
     <Compile Include="Fragments\ProjectDetailsFragment.cs" />
     <Compile Include="Fragments\ProjectFragment.cs" />
     <Compile Include="Fragments\LoadingFragment.cs" />
@@ -243,6 +244,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\edit_enterprise_resource.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\offline_layout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

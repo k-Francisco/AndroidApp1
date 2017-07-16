@@ -217,3 +217,4 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveA
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_enterprise_resource_layout.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\edit_enterprise_resource.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\remove_user.png
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\offline_layout.xml

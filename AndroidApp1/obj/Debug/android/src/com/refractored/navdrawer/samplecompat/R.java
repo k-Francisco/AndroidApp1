@@ -3170,21 +3170,22 @@ containing a value of this type.
         public static final int notification_template_media_custom=0x7f030047;
         public static final int notification_template_part_chronometer=0x7f030048;
         public static final int notification_template_part_time=0x7f030049;
-        public static final int project_card=0x7f03004a;
-        public static final int project_details_layout=0x7f03004b;
-        public static final int project_team_layout=0x7f03004c;
-        public static final int pslogo_fragment=0x7f03004d;
-        public static final int select_dialog_item_material=0x7f03004e;
-        public static final int select_dialog_multichoice_material=0x7f03004f;
-        public static final int select_dialog_singlechoice_material=0x7f030050;
-        public static final int support_simple_spinner_dropdown_item=0x7f030051;
-        public static final int task_card=0x7f030052;
-        public static final int timesheet_fragment=0x7f030053;
-        public static final int timesheet_line_card=0x7f030054;
-        public static final int timesheet_line_dialog=0x7f030055;
-        public static final int timesheet_line_hours=0x7f030056;
-        public static final int timesheet_submit_comment_dialog=0x7f030057;
-        public static final int toolbar=0x7f030058;
+        public static final int offline_layout=0x7f03004a;
+        public static final int project_card=0x7f03004b;
+        public static final int project_details_layout=0x7f03004c;
+        public static final int project_team_layout=0x7f03004d;
+        public static final int pslogo_fragment=0x7f03004e;
+        public static final int select_dialog_item_material=0x7f03004f;
+        public static final int select_dialog_multichoice_material=0x7f030050;
+        public static final int select_dialog_singlechoice_material=0x7f030051;
+        public static final int support_simple_spinner_dropdown_item=0x7f030052;
+        public static final int task_card=0x7f030053;
+        public static final int timesheet_fragment=0x7f030054;
+        public static final int timesheet_line_card=0x7f030055;
+        public static final int timesheet_line_dialog=0x7f030056;
+        public static final int timesheet_line_hours=0x7f030057;
+        public static final int timesheet_submit_comment_dialog=0x7f030058;
+        public static final int toolbar=0x7f030059;
     }
     public static final class menu {
         public static final int details_menu=0x7f0e0000;
