@@ -38,16 +38,20 @@ namespace AndroidApp1.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.timesheet_line_dialog);
 
-            periodId = Intent.GetStringExtra("periodId");
-            lineId = Intent.GetStringExtra("lineId");
+            if (Intent.GetBooleanExtra("identifier", false)) {
+                periodId = Intent.GetStringExtra("periodId");
+                lineId = Intent.GetStringExtra("lineId");
+                rtFa = Intent.GetStringExtra("rtFa");
+                FedAuth = Intent.GetStringExtra("FedAuth");
+                string formDigest = Intent.GetStringExtra("FormDigest");
+                core = new PsCore(rtFa, FedAuth);
+                core.setClient();
+                core.setClient2(formDigest);
+            }
+            
             days = JsonConvert.DeserializeObject<List<DateTime>>(Intent.GetStringExtra("days"));
             work = JsonConvert.DeserializeObject<TimesheetWork.RootObject>(Intent.GetStringExtra("lineWork"));
-            rtFa = Intent.GetStringExtra("rtFa");
-            FedAuth = Intent.GetStringExtra("FedAuth");
-            string formDigest = Intent.GetStringExtra("FormDigest");
-            core = new PsCore(rtFa, FedAuth);
-            core.setClient();
-            core.setClient2(formDigest);
+           
 
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);

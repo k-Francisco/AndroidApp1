@@ -2,15 +2,37 @@
 <Paths>
   <Jars></Jars>
   <ResolvedResourceDirectories>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Microsoft.Azure.Mobile.Client\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\PCLCrypto\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.batteries_green\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.batteries_v2\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.core\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.lib.e_sqlite3\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.provider.e_sqlite3\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.Design\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.Transition\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.v7.AppCompat\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.v7.CardView\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.v7.RecyclerView\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
-  <ResolvedAssetDirectories />
+  <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\Microsoft.Azure.Mobile.Client\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\PCLCrypto\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\SQLitePCLRaw.batteries_green\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\SQLitePCLRaw.batteries_v2\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\SQLitePCLRaw.core\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\SQLitePCLRaw.lib.e_sqlite3\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\SQLitePCLRaw.provider.e_sqlite3\library_project_imports\assets</ResolvedAssetDirectory>
+  </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Microsoft.Azure.Mobile.Client.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\PCLCrypto.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.batteries_green.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.batteries_v2.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.core.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.lib.e_sqlite3.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\SQLitePCLRaw.provider.e_sqlite3.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.Design.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.Transition.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\__library_projects__\Xamarin.Android.Support.v7.AppCompat.stamp</ResolvedResourceDirectoryStamp>

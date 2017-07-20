@@ -1,7 +1,0 @@
-E:\Xamarin Projects\AndroidApp1\PScore\bin\Debug\PScore.dll
-E:\Xamarin Projects\AndroidApp1\PScore\bin\Debug\Newtonsoft.Json.dll
-E:\Xamarin Projects\AndroidApp1\PScore\bin\Debug\Newtonsoft.Json.xml
-E:\Xamarin Projects\AndroidApp1\PScore\obj\Debug\PScore.dll
-E:\Xamarin Projects\AndroidApp1\PScore\obj\Debug\PScore.pdb
-E:\Xamarin Projects\AndroidApp1\PScore\obj\Debug\PScore.dll.mdb
-E:\Xamarin Projects\AndroidApp1\PScore\bin\Debug\PScore.dll.mdb

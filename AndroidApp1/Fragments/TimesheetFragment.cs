@@ -34,7 +34,7 @@ namespace AndroidApp1.Fragments
         PsCore core;
         int currentDayPosition = 0;
         TimesheetLines.RootObject temp;
-        TimesheetWork.RootObject work;
+        string work;
         List<string> periodTemp = new List<string> { };
         int oldPosition;
         public override void OnCreate(Bundle savedInstanceState)
@@ -52,6 +52,7 @@ namespace AndroidApp1.Fragments
             periodList = main.getTimesheetPeriods();
             oldPosition = -1;
 
+            periodTemp.Clear();
             TimeSpan span;
             for (int i = 0; i < periodList.D.Results.Count; i++) {
                 periodTemp.Add(periodList.D.Results[i].Name + ": " + periodList.D.Results[i].Start.ToShortDateString() + " - " + periodList.D.Results[i].End.ToShortDateString());
@@ -97,7 +98,7 @@ namespace AndroidApp1.Fragments
        
         public void OpenSettings(int position) {
            
-                dialogs.OpensSettingsDialog(core, main, periodList.D.Results[position].Id).Show();
+                dialogs.OpensSettingsDialog(core, main, periodList.D.Results[position].Id, this).Show();
         }
 
         public void LongClick(int position) {
@@ -109,18 +110,9 @@ namespace AndroidApp1.Fragments
 
                 try
                 {
-                    var data = await core.GetTimesheetLineWork(periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id);
+                    work = await core.GetTimesheetLineWork(periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id);
                     main.RunOnUiThread(()=> {
-                        dialogs.ShowTimesheetWorkDialog(main, core, periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id, data, days, currentDayPosition, this, core.FormDigest).Show();
-                        //dialogs2.Show();
-                        //Intent intent = new Intent(main, typeof(TimesheetActivity));
-                        //intent.PutExtra("periodId", periodList.D.Results[currentDayPosition].Id);
-                        //intent.PutExtra("lineId", temp.D.Results[position - 1].Id);
-                        //intent.PutExtra("lineWork", data);
-                        //intent.PutExtra("days", JsonConvert.SerializeObject(days));
-                        //intent.PutExtra("rtFa", core.getRtFa());
-                        //intent.PutExtra("FedAuth", core.GetFedAuth());
-                        //StartActivity(intent);
+                        dialogs.ShowTimesheetWorkDialog(main, core, periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id, work, days, currentDayPosition, this, core.FormDigest).Show();
                     });
 
                 }
@@ -171,7 +163,7 @@ namespace AndroidApp1.Fragments
                             mPeriodz.addPeriod(temp.D.Results[i].ProjectName,
                                 temp.D.Results[i].TaskName,
                                 temp.D.Results[i].Comment,
-                                temp.D.Results[i].ValidationType.ToString(),
+                                temp.D.Results[i].LineClass.ToString(),
                                 temp.D.Results[i].Status.ToString(),
                                 temp.D.Results[i].TotalWork);
                         }
@@ -185,33 +177,27 @@ namespace AndroidApp1.Fragments
             
         }
 
-        //public void SaveTimesheet() {
-
-        //    ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(main);
-        //    ISharedPreferencesEditor editor = prefs.Edit();
-
-
-        //    List<string> dataWork = prefs.GetStringSet("", null);
-        //    List<string> dataLine = new List<string> { };
-        //    List<string> dataPeriod = new List<string> { };
-
-        //    string tempo = "";
-        //    ThreadPool.QueueUserWorkItem(async state =>
-        //    {
-
-        //        for (int i = 0; i < temp.D.Results.Count; i++)
-        //        {
-        //            tempo = await core.GetTimesheetLineWork(periodList.D.Results[currentDayPosition].Id, temp.D.Results[i].Id);
-        //            dataWork.Add(tempo);
-        //        }
-
-        //        var line = JsonConvert.SerializeObject(temp);
-        //        dataLine.Add(line);
-        //        var savePeriod = JsonConvert.SerializeObject(periodList);
-        //        dataPeriod.Add(savePeriod);
-        //    });
+        public async System.Threading.Tasks.Task SaveTimesheetAsync()
+        {
             
-        //}
+            Toast.MakeText(main, "Saving...", ToastLength.Short).Show();
+            List<string> workList = new List<string> { };
+            if (temp == null)
+            {
+                fillTimesheetLines(currentDayPosition);
+            }
+            if (work == null)
+            {
+                for (int i = 0; i < temp.D.Results.Count; i++) {
+                    workList.Add(await core.GetTimesheetLineWork(periodList.D.Results[currentDayPosition].Id, temp.D.Results[i].Id));
+                }
+                Log.Info("kfsama", workList.Count.ToString());
+            }
+            string periodString = periodList.D.Results[currentDayPosition].Name + ": " + periodList.D.Results[currentDayPosition].Start.ToShortDateString() + " - " + periodList.D.Results[currentDayPosition].End.ToShortDateString();
+            await main.service.AddData(main.getUserName(),JsonConvert.SerializeObject(periodList.D.Results[currentDayPosition]), JsonConvert.SerializeObject(temp), JsonConvert.SerializeObject(workList));
+            Toast.MakeText(main, "Saved!", ToastLength.Short).Show();
+            main.offline = await main.service.pullData(true);
+        }
 
 
     }

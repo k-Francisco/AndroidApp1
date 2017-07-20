@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>17/07/2017 4:47:06 AM</xs:documentation>
+    <xs:documentation>20/07/2017 2:20:09 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1216,6 +1216,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -1512,12 +1513,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -1526,6 +1529,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -1683,6 +1687,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -2041,6 +2046,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -2399,6 +2405,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -5046,6 +5053,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -5404,6 +5412,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -5700,12 +5709,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -5714,6 +5725,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -5848,6 +5860,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -6446,6 +6459,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -6804,6 +6818,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -8145,6 +8160,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -8564,6 +8580,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -8922,6 +8939,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -9370,6 +9388,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -9711,12 +9730,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -9725,6 +9746,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -9970,6 +9992,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -10407,6 +10430,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -10968,6 +10992,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -11529,6 +11554,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -11887,6 +11913,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -12183,12 +12210,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -12197,6 +12226,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -12331,6 +12361,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -12627,12 +12658,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -12641,6 +12674,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -13186,6 +13220,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -13482,12 +13517,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -13496,6 +13533,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -13630,6 +13668,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -13926,12 +13965,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -13940,6 +13981,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -14074,6 +14116,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -14698,6 +14741,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -15239,6 +15283,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -15535,12 +15580,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -15549,6 +15596,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -16142,6 +16190,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -16500,6 +16549,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -17038,6 +17088,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -17599,6 +17650,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -17895,12 +17947,14 @@
             <xs:enumeration value="@string/abc_toolbar_collapse_description" />
             <xs:enumeration value="@string/app_name" />
             <xs:enumeration value="@string/appbar_scrolling_view_behavior" />
+            <xs:enumeration value="@string/ApplicationName" />
             <xs:enumeration value="@string/bottom_sheet_behavior" />
             <xs:enumeration value="@string/character_counter_pattern" />
             <xs:enumeration value="@string/drawer_close" />
             <xs:enumeration value="@string/drawer_open" />
             <xs:enumeration value="@string/fragment1" />
             <xs:enumeration value="@string/fragment2" />
+            <xs:enumeration value="@string/Hello" />
             <xs:enumeration value="@string/menu_refresh" />
             <xs:enumeration value="@string/password_toggle_content_description" />
             <xs:enumeration value="@string/path_password_eye" />
@@ -17909,6 +17963,7 @@
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
+            <xs:enumeration value="@string/title_activity_webview" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />
@@ -18043,6 +18098,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -18604,6 +18660,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -19328,6 +19385,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -19686,6 +19744,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -22127,6 +22186,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -24248,6 +24308,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -24809,6 +24870,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -25167,6 +25229,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />
@@ -25792,6 +25855,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
             <xs:enumeration value="@drawable/ic_menu" />

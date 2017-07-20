@@ -43,7 +43,7 @@ namespace AndroidApp1.Activities
             ThreadPool.QueueUserWorkItem(delegate (object state)
             {
                 online = isOnline();
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 checkCredentials();
             }, null);
         }

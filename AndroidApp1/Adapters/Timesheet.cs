@@ -67,6 +67,13 @@ namespace AndroidApp1.Adapters
             adapter.NotifyItemRangeRemoved(1, items - 1);
         }
 
+        public void removeItems(SavedTimesheetPeriodAdapter adapter)
+        {
+            int items = numHome;
+            periodList.Clear();
+            adapter.NotifyItemRangeRemoved(1, items - 1);
+        }
+
         public bool getBool() {
             return once;
         }
@@ -123,15 +130,15 @@ namespace AndroidApp1.Adapters
 
     }
 
-    public class TimesheetPeriodAdapter : RecyclerView.Adapter {
+    public class SavedTimesheetPeriodAdapter : RecyclerView.Adapter {
 
         public EventHandler<int> itemClick;
         public TimesheetPeriodz mTimesheetPeriod;
         public MainActivity main;
-        public TimesheetFragment frag;
+        public SavedTimesheets frag;
         //List<string> temp = new List<string> { };
 
-        public TimesheetPeriodAdapter(TimesheetPeriodz period, MainActivity main, TimesheetFragment frag) {
+        public SavedTimesheetPeriodAdapter(TimesheetPeriodz period, MainActivity main, SavedTimesheets frag) {
 
             this.mTimesheetPeriod = period;
             this.main = main;
@@ -161,8 +168,7 @@ namespace AndroidApp1.Adapters
                         frag.persist(e.Position);
                     };
                     if (mTimesheetPeriod.getBool() == false) {
-                        vh1.mSettings.Click += delegate { frag.OpenSettings((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition); };
-                        mTimesheetPeriod.changeBool();
+                        
                     }
                     
                     break;
@@ -171,10 +177,23 @@ namespace AndroidApp1.Adapters
                     vh2.mProjectName.Text = (mTimesheetPeriod[position] as TimesheetLineModel).ProjectName;
                     vh2.mTaskName.Text = (mTimesheetPeriod[position] as TimesheetLineModel).TaskName;
                     vh2.mComment.Text = (mTimesheetPeriod[position] as TimesheetLineModel).Comment;
-                    vh2.mBilling.Text = (mTimesheetPeriod[position] as TimesheetLineModel).BillingCategory;
+                    switch (Convert.ToInt32((mTimesheetPeriod[position] as TimesheetLineModel).BillingCategory)) {
+                        case 0:
+                            vh2.mBilling.Text = "Standard";
+                            break;
+                        case 1:
+                            vh2.mBilling.Text = "Sick Time";
+                            break;
+                        case 2:
+                            vh2.mBilling.Text = "Vacation";
+                            break;
+                        case 3:
+                            vh2.mBilling.Text = "Administrative";
+                            break;
+                    }
                     vh2.mStatus.Text = (mTimesheetPeriod[position] as TimesheetLineModel).ProcessStatus;
                     vh2.mTotalWork.Text = (mTimesheetPeriod[position] as TimesheetLineModel).TotalWork;
-                    vh2.ItemView.LongClick += (sender, e) => { frag.LongClick(position); };
+                    vh2.ItemView.Click += (sender, e) => { frag.ShowWTF(position); };
 
                     break;
             }
@@ -207,6 +226,110 @@ namespace AndroidApp1.Adapters
         }
     }
 
-    
+    public class TimesheetPeriodAdapter : RecyclerView.Adapter
+    {
+
+        public EventHandler<int> itemClick;
+        public TimesheetPeriodz mTimesheetPeriod;
+        public MainActivity main;
+        public TimesheetFragment frag;
+        //List<string> temp = new List<string> { };
+
+        public TimesheetPeriodAdapter(TimesheetPeriodz period, MainActivity main, TimesheetFragment frag)
+        {
+
+            this.mTimesheetPeriod = period;
+            this.main = main;
+            this.frag = frag;
+        }
+
+        public override int ItemCount
+        {
+            get { return mTimesheetPeriod.numHome; }
+        }
+
+        public override int GetItemViewType(int position)
+        {
+            return mTimesheetPeriod[position].GetListItemType();
+        }
+
+        public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
+        {
+            switch (mTimesheetPeriod[position].GetListItemType())
+            {
+
+                case 1:
+                    TimesheetperiodViewHolder vh1 = holder as TimesheetperiodViewHolder;
+                    var periodAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, (mTimesheetPeriod[position] as TimesheetPeriodModel).periodTemp);
+                    vh1.mPeriod.Adapter = periodAdapter;
+                    vh1.mPeriod.SetSelection((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition);
+                    vh1.mPeriod.ItemSelected += (sender, e) =>
+                    {
+                        frag.persist(e.Position);
+                    };
+                    if (mTimesheetPeriod.getBool() == false)
+                    {
+                        vh1.mSettings.Click += delegate { frag.OpenSettings((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition); };
+                        mTimesheetPeriod.changeBool();
+                    }
+
+                    break;
+                case 2:
+                    TimesheetLineViewHolder vh2 = holder as TimesheetLineViewHolder;
+                    vh2.mProjectName.Text = (mTimesheetPeriod[position] as TimesheetLineModel).ProjectName;
+                    vh2.mTaskName.Text = (mTimesheetPeriod[position] as TimesheetLineModel).TaskName;
+                    vh2.mComment.Text = (mTimesheetPeriod[position] as TimesheetLineModel).Comment;
+                    switch (Convert.ToInt32((mTimesheetPeriod[position] as TimesheetLineModel).BillingCategory))
+                    {
+                        case 0:
+                            vh2.mBilling.Text = "Standard";
+                            break;
+                        case 1:
+                            vh2.mBilling.Text = "Sick Time";
+                            break;
+                        case 2:
+                            vh2.mBilling.Text = "Vacation";
+                            break;
+                        case 3:
+                            vh2.mBilling.Text = "Administrative";
+                            break;
+                    }
+                    vh2.mStatus.Text = (mTimesheetPeriod[position] as TimesheetLineModel).ProcessStatus;
+                    vh2.mTotalWork.Text = (mTimesheetPeriod[position] as TimesheetLineModel).TotalWork;
+                    vh2.ItemView.Click += (sender, e) => { frag.LongClick(position); };
+
+                    break;
+            }
+
+        }
+
+        public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
+        {
+            View view = null;
+            switch (viewType)
+            {
+
+                case 1:
+                    view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.timesheet_fragment, parent, false);
+                    return new TimesheetperiodViewHolder(view, ItemClick);
+                case 2:
+                    view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.timesheet_line_card, parent, false);
+                    return new TimesheetLineViewHolder(view, ItemClick);
+
+                default: return null;
+            }
+
+        }
+
+        private void ItemClick(int obj)
+        {
+            if (itemClick != null)
+            {
+                itemClick(this, obj);
+            }
+        }
+    }
+
+
 
 }

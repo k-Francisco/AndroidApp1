@@ -387,7 +387,7 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
-        public Android.Support.V7.App.AlertDialog OpensSettingsDialog(PsCore core, MainActivity main, string id) {
+        public Android.Support.V7.App.AlertDialog OpensSettingsDialog(PsCore core, MainActivity main, string id, TimesheetFragment frag) {
 
             View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
@@ -401,7 +401,7 @@ namespace AndroidApp1.Helpers
                 switch (e.Position)
                 {
                     case 0:
-                        SubmitTimesheet(core, main, id).Show();
+                        SubmitTimesheet(core, main, id, frag).Show();
                         builder.Dismiss();
                         break;
                     case 1:
@@ -415,35 +415,8 @@ namespace AndroidApp1.Helpers
                         builder.Dismiss();
                         break;
                     case 2:
-                        //bool exists = false;
-                        //var response = await core.GetCustomLists();
-                        //var data = JsonConvert.DeserializeObject<Custom_Lists.RootObject>(response);
-                        //for (int i = 0; i < data.D.Results.Count; i++)
-                        //{
-                        //    if (data.D.Results[i].Id == id)
-                        //    {
-                        //        exists = true;
-                        //        break;
-                        //    }
-                        //}
-
-                        //    if (exists == false)
-                        //    {
-                        //        string body = "{'__metadata':{'type':'SP.List'}, 'AllowContentTypes': true, 'BaseTemplate':100, 'ContentTypesEnabled':true, 'Description':'My Description', 'Title':'"+username.Trim()+"_SavedTimesheets'}";
-
-                        //        bool isSuccess = await core.CreateCustomList(body);
-                        //        if (isSuccess)
-                        //            RunOnUiThread(()=> { Toast.MakeText(this, "LIST SUCCESSFULLY CREATED", ToastLength.Short).Show(); });
-                        //        else
-                        //            RunOnUiThread(() => { Toast.MakeText(this, "LIST CREATION ERROR", ToastLength.Short).Show(); });
-
-                        //    }
-                        //    else
-                        //    {
-                        //        //update list for user and in the shared prefs;
-                        //        //update the trigger for syncing saved timesheets
-                        //    }
-
+                        builder.Dismiss();
+                        await frag.SaveTimesheetAsync();
                         break;
                 }
             };
@@ -458,7 +431,7 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
-        public Android.Support.V7.App.AlertDialog SubmitTimesheet(PsCore core, MainActivity main, string id) {
+        public Android.Support.V7.App.AlertDialog SubmitTimesheet(PsCore core, MainActivity main, string id, TimesheetFragment frag) {
 
             View view = LayoutInflater.From(main).Inflate(Resource.Layout.timesheet_submit_comment_dialog, null);
             EditText comment = view.FindViewById<EditText>(Resource.Id.etTimesheetComment);
@@ -478,7 +451,7 @@ namespace AndroidApp1.Helpers
                 else {
                     Toast.MakeText(main, "There was an error submitting the timesheet", ToastLength.Short).Show();
                     builder.Dismiss();
-                    OpensSettingsDialog(core, main, id).Show();
+                    OpensSettingsDialog(core, main, id, frag).Show();
                 }
                     
                 
@@ -505,6 +478,30 @@ namespace AndroidApp1.Helpers
             EditText taskname = view.FindViewById<EditText>(Resource.Id.etTimesheetLineTaskName);
             EditText comment = view.FindViewById<EditText>(Resource.Id.etTimesheetLineComment);
 
+            Spinner exAssignments = view.FindViewById<Spinner>(Resource.Id.spnrExistingAssignments);
+            List<string> projects = new List<string> { };
+            ThreadPool.QueueUserWorkItem(async state =>
+            {
+
+                if (main.getProjectList().D.Results.Count != 0)
+                {
+                    foreach (var item in main.getProjectList().D.Results)
+                    {
+                        var thereIs = await core.GetProjectResourcesFiltered(item.ProjectId, main.getUserName());
+                        if (thereIs.Length > 20) {
+                            projects.Add(item.ProjectName);
+                        }
+                        if (item.ProjectOwnerName.Equals(main.getUserName()) && !projects.Contains(item.ProjectName))
+                            projects.Add(item.ProjectName);
+                    }
+                }
+                projects.Add("Personal Task");
+                main.RunOnUiThread(()=> {
+                    var spinnerAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, projects);
+                    exAssignments.Adapter = spinnerAdapter;
+                });
+            });
+
             StringBuilder body = new StringBuilder();
             string intro = "{ 'parameters':{";
             List<string> inputs = new List<string> { };
@@ -512,12 +509,24 @@ namespace AndroidApp1.Helpers
             builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
             builder.SetButton(-2, "ADD", async delegate
             {
-
                 if (taskname.Text != "")
                     inputs.Add("'TaskName':'" + taskname.Text + "'");
 
                 if (comment.Text != "")
                     inputs.Add("'Comment':'" + comment.Text + "'");
+
+                if (exAssignments.SelectedItem.ToString().Equals("Personal Task"))
+                {
+
+                }
+                else {
+                    foreach (var item in main.getProjectList().D.Results)
+                    {
+                        if (item.ProjectName.Equals(exAssignments.SelectedItem.ToString())) {
+                            inputs.Add("'ProjectId':'"+item.ProjectId+"'");
+                        }
+                    }
+                }
 
                 if (inputs.Count >= 1)
                     body.Append(intro);
@@ -562,9 +571,17 @@ namespace AndroidApp1.Helpers
             wrapperTaskName.Hint = "Task Name";
             wrapperComments.Hint = "Comments";
 
+            wrapperTaskName.Visibility = ViewStates.Gone;
+
             EditText taskname = view.FindViewById<EditText>(Resource.Id.etTimesheetLineTaskName);
             EditText comment = view.FindViewById<EditText>(Resource.Id.etTimesheetLineComment);
 
+            taskname.Visibility = ViewStates.Gone;
+
+            Spinner exAssignments = view.FindViewById<Spinner>(Resource.Id.spnrExistingAssignments);
+            exAssignments.Visibility = ViewStates.Gone;
+            TextView label = view.FindViewById<TextView>(Resource.Id.tvSpinnerLabel);
+            label.Visibility = ViewStates.Gone;
 
             builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
             builder.SetButton(-2, "Update", async delegate
@@ -609,6 +626,7 @@ namespace AndroidApp1.Helpers
                         intent.PutExtra("lineId", lineId);
                         intent.PutExtra("lineWork", data);
                         intent.PutExtra("days", JsonConvert.SerializeObject(days));
+                        intent.PutExtra("identifier", true);
                         intent.PutExtra("rtFa", core.getRtFa());
                         intent.PutExtra("FedAuth", core.GetFedAuth());
                         intent.PutExtra("FormDigest", formDigest);
@@ -652,6 +670,63 @@ namespace AndroidApp1.Helpers
             builder.SetCanceledOnTouchOutside(false);
             builder.SetView(view);
 
+            return builder;
+        }
+
+        public Android.Support.V7.App.AlertDialog ShowSavedTimesheetWork(MainActivity main, List<DateTime> days, TimesheetWork.RootObject work)
+        {
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+            ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
+            List<string> items = new List<string> { "View Line Details", "Edit Line", "Delete Line", "Close" };
+            var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
+            lvOptions.Adapter = adapter;
+
+            lvOptions.ItemClick += (sender, e) =>
+            {
+                switch (e.Position)
+                {
+                    case 0:
+                        Intent intent = new Intent(main, typeof(TimesheetActivity));
+                        intent.PutExtra("lineWork", JsonConvert.SerializeObject(work));
+                        intent.PutExtra("days", JsonConvert.SerializeObject(days));
+                        intent.PutExtra("identifier", false);
+                        main.StartActivity(intent);
+                        builder.Dismiss();
+                        break;
+                    case 1:
+                        //EditTimesheetLine(core, main, periodId, lineId).Show();
+                        break;
+                    case 2:
+
+                        //ThreadPool.QueueUserWorkItem(async state =>
+                        //{
+                        //    main.RunOnUiThread(() => { Toast.MakeText(main, "Deleting line ...", ToastLength.Short).Show(); builder.Dismiss(); });
+                        //    bool success = await core.DeleteTimesheetLine("", periodId, lineId);
+                        //    if (success)
+                        //    {
+                        //        main.RunOnUiThread(() => {
+                        //            Toast.MakeText(main, "Succesfully deleted line!", ToastLength.Short).Show();
+                        //            frag.fillTimesheetLines(currentDayPosition);
+                        //        });
+                        //    }
+                        //    else
+                        //    {
+                        //        main.RunOnUiThread(() => {
+                        //            Toast.MakeText(main, "There was a problem deleting the line", ToastLength.Short).Show();
+                        //        });
+                        //    }
+                        //});
+
+                        break;
+                    case 3:
+                        builder.Dismiss();
+                        break;
+                }
+            };
+            builder.SetTitle("Options");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
             return builder;
         }
 

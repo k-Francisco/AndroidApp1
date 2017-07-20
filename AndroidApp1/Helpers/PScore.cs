@@ -215,7 +215,7 @@ namespace PScore
             try
             {
                 await Task.Delay(1000);
-                var result = await client.GetStringAsync("https://sharepointevo.sharepoint.com/sites/mobility/_api/ProjectData/Projects");
+                var result = await client.GetStringAsync("https://sharepointevo.sharepoint.com/sites/mobility/_api/ProjectData/Projects()?$filter=ProjectType%20ne%207&$orderby=ProjectName");
                 return result;
             }
             catch (Exception e)
@@ -637,7 +637,7 @@ namespace PScore
 
             try
             {
-                var result = await client.GetStringAsync(siteURL + psRestUrl + "/EnterpriseResources");
+                var result = await client.GetStringAsync(siteURL + psRestUrl + "/EnterpriseResources?$filter=ResourceType eq 1 or ResourceType eq 2 or ResourceType eq 3");
                 return result;
             }
             catch (Exception e)
@@ -781,6 +781,35 @@ namespace PScore
                 return isSuccess;
             }
 
+        }
+
+        public async Task<string> GetProjectResourcesFiltered(string projectId, string name) {
+
+            try
+            {
+                var result = await client.GetStringAsync("https://sharepointevo.sharepoint.com/sites/mobility/_api/ProjectServer/Projects('"+projectId+"')/ProjectResources?$filter=Name eq '"+name+"'");
+                return result;
+            }
+            catch (Exception e)
+            {
+                Log.Info("kfsama", e.Message);
+                return e.Message;
+            }
+
+        }
+
+        public async Task<string> GetResourceAssignment(string projectId, string name) {
+
+            try
+            {
+                var result = await client.GetStringAsync("https://sharepointevo.sharepoint.com/sites/mobility/_api/ProjectData/Projects(guid'" + projectId + "')/Assignments?$filter=ResourceName eq '" + name + "'");
+                return result;
+            }
+            catch (Exception e)
+            {
+                Log.Info("kfsama", e.Message);
+                return e.Message;
+            }
         }
 
     }

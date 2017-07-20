@@ -23,6 +23,7 @@ using AndroidApp1.Helpers;
 using System.Threading;
 using Android.Runtime;
 using System.Collections.Generic;
+using AndroidApp1.Models.OfflineTimesheet;
 
 namespace AndroidApp1.Activities
 {
@@ -36,8 +37,9 @@ namespace AndroidApp1.Activities
         private static TimesheetFragment timesheetFragment = new TimesheetFragment();
         private static SavedTimesheets savedTimesheets = new SavedTimesheets();
         private static EnterpriseResourcesFragment enterpriseResourceFragment = new EnterpriseResourcesFragment();
-        public  DialogHelpers helpDialog { get; set; }
-        
+        private static SavedTimesheets savedTimesheetFragment = new SavedTimesheets();
+        public DialogHelpers helpDialog { get; set; }
+
 
         //data
         private ProjectModel.RootObject projects;
@@ -46,6 +48,7 @@ namespace AndroidApp1.Activities
         private List<string> projectsWithTasks = new List<string> { };
         private TimesheetPeriod.RootObject timesheetPeriods;
         public EnterpriseResources.RootObject enterpriseResources { get; set; }
+        public List<string> tasksWithResource { get; set; }
 
         //core
         public PsCore core { get; set; }
@@ -70,8 +73,16 @@ namespace AndroidApp1.Activities
         bool willSwitch = false;
         bool online;
 
+        //strings
+        public string mText { get; set; }
+
         //cancellation token
         CancellationTokenSource cts = new CancellationTokenSource();
+
+        //azure mobile app service
+        public AzureDataServices service { get; set; }
+        public IEnumerable<OfflineTimesheetModel> offline { get; set; }
+
 
         FloatingActionButton fab;
         DrawerLayout drawerLayout;
@@ -94,9 +105,17 @@ namespace AndroidApp1.Activities
         {
             
             base.OnCreate(savedInstanceState);
+            initOfflineSupportAsync();
             init(savedInstanceState);
-            
-            
+        }
+
+        private async void initOfflineSupportAsync()
+        {
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+            service = new AzureDataServices();
+            await service.Initialize();
+            offline = await service.pullData(online);
+
         }
 
         private async void init(Bundle savedInstanceState)
@@ -148,6 +167,7 @@ namespace AndroidApp1.Activities
 
             
             fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fab.SetVisibility(ViewStates.Gone);
             fab.Click += delegate {
                 fabFunctions();
             };
@@ -187,7 +207,8 @@ namespace AndroidApp1.Activities
                     });
                 });
             }
-
+            mText = "The device is offline.Please connect to the internet and restart the app";
+            tasksWithResource = new List<string> { };
             checkDataAsync(PROJECT_DATA);
             
             //switchFragment(loader);
@@ -213,7 +234,7 @@ namespace AndroidApp1.Activities
                     
                     refreshIdentifier = PROJECT_DATA;
                     fabfunctionidentifier = PROJECT_DATA;
-                    switchFragment(projectFragment);
+                    checkDataAsync(PROJECT_DATA);
                     SupportActionBar.Title = "Projects";
                     break;
                 case 1:
@@ -247,9 +268,11 @@ namespace AndroidApp1.Activities
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
                     SupportActionBar.Title = "Saved Timsheets";
+                    switchFragment(savedTimesheetFragment);
                     break;
                 case 5:
                     prefs.Edit().Clear().Apply();
+                    service.ClearDatabase();
                     Splashscreen splash = new Splashscreen();
                     Intent intent = new Intent(this, typeof(Splashscreen));
                     StartActivity(intent);
@@ -335,9 +358,9 @@ namespace AndroidApp1.Activities
                     intent.PutExtra("core", JsonConvert.SerializeObject(core));
                     intent.PutExtra("formDigest", core.FormDigest);
                     intent.PutExtra("url", pServer.D.Results[position].ProjectResources.Deferred.Uri);
-                    Log.Info("kfsama", pServer.D.Results[position].ProjectResources.Deferred.Uri);
-                    Log.Info("kfsama", pServer.D.Results[position].Name);
-                    Log.Info("kfsama", pServer.D.Results[position].Id);
+                    //Log.Info("kfsama", pServer.D.Results[position].ProjectResources.Deferred.Uri);
+                    //Log.Info("kfsama", pServer.D.Results[position].Name);
+                    //Log.Info("kfsama", pServer.D.Results[position].Id);
                     StartActivity(intent);
                     break;
                 //tasks
@@ -350,10 +373,6 @@ namespace AndroidApp1.Activities
 
         //data stuff
 
-        //public string getFormDigest() {
-        //    return prefs.GetString("formDigest",null);
-        //}
-
         public void checkDataAsync(int whatData)
         {
             if (online)
@@ -361,8 +380,8 @@ namespace AndroidApp1.Activities
                 switch (whatData)
                 {
                     case 1:
-
-                        if (projects == null && pServer == null)
+                        fab.SetVisibility(ViewStates.Gone);
+                        if (pServer == null && projects == null) 
                             fillDataAsync(whatData);
                         else
                             switchFragment(projectFragment);
@@ -370,6 +389,7 @@ namespace AndroidApp1.Activities
                         break;
 
                     case 2:
+                        fab.SetVisibility(ViewStates.Visible);
                         if (tasks == null)
                             fillDataAsync(whatData);
                         else
@@ -377,6 +397,7 @@ namespace AndroidApp1.Activities
                         break;
 
                     case 3:
+                        fab.SetVisibility(ViewStates.Visible);
                         if (timesheetPeriods == null)
                             fillDataAsync(whatData);
                         else
@@ -384,6 +405,7 @@ namespace AndroidApp1.Activities
                         break;
 
                     case 4:
+                        fab.SetVisibility(ViewStates.Visible);
                         if (enterpriseResources == null)
                             fillDataAsync(whatData);
                         else
@@ -405,6 +427,7 @@ namespace AndroidApp1.Activities
             clearFragment();
             oldFragment = null;
             willSwitch = false;
+            refresh.Refreshing = true;
             //1 for projects
             //2 for tasks
             //3 for timesheet
@@ -412,7 +435,7 @@ namespace AndroidApp1.Activities
             switch (whatData) {
 
                 case 1:
-                        refresh.Refreshing = true;
+                        
 
                     ThreadPool.QueueUserWorkItem(async state =>
                         {
@@ -420,7 +443,14 @@ namespace AndroidApp1.Activities
                             var temp = await core.GetProjectServer();
                             projects = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectJson);
                             pServer = JsonConvert.DeserializeObject<ProjectData.RootObject>(temp);
-                            RunOnUiThread(() => { switchFragment(projectFragment); refresh.Refreshing = false; willSwitch = true; });
+                            if (projects.D.Results.Count == 0 && pServer.D.Results.Count == 0) {
+                                projects = null;
+                                pServer = null;
+                                mText = "There are no projects in this site";
+                                RunOnUiThread(()=> { switchFragment(new OfflineFragment()); refresh.Refreshing = false; willSwitch = true; });
+                            }
+                            else
+                                RunOnUiThread(() => { switchFragment(projectFragment); refresh.Refreshing = false; willSwitch = true; });
                             //CancellationToken tok = (CancellationToken)state;
                             //if (tok.IsCancellationRequested)
                             //{
@@ -431,39 +461,57 @@ namespace AndroidApp1.Activities
                         });
                     break;
                 case 2:
-                    refresh.Refreshing = true; 
+                
                     tasks = new List<Taskmodel.RootObject> { };
-                        
-
-
-                    ThreadPool.QueueUserWorkItem(async state =>
+                    tasksWithResource.Clear();
+                    if (pServer == null && projects == null)
                     {
-
-                        for (int i = 0; i < pServer.D.Results.Count; i++)
+                        tasks = null;
+                        mText = "There are no tasks assigned to you";
+                        RunOnUiThread(() => { switchFragment(new OfflineFragment()); refresh.Refreshing = false; willSwitch = true; });
+                    }
+                    else {
+                        ThreadPool.QueueUserWorkItem(async state =>
                         {
-                            string data = await core.GetTasks(pServer.D.Results[i].Id);
-                            if (data.Length > 20)
+
+                            for (int i = 0; i < pServer.D.Results.Count; i++)
                             {
-                                taskJson.Add(data);
-                                projectsWithTasks.Add(pServer.D.Results[i].Name);
+                                string data = await core.GetTasks(pServer.D.Results[i].Id);
+                                string data2 = await core.GetResourceAssignment(pServer.D.Results[i].Id, userName.Text);
+                                if (data.Length > 20)
+                                {
+                                    taskJson.Add(data);
+                                    projectsWithTasks.Add(pServer.D.Results[i].Name);
+                                }
+                                if (data2.Length > 20) {
+                                    var insides = JsonConvert.DeserializeObject<ProjectResourceAssignments.RootObject>(data2);
+                                    foreach (var item in insides.D.Results) {
+                                        if (item.ResourceName.Equals(userName.Text))
+                                            tasksWithResource.Add(item.TaskName);
+                                    }
+                                }
                             }
 
-                        }
+                            for (int i = 0; i < taskJson.Count; i++)
+                            {
+                                tasks.Add(JsonConvert.DeserializeObject<Taskmodel.RootObject>(taskJson[i]));
+                            }
 
-                        for (int i = 0; i < taskJson.Count; i++)
-                        {
-                            tasks.Add(JsonConvert.DeserializeObject<Taskmodel.RootObject>(taskJson[i]));
-                        }
-
-                        if (tasks.Count > 0)
-                        {
-                            RunOnUiThread(() => { switchFragment(taskFragment); refresh.Refreshing = false; willSwitch = true; });
-                        }
-                    }, cts.Token);
+                            if (tasks.Count > 0 && tasksWithResource.Count > 0)
+                            {
+                                RunOnUiThread(() => { switchFragment(taskFragment); refresh.Refreshing = false; willSwitch = true; });
+                            }
+                            else {
+                                tasks = null;
+                                mText = "There are no tasks assigned to you";
+                                RunOnUiThread(() => { switchFragment(new OfflineFragment()); refresh.Refreshing = false; willSwitch = true; });
+                            }
+                        }, cts.Token);
+                    }
                     break;
 
                 case 3:
-                    refresh.Refreshing = true;
+                
                     ThreadPool.QueueUserWorkItem(async state =>
                     {
                         var data = await core.GetTimesheetPeriods();
@@ -477,7 +525,7 @@ namespace AndroidApp1.Activities
                     break;
 
                 case 4:
-                    refresh.Refreshing = true;
+                  
                     ThreadPool.QueueUserWorkItem(async state =>
                     {
                         var data = await core.GetEnterpriseResources();

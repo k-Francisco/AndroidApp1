@@ -88,7 +88,7 @@ namespace AndroidApp1.Fragments
 
                         StringBuilder work = new StringBuilder();
                         work.Append(item2.ProjectWork.TrimEnd(new char[] { '0', '.' }));
-                        if (work.Equals(""))
+                        if (work.ToString().Equals(""))
                             work.Append("0");
 
                         StringBuilder temp = new StringBuilder();

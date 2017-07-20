@@ -53,11 +53,16 @@ namespace AndroidApp1.Fragments
                 {
                     for (int j = 0; j < mTaskList[i].D.Results.Count; j++)
                     {
-                        mTasks.addTasks(mTaskList[i].D.Results[j].Name,
+                        foreach (var item in main.tasksWithResource) {
+                            if (item.Equals(mTaskList[i].D.Results[j].Name)) {
+                                mTasks.addTasks(mTaskList[i].D.Results[j].Name,
                                         mTaskList[i].D.Results[j].PercentComplete.ToString(),
                                         mTaskList[i].D.Results[j].Work,
                                         mTaskList[i].D.Results[j].Duration,
                                         mProjectNames[i]);
+
+                            }
+                        }
                     }
                 }
             }

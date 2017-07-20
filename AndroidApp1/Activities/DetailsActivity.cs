@@ -59,20 +59,28 @@ namespace AndroidApp1.Activities
 
         }
 
-        private void GetTeamAsync()
+        private async Task GetTeamAsync()
         {
-            ThreadPool.QueueUserWorkItem(async state =>
-            {
-                projectResources = await core.GetProjectResources(Intent.GetStringExtra("url"));
-                var data = await core.GetEnterpriseResources();
-                mEnterprise = JsonConvert.DeserializeObject<EnterpriseResources.RootObject>(data);
-                RunOnUiThread(()=> {
-                    SupportFragmentManager.BeginTransaction()
-                        .Replace(Resource.Id.content_frame, frag)
-                        .Commit();
-                });
-            });
-            
+            //ThreadPool.QueueUserWorkItem(async state =>
+            //{
+            //    projectResources = await core.GetProjectResources(Intent.GetStringExtra("url"));
+            //    var data = await core.GetEnterpriseResources();
+            //    mEnterprise = JsonConvert.DeserializeObject<EnterpriseResources.RootObject>(data);
+            //    RunOnUiThread(()=> {
+            //        SupportFragmentManager.BeginTransaction()
+            //            .Replace(Resource.Id.content_frame, frag)
+            //            .Commit();
+            //    });
+            //});
+
+            projectResources = await core.GetProjectResources(Intent.GetStringExtra("url"));
+            var data = await core.GetEnterpriseResources();
+            mEnterprise = JsonConvert.DeserializeObject<EnterpriseResources.RootObject>(data);
+
+            SupportFragmentManager.BeginTransaction()
+                .Replace(Resource.Id.content_frame, frag)
+                .Commit();
+
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
