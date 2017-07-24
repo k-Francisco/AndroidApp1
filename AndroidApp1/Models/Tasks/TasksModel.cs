@@ -11,7 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
-namespace Taskmodel
+namespace AndroidApp1.Taskmodel
 {
     public class RootObject
     {

@@ -114,8 +114,9 @@ namespace AndroidApp1.Activities
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             service = new AzureDataServices();
             await service.Initialize();
+            await service.SyncData(online);
+            
             offline = await service.pullData(online);
-
         }
 
         private async void init(Bundle savedInstanceState)
@@ -272,7 +273,7 @@ namespace AndroidApp1.Activities
                     break;
                 case 5:
                     prefs.Edit().Clear().Apply();
-                    service.ClearDatabase();
+                    
                     Splashscreen splash = new Splashscreen();
                     Intent intent = new Intent(this, typeof(Splashscreen));
                     StartActivity(intent);
@@ -309,15 +310,17 @@ namespace AndroidApp1.Activities
             switch (fabfunctionidentifier) {
 
                 case 1:
-                    if (view != null)
-                        view = null;
+                    //if (view != null)
+                    //    view = null;
 
-                    if (dialog != null)
-                        dialog = null;
+                    //if (dialog != null)
+                    //    dialog = null;
 
-                    view = LayoutInflater.Inflate(Resource.Layout.add_project_dialog, null);
-                    dialog = helpDialog.AddProjectDialog(this, core,view);
-                    dialog.Show();
+                    //view = LayoutInflater.Inflate(Resource.Layout.add_project_dialog, null);
+                    //dialog = helpDialog.AddProjectDialog(this, core,view);
+                    //dialog.Show();
+
+                    service.DeleteFromLocalTable(this);
                     break;
 
                 case 2:
@@ -358,6 +361,7 @@ namespace AndroidApp1.Activities
                     intent.PutExtra("core", JsonConvert.SerializeObject(core));
                     intent.PutExtra("formDigest", core.FormDigest);
                     intent.PutExtra("url", pServer.D.Results[position].ProjectResources.Deferred.Uri);
+                    intent.PutExtra("Id", pServer.D.Results[position].Id);
                     //Log.Info("kfsama", pServer.D.Results[position].ProjectResources.Deferred.Uri);
                     //Log.Info("kfsama", pServer.D.Results[position].Name);
                     //Log.Info("kfsama", pServer.D.Results[position].Id);
@@ -380,7 +384,7 @@ namespace AndroidApp1.Activities
                 switch (whatData)
                 {
                     case 1:
-                        fab.SetVisibility(ViewStates.Gone);
+                        fab.SetVisibility(ViewStates.Visible);
                         if (pServer == null && projects == null) 
                             fillDataAsync(whatData);
                         else
@@ -416,6 +420,7 @@ namespace AndroidApp1.Activities
             else {
                 willSwitch = true;
                 switchFragment(new OfflineFragment());
+                fab.SetVisibility(ViewStates.Visible);
             }
                 
             

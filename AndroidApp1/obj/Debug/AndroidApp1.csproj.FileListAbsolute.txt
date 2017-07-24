@@ -239,6 +239,6 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\add_user
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\remove_user.png
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\R.cs.flag
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\uploadflags.txt
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\android\assets\AndroidApp1.dll.mdb
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\AndroidApp1.csprojResolveAssemblyReference.cache

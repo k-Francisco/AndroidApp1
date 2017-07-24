@@ -41,7 +41,6 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\PInvoke.Kernel32.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\PInvoke.NCrypt.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\PInvoke.Windows.Core.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\Validation.xml
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\AndroidApp1.csprojResolveAssemblyReference.cache
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.Annotations.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.Compat.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.Core.UI.dll.stamp

@@ -2449,11 +2449,11 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070028
 			public const int bottom = 2131165224;
 			
-			// aapt resource value: 0x7f0700f3
-			public const int btnTaskDelete = 2131165427;
+			// aapt resource value: 0x7f0700f4
+			public const int btnTaskDelete = 2131165428;
 			
-			// aapt resource value: 0x7f0700f2
-			public const int btnTaskEdit = 2131165426;
+			// aapt resource value: 0x7f0700f3
+			public const int btnTaskEdit = 2131165427;
 			
 			// aapt resource value: 0x7f07004b
 			public const int buttonPanel = 2131165259;
@@ -2617,17 +2617,17 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700ae
 			public const int etTaskWorkEdit = 2131165358;
 			
-			// aapt resource value: 0x7f070100
-			public const int etTimesheetComment = 2131165440;
+			// aapt resource value: 0x7f070101
+			public const int etTimesheetComment = 2131165441;
 			
-			// aapt resource value: 0x7f0700fe
-			public const int etTimesheetLineActual = 2131165438;
+			// aapt resource value: 0x7f0700ff
+			public const int etTimesheetLineActual = 2131165439;
 			
 			// aapt resource value: 0x7f07008c
 			public const int etTimesheetLineComment = 2131165324;
 			
-			// aapt resource value: 0x7f0700ff
-			public const int etTimesheetLinePlanned = 2131165439;
+			// aapt resource value: 0x7f070100
+			public const int etTimesheetLinePlanned = 2131165440;
 			
 			// aapt resource value: 0x7f07008a
 			public const int etTimesheetLineTaskName = 2131165322;
@@ -2683,8 +2683,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
 			
-			// aapt resource value: 0x7f0700f4
-			public const int ivTimesheetPeriodSettings = 2131165428;
+			// aapt resource value: 0x7f0700f5
+			public const int ivTimesheetPeriodSettings = 2131165429;
 			
 			// aapt resource value: 0x7f07008e
 			public const int largeLabel = 2131165326;
@@ -2707,14 +2707,14 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700b2
 			public const int llEnterpriseResources = 2131165362;
 			
-			// aapt resource value: 0x7f0700eb
-			public const int llProjectResource = 2131165419;
+			// aapt resource value: 0x7f0700ec
+			public const int llProjectResource = 2131165420;
 			
 			// aapt resource value: 0x7f0700b0
 			public const int lvTimesheetSettings = 2131165360;
 			
-			// aapt resource value: 0x7f070102
-			public const int masked = 2131165442;
+			// aapt resource value: 0x7f070103
+			public const int masked = 2131165443;
 			
 			// aapt resource value: 0x7f0700c8
 			public const int media_actions = 2131165384;
@@ -2725,35 +2725,35 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07003e
 			public const int mini = 2131165246;
 			
-			// aapt resource value: 0x7f070103
-			public const int mnAdd = 2131165443;
-			
 			// aapt resource value: 0x7f070104
-			public const int mnRemove = 2131165444;
+			public const int mnAdd = 2131165444;
 			
-			// aapt resource value: 0x7f07010b
-			public const int mnSave = 2131165451;
+			// aapt resource value: 0x7f070105
+			public const int mnRemove = 2131165445;
+			
+			// aapt resource value: 0x7f07010c
+			public const int mnSave = 2131165452;
 			
 			// aapt resource value: 0x7f07001a
 			public const int multiply = 2131165210;
 			
-			// aapt resource value: 0x7f070105
-			public const int nav_home_1 = 2131165445;
-			
 			// aapt resource value: 0x7f070106
-			public const int nav_home_2 = 2131165446;
+			public const int nav_home_1 = 2131165446;
 			
 			// aapt resource value: 0x7f070107
-			public const int nav_home_3 = 2131165447;
+			public const int nav_home_2 = 2131165447;
 			
 			// aapt resource value: 0x7f070108
-			public const int nav_home_4 = 2131165448;
+			public const int nav_home_3 = 2131165448;
 			
 			// aapt resource value: 0x7f070109
-			public const int nav_home_5 = 2131165449;
+			public const int nav_home_4 = 2131165449;
 			
 			// aapt resource value: 0x7f07010a
-			public const int nav_home_6 = 2131165450;
+			public const int nav_home_5 = 2131165450;
+			
+			// aapt resource value: 0x7f07010b
+			public const int nav_home_6 = 2131165451;
 			
 			// aapt resource value: 0x7f0700bf
 			public const int nav_view = 2131165375;
@@ -2824,11 +2824,14 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700d9
 			public const int rlProjectView = 2131165401;
 			
+			// aapt resource value: 0x7f0700eb
+			public const int rvProjectDetailTasks = 2131165419;
+			
 			// aapt resource value: 0x7f0700ea
 			public const int rvProjectDetailTeam = 2131165418;
 			
-			// aapt resource value: 0x7f0700fc
-			public const int rvTimesheetLineHours = 2131165436;
+			// aapt resource value: 0x7f0700fd
+			public const int rvTimesheetLineHours = 2131165437;
 			
 			// aapt resource value: 0x7f07001b
 			public const int screen = 2131165211;
@@ -2938,8 +2941,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700af
 			public const int spnrTaskSchedulingEdit = 2131165359;
 			
-			// aapt resource value: 0x7f0700f5
-			public const int spnrTimesheetPeriod = 2131165429;
+			// aapt resource value: 0x7f0700f6
+			public const int spnrTimesheetPeriod = 2131165430;
 			
 			// aapt resource value: 0x7f07001c
 			public const int src_atop = 2131165212;
@@ -3055,35 +3058,35 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700c0
 			public const int tvName = 2131165376;
 			
-			// aapt resource value: 0x7f0700e1
-			public const int tvProjectDetailsDescription = 2131165409;
+			// aapt resource value: 0x7f0700e3
+			public const int tvProjectDetailsDescription = 2131165411;
 			
-			// aapt resource value: 0x7f0700e5
-			public const int tvProjectDetailsDuration = 2131165413;
+			// aapt resource value: 0x7f0700e2
+			public const int tvProjectDetailsDuration = 2131165410;
 			
-			// aapt resource value: 0x7f0700e7
-			public const int tvProjectDetailsEndDate = 2131165415;
+			// aapt resource value: 0x7f0700e8
+			public const int tvProjectDetailsEndDate = 2131165416;
 			
 			// aapt resource value: 0x7f0700e9
 			public const int tvProjectDetailsLPD = 2131165417;
 			
-			// aapt resource value: 0x7f0700e8
-			public const int tvProjectDetailsOwner = 2131165416;
-			
-			// aapt resource value: 0x7f0700e3
-			public const int tvProjectDetailsPercentComplete = 2131165411;
-			
 			// aapt resource value: 0x7f0700e6
-			public const int tvProjectDetailsStartDate = 2131165414;
-			
-			// aapt resource value: 0x7f0700e2
-			public const int tvProjectDetailsStatus = 2131165410;
+			public const int tvProjectDetailsOwner = 2131165414;
 			
 			// aapt resource value: 0x7f0700e0
-			public const int tvProjectDetailsType = 2131165408;
+			public const int tvProjectDetailsPercentComplete = 2131165408;
+			
+			// aapt resource value: 0x7f0700e7
+			public const int tvProjectDetailsStartDate = 2131165415;
 			
 			// aapt resource value: 0x7f0700e4
-			public const int tvProjectDetailsWork = 2131165412;
+			public const int tvProjectDetailsStatus = 2131165412;
+			
+			// aapt resource value: 0x7f0700e5
+			public const int tvProjectDetailsType = 2131165413;
+			
+			// aapt resource value: 0x7f0700e1
+			public const int tvProjectDetailsWork = 2131165409;
 			
 			// aapt resource value: 0x7f0700de
 			public const int tvProjectDuration = 2131165406;
@@ -3097,8 +3100,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700dc
 			public const int tvProjectPercentComplete = 2131165404;
 			
-			// aapt resource value: 0x7f0700ec
-			public const int tvProjectResourcesName = 2131165420;
+			// aapt resource value: 0x7f0700ed
+			public const int tvProjectResourcesName = 2131165421;
 			
 			// aapt resource value: 0x7f0700dd
 			public const int tvProjectWork = 2131165405;
@@ -3106,41 +3109,41 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070087
 			public const int tvSpinnerLabel = 2131165319;
 			
-			// aapt resource value: 0x7f0700f1
-			public const int tvTaskDuration = 2131165425;
-			
-			// aapt resource value: 0x7f0700ed
-			public const int tvTaskName = 2131165421;
-			
-			// aapt resource value: 0x7f0700ef
-			public const int tvTaskPercentComplete = 2131165423;
+			// aapt resource value: 0x7f0700f2
+			public const int tvTaskDuration = 2131165426;
 			
 			// aapt resource value: 0x7f0700ee
-			public const int tvTaskProjectName = 2131165422;
+			public const int tvTaskName = 2131165422;
 			
 			// aapt resource value: 0x7f0700f0
-			public const int tvTaskWork = 2131165424;
+			public const int tvTaskPercentComplete = 2131165424;
 			
-			// aapt resource value: 0x7f0700f8
-			public const int tvTimesheetBillingCategory = 2131165432;
+			// aapt resource value: 0x7f0700ef
+			public const int tvTaskProjectName = 2131165423;
 			
-			// aapt resource value: 0x7f0700fb
-			public const int tvTimesheetComment = 2131165435;
-			
-			// aapt resource value: 0x7f0700fd
-			public const int tvTimesheetLineDay = 2131165437;
+			// aapt resource value: 0x7f0700f1
+			public const int tvTaskWork = 2131165425;
 			
 			// aapt resource value: 0x7f0700f9
-			public const int tvTimesheetProcessStatus = 2131165433;
+			public const int tvTimesheetBillingCategory = 2131165433;
 			
-			// aapt resource value: 0x7f0700f6
-			public const int tvTimesheetProjectName = 2131165430;
+			// aapt resource value: 0x7f0700fc
+			public const int tvTimesheetComment = 2131165436;
 			
-			// aapt resource value: 0x7f0700f7
-			public const int tvTimesheetTaskName = 2131165431;
+			// aapt resource value: 0x7f0700fe
+			public const int tvTimesheetLineDay = 2131165438;
 			
 			// aapt resource value: 0x7f0700fa
-			public const int tvTimesheetTotalWork = 2131165434;
+			public const int tvTimesheetProcessStatus = 2131165434;
+			
+			// aapt resource value: 0x7f0700f7
+			public const int tvTimesheetProjectName = 2131165431;
+			
+			// aapt resource value: 0x7f0700f8
+			public const int tvTimesheetTaskName = 2131165432;
+			
+			// aapt resource value: 0x7f0700fb
+			public const int tvTimesheetTotalWork = 2131165435;
 			
 			// aapt resource value: 0x7f070009
 			public const int up = 2131165193;
@@ -3157,8 +3160,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07000e
 			public const int view_offset_helper = 2131165198;
 			
-			// aapt resource value: 0x7f070101
-			public const int visible = 2131165441;
+			// aapt resource value: 0x7f070102
+			public const int visible = 2131165442;
 			
 			// aapt resource value: 0x7f0700bb
 			public const int webView = 2131165371;

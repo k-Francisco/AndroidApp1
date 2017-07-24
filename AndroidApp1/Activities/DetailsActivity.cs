@@ -19,6 +19,7 @@ using PScore;
 using System.Threading.Tasks;
 
 
+
 namespace AndroidApp1.Activities
 {
     [Activity(Label = "DetailsActivity")]
@@ -28,8 +29,11 @@ namespace AndroidApp1.Activities
         public string projectDataJson { get; set; }
         public string projectServerJson { get; set; }
         public string projectResources { get; set; }
-        DialogHelpers dialogs = new DialogHelpers();
+        public string projectTasksJson { get; set; }
+        DialogHelpers dialogs { get; set; }
         public EnterpriseResources.RootObject mEnterprise { get; set; }
+        string id;
+        
         public PsCore core { get; set; }
         ProjectDetailsFragment frag = new ProjectDetailsFragment();
 
@@ -42,6 +46,9 @@ namespace AndroidApp1.Activities
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
+            dialogs = new DialogHelpers();
+
+            id = Intent.GetStringExtra("Id");
             projectServerJson = Intent.GetStringExtra("projectServer");
             projectDataJson = Intent.GetStringExtra("projectData");
             projectTitle = Intent.GetStringExtra("title");
@@ -52,6 +59,7 @@ namespace AndroidApp1.Activities
             SupportActionBar.Title = projectTitle;
 
             GetTeamAsync();
+            
             //retrieving data
             SupportFragmentManager.BeginTransaction()
                         .Replace(Resource.Id.content_frame, new LoaderFragment())
@@ -81,6 +89,11 @@ namespace AndroidApp1.Activities
                 .Replace(Resource.Id.content_frame, frag)
                 .Commit();
 
+        }
+
+        private async Task GetProjectTasks() {
+
+            projectTasksJson = await core.GetTasks(id);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

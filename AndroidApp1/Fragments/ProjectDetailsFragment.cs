@@ -24,11 +24,12 @@ namespace AndroidApp1.Fragments
         TextView projecType, projectDesc, projectStats, projectPercent, projectWork, projectDuration, projectStart, projectEnd, projectOwner, projectLPD;
         DetailsActivity details;
         string projectData, projectServer, projectTitle;
-        RecyclerView mRecyclerView;
+        RecyclerView mRecyclerView, mRecyclerView2;
         RecyclerView.LayoutManager mLayoutManager;
         Resourcez mResources;
         ProjectResourceAdapter mProjectResourceAdapter;
         ProjectResources.RootObject mProjectResources;
+        AndroidApp1.Taskmodel.RootObject mProjectTasks;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -60,7 +61,6 @@ namespace AndroidApp1.Fragments
             ThreadPool.QueueUserWorkItem(state => {
                 var data1 = JsonConvert.DeserializeObject<ProjectData.RootObject>(projectServer);
                 var data2 = JsonConvert.DeserializeObject<ProjectModel.RootObject>(projectData);
-                
 
                 var item1 = data1.D.Results.Where(p => p.Name == projectTitle).FirstOrDefault();
                 if (item1 != null) {
@@ -111,10 +111,16 @@ namespace AndroidApp1.Fragments
             mRecyclerView.SetLayoutManager(mLayoutManager);
             mResources = new Resourcez();
             mProjectResources = JsonConvert.DeserializeObject<ProjectResources.RootObject>(details.projectResources);
-            foreach (var item in mProjectResources.D.Results)
-            {
-                mResources.addResources(item.Name);
+
+            if (mProjectResources.D.Results.Count == 0)
+                mResources.addResources("No resource available");
+            else {
+                foreach (var item in mProjectResources.D.Results)
+                {
+                    mResources.addResources(item.Name);
+                }
             }
+            
             mProjectResourceAdapter = new ProjectResourceAdapter(mResources);
             mRecyclerView.SetAdapter(mProjectResourceAdapter);
 

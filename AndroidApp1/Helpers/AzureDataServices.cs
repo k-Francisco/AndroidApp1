@@ -16,6 +16,8 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Android.Util;
 using System.Threading;
+using AndroidApp1.Activities;
+using Newtonsoft.Json;
 
 namespace AndroidApp1.Helpers
 {
@@ -61,10 +63,10 @@ namespace AndroidApp1.Helpers
             catch (Exception e) {
                 Log.Info("kfsama", "no internet");
             }
-            
+
         }
 
-        public async Task UpdateData(string id,string period, string periodId, string timesheetLines, string timesheetWork)
+        public async Task UpdateData(string id, string period, string periodId, string timesheetLines, string timesheetWork)
         {
 
             var offline = new OfflineTimesheetModel { period = period, offlineTimesheetLines = timesheetLines, offlineTimesheetWork = timesheetWork };
@@ -72,20 +74,34 @@ namespace AndroidApp1.Helpers
             await SyncData(true);
         }
 
-        public async Task AddData(string name,string period, string timesheetLines, string timesheetWork)
+        public async Task AddData(string name, string period, string timesheetLines, string timesheetWork)
         {
 
-            var offline = new OfflineTimesheetModel { owner = name,period = period, offlineTimesheetLines = timesheetLines, offlineTimesheetWork = timesheetWork };
+            var offline = new OfflineTimesheetModel { owner = name, period = period, offlineTimesheetLines = timesheetLines, offlineTimesheetWork = timesheetWork };
             await offlineTimesheet.InsertAsync(offline);
             await SyncData(true);
         }
 
         public async Task PurgeData() {
             await offlineTimesheet.PurgeAsync("allOfflineTimesheet", null, true, CancellationToken.None);
+            
         }
 
+        public async Task DeleteFromLocalTable(MainActivity main)
+        {
+            foreach (var item in main.offline) {
+                var temp = JsonConvert.DeserializeObject<TimesheetPeriod.Result>(item.period);
+                if (temp.Name.Equals("TestTS_20_POC")) {
+                    await offlineTimesheet.DeleteAsync(item);
+                    main.offline = await pullData(true);
+                }
+            }
+        }
+
+        
+
         public void ClearDatabase() {
-            MobileService.Dispose();
+            
         }
 
     }
