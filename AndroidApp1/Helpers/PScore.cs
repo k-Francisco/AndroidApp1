@@ -97,7 +97,7 @@ namespace PScore
            
             try
             {
-                var result = await client.GetStringAsync(siteURL + "/_api/web/currentUser?");
+                var result = await client.GetStringAsync("https://sharepointevo.sharepoint.com/_api/web/currentUser?");
                 return result;
             }
             catch (Exception e)
@@ -125,6 +125,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return e.Message;
             }
         }
@@ -168,11 +169,13 @@ namespace PScore
         public async Task<bool> CheckIn(string body, string projectGUID)
         {
             Boolean isSuccess = false;
-            var contents = new StringContent(body, Encoding.UTF8, "application/json");
+            //var contents = new StringContent(body, Encoding.UTF8, "application/json");
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
 
             try
             {
-                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/CheckIn()", contents);
+                var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectGUID + "')/Draft/checkIn()", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
@@ -181,6 +184,7 @@ namespace PScore
             }
             catch (Exception e)
             {
+                Log.Info("kfsama", e.Message);
                 return isSuccess;
             }
 
@@ -612,12 +616,19 @@ namespace PScore
 
         public async Task<bool> AddAssignmentOnTask(string body, string projectId)
         {
+            // project must be checked out and the resource must already be in the resource center
+
+            //   sample body: var body = "{'parameters':{ 
+            //                             'Notes':'notes here',
+            //                             'ResourceId':'4af6b103-13ff-e611-80d3-00155d0c2609', 
+            //                             'TaskId':'050d7237-540e-4867-8641-d4d1551ba8fc' } }";
 
             Boolean isSuccess = false;
             var contents = new StringContent(body, Encoding.UTF8, "application/json");
 
             try
             {
+                //  siteURL = "https://sharepointevo.sharepoint.com/sites/mobility", psRestUrl = "/_api/ProjectServer";
                 var result = await client2.PostAsync(siteURL + psRestUrl + "/Projects('" + projectId + "')/Draft/Assignments/Add", contents);
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
@@ -630,6 +641,19 @@ namespace PScore
                 return isSuccess;
             }
 
+        }
+
+        public async Task<String> GetEnterpriseResourcesUnfiltered() {
+
+            try
+            {
+                var result = await client.GetStringAsync(siteURL + psRestUrl + "/EnterpriseResources");
+                return result;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
         }
 
         public async Task<String> GetEnterpriseResources()
@@ -781,6 +805,28 @@ namespace PScore
                 return isSuccess;
             }
 
+        }
+
+        public async Task<bool> DeleteProjectResource(string body, string projectId, string enterpriseId) {
+
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
+
+            bool isSuccess = false;
+            try
+            {
+                var result = await client2.PostAsync(siteURL + "/_api/ProjectServer/Projects('" + projectId + "')/Draft/projectresources('"+enterpriseId+"')/deleteObject()", contents);
+                var postResult = result.EnsureSuccessStatusCode();
+                if (postResult.IsSuccessStatusCode)
+                    isSuccess = true;
+
+                return isSuccess;
+            }
+            catch (Exception e)
+            {
+                Log.Info("kfsama", e.Message);
+                return isSuccess;
+            }
         }
 
         public async Task<string> GetProjectResourcesFiltered(string projectId, string name) {

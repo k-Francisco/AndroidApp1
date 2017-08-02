@@ -5,7 +5,6 @@
     <ManifestDocument>obj\Release\__library_projects__\Xamarin.Android.Support.Compat\library_project_imports\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Release\__library_projects__\Xamarin.Android.Support.Core.UI\library_project_imports\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Release\__library_projects__\Xamarin.Android.Support.Core.Utils\library_project_imports\AndroidManifest.xml</ManifestDocument>
-    <ManifestDocument>obj\Release\__library_projects__\Xamarin.Android.Support.CustomTabs\library_project_imports\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Release\__library_projects__\Xamarin.Android.Support.Design\library_project_imports\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Release\__library_projects__\Xamarin.Android.Support.Fragment\library_project_imports\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Release\__library_projects__\Xamarin.Android.Support.Media.Compat\library_project_imports\AndroidManifest.xml</ManifestDocument>
@@ -23,7 +22,6 @@
     <Jar>obj\Release\__library_projects__\Xamarin.Android.Support.Compat\library_project_imports\classes.jar</Jar>
     <Jar>obj\Release\__library_projects__\Xamarin.Android.Support.Core.UI\library_project_imports\classes.jar</Jar>
     <Jar>obj\Release\__library_projects__\Xamarin.Android.Support.Core.Utils\library_project_imports\classes.jar</Jar>
-    <Jar>obj\Release\__library_projects__\Xamarin.Android.Support.CustomTabs\library_project_imports\classes.jar</Jar>
     <Jar>obj\Release\__library_projects__\Xamarin.Android.Support.Design\library_project_imports\classes.jar</Jar>
     <Jar>obj\Release\__library_projects__\Xamarin.Android.Support.Fragment\library_project_imports\classes.jar</Jar>
     <Jar>obj\Release\__library_projects__\Xamarin.Android.Support.Media.Compat\library_project_imports\classes.jar</Jar>

@@ -25,9 +25,9 @@ namespace AndroidApp1.Fragments
         DetailsActivity details;
         string projectData, projectServer, projectTitle;
         RecyclerView mRecyclerView, mRecyclerView2;
-        RecyclerView.LayoutManager mLayoutManager;
-        Resourcez mResources;
-        ProjectResourceAdapter mProjectResourceAdapter;
+        RecyclerView.LayoutManager mLayoutManager, mLayoutManager2;
+        Resourcez mResources, mTasks;
+        ProjectResourceAdapter mProjectResourceAdapter, mProjectTaskAdapter;
         ProjectResources.RootObject mProjectResources;
         AndroidApp1.Taskmodel.RootObject mProjectTasks;
 
@@ -124,6 +124,27 @@ namespace AndroidApp1.Fragments
             mProjectResourceAdapter = new ProjectResourceAdapter(mResources);
             mRecyclerView.SetAdapter(mProjectResourceAdapter);
 
+            mRecyclerView2 = view.FindViewById<RecyclerView>(Resource.Id.rvProjectDetailTasks);
+            mLayoutManager2 = new LinearLayoutManager(view.Context);
+            mRecyclerView2.SetLayoutManager(mLayoutManager2);
+            mTasks = new Resourcez();
+            if (details.projectTasksJson != null) {
+                mProjectTasks = JsonConvert.DeserializeObject<AndroidApp1.Taskmodel.RootObject>(details.projectTasksJson);
+                if (mProjectTasks.D.Results.Count == 0)
+                    mTasks.addResources("No Tasks in this project");
+                else
+                {
+                    foreach (var item in mProjectTasks.D.Results)
+                    {
+                        mTasks.addResources(item.Name);
+                    }
+                }
+            }
+            else
+                mTasks.addResources("Unable to get the project's tasks");
+
+            mProjectTaskAdapter = new ProjectResourceAdapter(mTasks);
+            mRecyclerView2.SetAdapter(mProjectTaskAdapter);
             return view;
            
         }

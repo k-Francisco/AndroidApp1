@@ -90,9 +90,14 @@ namespace AndroidApp1.Adapters
             vh.name.Text = mResources[position].resourceName;
             vh.mLayout.Click += delegate {
                 if (mResources.search(mResources[position].resourceName) == false)
+                {
                     vh.mLayout.SetBackgroundColor(Color.ParseColor("#27ae60"));
-                else
+                    vh.name.SetTextColor(Color.White);
+                }
+                else {
                     vh.mLayout.SetBackgroundColor(Color.ParseColor("#ffffff"));
+                    vh.name.SetTextColor(Color.ParseColor("#808080"));
+                }  
             };
         }
 

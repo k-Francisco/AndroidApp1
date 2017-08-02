@@ -193,6 +193,7 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\enterprise_reso
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\add_enterprise_resource_layout.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\edit_enterprise_resource.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\offline_layout.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\layout\two_spinner_layout.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\colors.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\integers.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\values\strings.xml
@@ -237,6 +238,7 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable\red_circle.xm
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable\green_circle.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\add_user.png
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable-hdpi\remove_user.png
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\res\drawable\ic_add_24dp.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\R.cs.flag
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Debug\uploadflags.txt
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Debug\AndroidApp1.dll.mdb

@@ -57,8 +57,8 @@ namespace AndroidApp1.Activities
         private const int PROJECT_DATA = 1;
         private const int TASKS_DATA = 2;
         private const int TIMESHEET_DATA = 3;
-        private const int REQUEST_CODE = 1;
         private const int RESOURCES_DATA = 4;
+        private const int OFFLINE_DATA = 5;
 
         //json strings
         string projectJson;
@@ -72,9 +72,11 @@ namespace AndroidApp1.Activities
         //booleans
         bool willSwitch = false;
         bool online;
+        Boolean hasAccess;
 
         //strings
         public string mText { get; set; }
+        
 
         //cancellation token
         CancellationTokenSource cts = new CancellationTokenSource();
@@ -88,7 +90,7 @@ namespace AndroidApp1.Activities
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         SwipeRefreshLayout refresh;
-        ISharedPreferences prefs;
+        public ISharedPreferences prefs { get; set; }
         TextView userName;
 
 
@@ -105,8 +107,10 @@ namespace AndroidApp1.Activities
         {
             
             base.OnCreate(savedInstanceState);
+            mText = "The device is offline.Please connect to the internet and restart the app";
             initOfflineSupportAsync();
             init(savedInstanceState);
+           
         }
 
         private async void initOfflineSupportAsync()
@@ -116,7 +120,7 @@ namespace AndroidApp1.Activities
             await service.Initialize();
             await service.SyncData(online);
             
-            offline = await service.pullData(online);
+            offline = await service.pullData(online, userName.Text);
         }
 
         private async void init(Bundle savedInstanceState)
@@ -190,30 +194,95 @@ namespace AndroidApp1.Activities
             prefs = PreferenceManager.GetDefaultSharedPreferences(this);
 
             core.setClient();
-            if (online) {
+            if (online)
+            {
                 string context = await core.GetFormDigest("");
-                ThreadPool.QueueUserWorkItem(state => {
-                    var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
-                    core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
-                    core.FormDigest = data.D.GetContextWebInformation.FormDigestValue;
+                ThreadPool.QueueUserWorkItem(state =>
+                {
+                    try
+                    {
+                        var data = JsonConvert.DeserializeObject<AndroidApp1.FormDigestModel.RootObject>(context);
+                        core.setClient2(data.D.GetContextWebInformation.FormDigestValue);
+                        core.FormDigest = data.D.GetContextWebInformation.FormDigestValue;
+                    }
+                    catch (Exception e)
+                    {
+                        RunOnUiThread(() =>
+                        {
+                            mText = "You have no acces on this site";
+                            switchFragment(new OfflineFragment());
+                            willSwitch = true;
+                        });
+                    }
+
                 });
 
                 ThreadPool.QueueUserWorkItem(async state =>
                 {
                     var data2 = await core.GetCurrentUser();
                     var currentUser = JsonConvert.DeserializeObject<CurrentUser.RootObject>(data2);
-                    RunOnUiThread(() => {
-                        userName.Text = currentUser.D.Title;
-                        userEmail.Text = currentUser.D.Email;
-                    });
+                    RunOnUiThread(async () =>
+                   {
+                       userName.Text = currentUser.D.Title;
+                       userEmail.Text = currentUser.D.Email;
+                       if (prefs.GetString("userName", "").Equals("") && prefs.GetString("email", "").Equals("")) {
+                           ISharedPreferencesEditor editor = prefs.Edit();
+                           editor.PutString("userName", currentUser.D.Title);
+                           editor.PutString("email", currentUser.D.Email);
+                           editor.Apply();
+                           //prefs.Edit().PutString("userName", currentUser.D.Title).Apply();
+                           //prefs.Edit().PutString("email", currentUser.D.Email).Apply();
+                       }
+                       hasAccess = await checkUserAccess(currentUser.D.Title);
+                       if (hasAccess)
+                       {
+                           
+                           checkDataAsync(PROJECT_DATA);
+                       }
+                       else
+                       {
+                           mText = "You have no acces on this site";
+                           switchFragment(new OfflineFragment());
+                           willSwitch = true;
+                       }
+
+                   });
                 });
             }
-            mText = "The device is offline.Please connect to the internet and restart the app";
-            tasksWithResource = new List<string> { };
-            checkDataAsync(PROJECT_DATA);
+            else {
+                if (!prefs.GetString("userName", "").Equals(null) && !prefs.GetString("email", "").Equals(null))
+                {
+                    userName.Text = prefs.GetString("userName", "");
+                    userEmail.Text = prefs.GetString("email", "");
+                }
+                switchFragment(new OfflineFragment());
+                willSwitch = true;
+            }
             
-            //switchFragment(loader);
+            tasksWithResource = new List<string> { };
+            //checkDataAsync(PROJECT_DATA);
 
+        }
+
+        private async Task<bool> checkUserAccess(string user)
+        {
+            bool hasAccess = false;
+            try {
+                var result = await core.GetEnterpriseResourcesUnfiltered();
+                var data = JsonConvert.DeserializeObject<EnterpriseResources.RootObject>(result);
+
+                foreach (var item in data.D.Results)
+                {
+                    if (item.Name.Equals(user))
+                        hasAccess = true;
+                }
+            }
+            catch (Exception e) {
+                Log.Info("kfsama", e.Message);
+            }
+            
+
+            return hasAccess;
         }
 
         int oldPosition = -1;
@@ -232,7 +301,11 @@ namespace AndroidApp1.Activities
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
 
-                    
+                    if (!online)
+                        mText = "The device is offline.Please connect to the internet and restart the app";
+                    else
+                        mText = "You have no acces on this site";
+
                     refreshIdentifier = PROJECT_DATA;
                     fabfunctionidentifier = PROJECT_DATA;
                     checkDataAsync(PROJECT_DATA);
@@ -241,39 +314,84 @@ namespace AndroidApp1.Activities
                 case 1:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
-                  
+
+                    if (!online)
+                        mText = "The device is offline.Please connect to the internet and restart the app";
+                    else
+                        mText = "You have no acces on this site";
+
                     SupportActionBar.Title = "Resources";
                     fabfunctionidentifier = RESOURCES_DATA;
                     refreshIdentifier = RESOURCES_DATA;
                     checkDataAsync(RESOURCES_DATA);
+                   
                     break;
                 case 2:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
-             
+
+                    if (!online)
+                        mText = "The device is offline.Please connect to the internet and restart the app";
+                    else
+                        mText = "You have no acces on this site";
+
                     SupportActionBar.Title = "My Tasks";
                     fabfunctionidentifier = TASKS_DATA;
                     refreshIdentifier = TASKS_DATA;
                     checkDataAsync(TASKS_DATA);
+                    
                     break;
                 case 3:
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
-               
+
+                    if (!online)
+                        mText = "The device is offline.Please connect to the internet and restart the app";
+                    else
+                        mText = "You have no acces on this site";
+
                     SupportActionBar.Title = "Timesheets";
                     refreshIdentifier = TIMESHEET_DATA;
                     fabfunctionidentifier = TIMESHEET_DATA;
                     checkDataAsync(TIMESHEET_DATA);
+                    
                     break;
                 case 4:
+                    int count = 0;
                     if (refresh.Refreshing)
                         refresh.Refreshing = false;
+
                     SupportActionBar.Title = "Saved Timsheets";
-                    switchFragment(savedTimesheetFragment);
+                    refreshIdentifier = OFFLINE_DATA;
+                    fabfunctionidentifier = OFFLINE_DATA;
+
+                    if (offline != null)
+                    {
+                        foreach (var item in offline)
+                        {
+                            count++;
+                        }
+                        if (count != 0) {
+                            fab.SetVisibility(ViewStates.Gone);
+                            switchFragment(savedTimesheetFragment);
+                        }
+                        else
+                        {
+                            mText = "You don't have any timesheet saved";
+                            switchFragment(new OfflineFragment());
+                            fab.SetVisibility(ViewStates.Gone);
+                        }
+                    }
+                    else
+                    {
+                        mText = "You don't have any timesheet saved";
+                        switchFragment(new OfflineFragment());
+                        fab.SetVisibility(ViewStates.Gone);
+                    }
+                    
                     break;
                 case 5:
                     prefs.Edit().Clear().Apply();
-                    
                     Splashscreen splash = new Splashscreen();
                     Intent intent = new Intent(this, typeof(Splashscreen));
                     StartActivity(intent);
@@ -310,17 +428,15 @@ namespace AndroidApp1.Activities
             switch (fabfunctionidentifier) {
 
                 case 1:
-                    //if (view != null)
-                    //    view = null;
+                    if (view != null)
+                        view = null;
 
-                    //if (dialog != null)
-                    //    dialog = null;
+                    if (dialog != null)
+                        dialog = null;
 
-                    //view = LayoutInflater.Inflate(Resource.Layout.add_project_dialog, null);
-                    //dialog = helpDialog.AddProjectDialog(this, core,view);
-                    //dialog.Show();
-
-                    service.DeleteFromLocalTable(this);
+                    view = LayoutInflater.Inflate(Resource.Layout.add_project_dialog, null);
+                    dialog = helpDialog.AddProjectDialog(this, core, view);
+                    dialog.Show();
                     break;
 
                 case 2:
@@ -331,8 +447,8 @@ namespace AndroidApp1.Activities
                         dialog = null;
 
                     view = LayoutInflater.Inflate(Resource.Layout.add_task_layout, null);
-                    dialog = helpDialog.AddTaskDialog(this, core,view, pServer);
-                    dialog.Show();
+                    //dialog = helpDialog.AddTaskDialog(this, core,view, pServer);
+                    //dialog.Show();
                     break;
 
                 case 3:
@@ -340,6 +456,9 @@ namespace AndroidApp1.Activities
                     break;
                 case 4:
                     helpDialog.AddEnterpriseResource(this).Show();
+                    break;
+                case 5:
+
                     break;
             }
 
@@ -362,6 +481,10 @@ namespace AndroidApp1.Activities
                     intent.PutExtra("formDigest", core.FormDigest);
                     intent.PutExtra("url", pServer.D.Results[position].ProjectResources.Deferred.Uri);
                     intent.PutExtra("Id", pServer.D.Results[position].Id);
+                    if(projects.D.Results[position].ProjectOwnerName.Equals(userName.Text))
+                        intent.PutExtra("ShowOptions", true);
+                    else
+                        intent.PutExtra("ShowOptions", false);
                     //Log.Info("kfsama", pServer.D.Results[position].ProjectResources.Deferred.Uri);
                     //Log.Info("kfsama", pServer.D.Results[position].Name);
                     //Log.Info("kfsama", pServer.D.Results[position].Id);
@@ -379,50 +502,61 @@ namespace AndroidApp1.Activities
 
         public void checkDataAsync(int whatData)
         {
-            if (online)
+            if (hasAccess)
             {
-                switch (whatData)
+
+                if (online)
                 {
-                    case 1:
-                        fab.SetVisibility(ViewStates.Visible);
-                        if (pServer == null && projects == null) 
-                            fillDataAsync(whatData);
-                        else
-                            switchFragment(projectFragment);
+                    switch (whatData)
+                    {
+                        case 1:
+                            fab.SetVisibility(ViewStates.Gone);
+                            if (pServer == null && projects == null)
+                                fillDataAsync(whatData);
+                            else
+                                switchFragment(projectFragment);
 
-                        break;
+                            break;
 
-                    case 2:
-                        fab.SetVisibility(ViewStates.Visible);
-                        if (tasks == null)
-                            fillDataAsync(whatData);
-                        else
-                            switchFragment(taskFragment);
-                        break;
+                        case 2:
+                            fab.SetVisibility(ViewStates.Gone);
+                            if (tasks == null)
+                                fillDataAsync(whatData);
+                            else
+                                switchFragment(taskFragment);
+                            break;
 
-                    case 3:
-                        fab.SetVisibility(ViewStates.Visible);
-                        if (timesheetPeriods == null)
-                            fillDataAsync(whatData);
-                        else
-                            switchFragment(timesheetFragment);
-                        break;
+                        case 3:
+                            fab.SetVisibility(ViewStates.Visible);
+                            if (timesheetPeriods == null)
+                                fillDataAsync(whatData);
+                            else
+                                switchFragment(timesheetFragment);
+                            break;
 
-                    case 4:
-                        fab.SetVisibility(ViewStates.Visible);
-                        if (enterpriseResources == null)
-                            fillDataAsync(whatData);
-                        else
-                            switchFragment(enterpriseResourceFragment);
-                        break;
+                        case 4:
+                            fab.SetVisibility(ViewStates.Gone);
+                            if (enterpriseResources == null)
+                                fillDataAsync(whatData);
+                            else
+                                switchFragment(enterpriseResourceFragment);
+                            break;
+                    }
                 }
+                else
+                {
+                    willSwitch = true;
+                    switchFragment(new OfflineFragment());
+                    fab.SetVisibility(ViewStates.Gone);
+                }
+
             }
             else {
-                willSwitch = true;
+                mText = "You have no acces on this site";
                 switchFragment(new OfflineFragment());
-                fab.SetVisibility(ViewStates.Visible);
+                refresh.Refreshing = false;
+                //willSwitch = true;
             }
-                
             
         }
 
@@ -715,7 +849,7 @@ namespace AndroidApp1.Activities
             }
         }
 
-        public void refreshData(int whatData) {
+        public async void refreshData(int whatData) {
             switch (whatData) {
                 case 1:
                     projects = null;
@@ -736,6 +870,31 @@ namespace AndroidApp1.Activities
                 case 4:
                     enterpriseResources = null;
                     checkDataAsync(RESOURCES_DATA);
+                    break;
+                case 5:
+                    clearFragment();
+                    oldFragment = null;
+                    willSwitch = false;
+                    refresh.Refreshing = true;
+
+                    offline = null;
+                    offline = await service.pullData(true, userName.Text);
+
+                    int count = 0;
+                    foreach (var item in offline)
+                    {
+                        count++;
+                    }
+                    if (count != 0)
+                        switchFragment(savedTimesheetFragment);
+                    else
+                    {
+                        mText = "You don't have any timesheet saved";
+                        switchFragment(new OfflineFragment());
+                        fab.SetVisibility(ViewStates.Gone);
+                    }
+                    refresh.Refreshing = false;
+                    willSwitch = true;
                     break;
             }
             

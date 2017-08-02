@@ -35,7 +35,6 @@ namespace AndroidApp1.Helpers
             MobileService = new MobileServiceClient("http://projectservermobile.azurewebsites.net");
 
             const string path = "offlinetimesheetstore.db";
-
             storez = new MobileServiceSQLiteStore(path);
             storez.DefineTable<OfflineTimesheetModel>();
             await MobileService.SyncContext.InitializeAsync(storez);
@@ -43,20 +42,20 @@ namespace AndroidApp1.Helpers
             offlineTimesheet = MobileService.GetSyncTable<OfflineTimesheetModel>();
         }
 
-        public async Task<IEnumerable<OfflineTimesheetModel>> pullData(bool online)
+        public async Task<IEnumerable<OfflineTimesheetModel>> pullData(bool online, string username)
         {
             await Initialize();
             await SyncData(online);
 
-            return await offlineTimesheet.OrderBy(c => c.Id).ToEnumerableAsync();
+            return await offlineTimesheet.Where(c => c.owner == username).OrderBy(c => c.Id).ToEnumerableAsync();
         }
 
         public async Task SyncData(bool online)
         {
+            
             try {
                 if (!online)
                     return;
-
                 await MobileService.SyncContext.PushAsync();
                 await offlineTimesheet.PullAsync("allOfflineTimesheet", offlineTimesheet.CreateQuery());
             }
@@ -87,21 +86,15 @@ namespace AndroidApp1.Helpers
             
         }
 
-        public async Task DeleteFromLocalTable(MainActivity main)
+        public async Task DeleteSavedTimesheet(MainActivity main, int position)
         {
-            foreach (var item in main.offline) {
-                var temp = JsonConvert.DeserializeObject<TimesheetPeriod.Result>(item.period);
-                if (temp.Name.Equals("TestTS_20_POC")) {
-                    await offlineTimesheet.DeleteAsync(item);
-                    main.offline = await pullData(true);
-                }
+            try {
+                await offlineTimesheet.DeleteAsync(main.offline.ElementAt(position));
+                main.refreshData(5);
             }
-        }
-
-        
-
-        public void ClearDatabase() {
-            
+            catch (Exception e) {
+                Log.Info("kfsama", e.Message);
+            }
         }
 
     }

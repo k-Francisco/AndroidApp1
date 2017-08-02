@@ -19,6 +19,7 @@ using Newtonsoft.Json;
 using AndroidApp1.Fragments;
 using Android.Support.V7.Widget;
 using AndroidApp1.Adapters;
+using AndroidApp1.Models.SavedChanges;
 
 namespace AndroidApp1.Helpers
 {
@@ -31,7 +32,7 @@ namespace AndroidApp1.Helpers
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
 
             ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
-            List<string> items = new List<string> { "Check Out Project","Check In Project","Publish Project","Edit Project", "Delete Project", "Close"};
+            List<string> items = new List<string> { "Check Out Project", "Check In Project", "Publish Project", "Edit Project", "Delete Project", "Close" };
             var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
             lvOptions.Adapter = adapter;
             lvOptions.ItemClick += (sender, e) =>
@@ -61,7 +62,7 @@ namespace AndroidApp1.Helpers
                     case 5:
                         builder.Dismiss();
                         break;
-               
+
                 }
             };
 
@@ -166,9 +167,10 @@ namespace AndroidApp1.Helpers
         }
 
 
-        public Android.Support.V7.App.AlertDialog AddTaskDialog(MainActivity main, PsCore core, View view, ProjectData.RootObject projects) {
+        public Android.Support.V7.App.AlertDialog AddTaskDialog(DetailsActivity details) {
 
-            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
+            View view = LayoutInflater.From(details).Inflate(Resource.Layout.add_task_layout, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
             builder.SetView(view);
             builder.SetTitle("Add Task");
             builder.Window.SetSoftInputMode(SoftInput.AdjustResize);
@@ -189,7 +191,7 @@ namespace AndroidApp1.Helpers
 
             taskStartDate.Click += delegate {
                 DateTime today = DateTime.Today;
-                DatePickerDialog datePicker = new DatePickerDialog(main, (sender, e) => { taskStartDate.Text = e.Date.ToShortDateString() + " " + e.Date.ToShortTimeString(); }, today.Year, today.Month - 1, today.Day);
+                DatePickerDialog datePicker = new DatePickerDialog(details, (sender, e) => { taskStartDate.Text = e.Date.ToShortDateString() + " " + e.Date.ToShortTimeString(); }, today.Year, today.Month - 1, today.Day);
                 datePicker.DatePicker.MinDate = today.Millisecond;
                 datePicker.Show();
             };
@@ -197,34 +199,35 @@ namespace AndroidApp1.Helpers
             taskFinishDate.Click += delegate
             {
                 DateTime today = DateTime.Today;
-                DatePickerDialog datePicker = new DatePickerDialog(main, (sender, e) => { taskFinishDate.Text = e.Date.ToShortDateString() + " " + e.Date.ToShortTimeString(); }, today.Year, today.Month - 1, today.Day);
+                DatePickerDialog datePicker = new DatePickerDialog(details, (sender, e) => { taskFinishDate.Text = e.Date.ToShortDateString() + " " + e.Date.ToShortTimeString(); }, today.Year, today.Month - 1, today.Day);
                 datePicker.DatePicker.MinDate = today.Millisecond;
                 datePicker.Show();
             };
 
             Spinner taskScheduling = view.FindViewById<Spinner>(Resource.Id.spnrTaskScheduling);
             Spinner projectNames = view.FindViewById<Spinner>(Resource.Id.spnrAddTask);
-            List<string> projectNameList = new List<string> { };
-            for (int i = 0; i < projects.D.Results.Count; i++) {
-                projectNameList.Add(projects.D.Results[i].Name);
-            }
-            var spinnerAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, projectNameList);
-            projectNames.Adapter = spinnerAdapter;
+            projectNames.Visibility = ViewStates.Gone;
+            //List<string> projectNameList = new List<string> { };
+            //for (int i = 0; i < projects.D.Results.Count; i++) {
+            //    projectNameList.Add(projects.D.Results[i].Name);
+            //}
+            //var spinnerAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, projectNameList);
+            //projectNames.Adapter = spinnerAdapter;
 
             builder.SetButton(-1, "CANCEL", delegate { builder.Dismiss(); });
             builder.SetButton(-2, "ADD", delegate {
 
-                Toast.MakeText(main, "Adding the task ...", ToastLength.Short).Show();
+                Toast.MakeText(details, "Adding the task ...", ToastLength.Short).Show();
 
-                string projectId = "";
-                string temp = projectNames.SelectedItem.ToString();
-                for (int i = 0; i < projects.D.Results.Count; i++)
-                {
-                    if (temp == projects.D.Results[i].Name) {
-                        projectId = projects.D.Results[i].Id;
-                        break;
-                    }
-                }
+                //string projectId = "";
+                //string temp = projectNames.SelectedItem.ToString();
+                //for (int i = 0; i < projects.D.Results.Count; i++)
+                //{
+                //    if (temp == projects.D.Results[i].Name) {
+                //        projectId = projects.D.Results[i].Id;
+                //        break;
+                //    }
+                //}
 
                 bool scheduling;
                 if (taskScheduling.SelectedItem.Equals("Manual"))
@@ -235,12 +238,24 @@ namespace AndroidApp1.Helpers
                 var body = "{'parameters':{'Id':'" + Guid.NewGuid() + "', 'Name':'" + taskName.Text + "', 'Notes':'" + taskNotes.Text + "', 'Start':'" + taskStartDate.Text + "', 'Finish':'" + taskFinishDate.Text + "', 'IsManual':'" + scheduling + "' } }";
                 ThreadPool.QueueUserWorkItem(async state =>
                 {
-
-                    bool success = await core.AddTask(body, projectId);
-                    if (success)
-                        main.RunOnUiThread(() => { Toast.MakeText(main, "Successfully added the task! Publish the project to see the changes", ToastLength.Short).Show(); });
+                    bool checkoutSuccess = await details.core.CheckOut("", details.id);
+                    if (checkoutSuccess) {
+                        bool success = await details.core.AddTask(body, details.id);
+                        if (success)
+                        {
+                            bool publishSuccess = await details.core.Publish("", details.id);
+                            if (publishSuccess)
+                            {
+                                details.RunOnUiThread(() => { Toast.MakeText(details, "Successfully added the task", ToastLength.Short).Show(); });
+                            }
+                        }
+                        else {
+                            details.RunOnUiThread(() => { Toast.MakeText(details, "There was a problem adding the task", ToastLength.Short).Show(); });
+                        }
+                    }
                     else
-                        main.RunOnUiThread(() => { Toast.MakeText(main, "There was a problem adding the task", ToastLength.Short).Show(); });
+                        details.RunOnUiThread(() => { Toast.MakeText(details, "There was a problem adding the task", ToastLength.Short).Show(); });
+
                 });
 
             });
@@ -393,7 +408,7 @@ namespace AndroidApp1.Helpers
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
 
             ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
-            List<string> items = new List<string> {"Submit Timesheet", "Recall Timesheet", "Save Timesheet" };
+            List<string> items = new List<string> { "Submit Timesheet", "Recall Timesheet", "Save Timesheet" };
             var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
             lvOptions.Adapter = adapter;
             lvOptions.ItemClick += async (sender, e) =>
@@ -407,7 +422,7 @@ namespace AndroidApp1.Helpers
                     case 1:
                         Toast.MakeText(main, "Recalling timesheet...!", ToastLength.Short).Show();
                         bool success = await core.RecallTimesheet("", id);
-                        if (success) 
+                        if (success)
                             Toast.MakeText(main, "Timesheet recalled!", ToastLength.Short).Show();
                         else
                             Toast.MakeText(main, "There was an error recalling the timesheet", ToastLength.Short).Show();
@@ -422,7 +437,7 @@ namespace AndroidApp1.Helpers
             };
 
 
-            
+
             builder.SetTitle("Options");
             builder.SetCanceledOnTouchOutside(false);
             builder.SetView(view);
@@ -442,7 +457,7 @@ namespace AndroidApp1.Helpers
             builder.SetView(view);
             builder.SetButton(-2, "SUBMIT", async delegate {
                 Toast.MakeText(main, "Submitting timesheet...", ToastLength.Short).Show();
-                bool success = await core.SubmitTimesheet("",id, comment.Text);
+                bool success = await core.SubmitTimesheet("", id, comment.Text);
                 if (success)
                 {
                     Toast.MakeText(main, "Timesheet Submitted!", ToastLength.Short).Show();
@@ -453,11 +468,11 @@ namespace AndroidApp1.Helpers
                     builder.Dismiss();
                     OpensSettingsDialog(core, main, id, frag).Show();
                 }
-                    
-                
+
+
             });
             builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
-            
+
 
             return builder;
         }
@@ -496,7 +511,7 @@ namespace AndroidApp1.Helpers
                     }
                 }
                 projects.Add("Personal Task");
-                main.RunOnUiThread(()=> {
+                main.RunOnUiThread(() => {
                     var spinnerAdapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, projects);
                     exAssignments.Adapter = spinnerAdapter;
                 });
@@ -523,7 +538,7 @@ namespace AndroidApp1.Helpers
                     foreach (var item in main.getProjectList().D.Results)
                     {
                         if (item.ProjectName.Equals(exAssignments.SelectedItem.ToString())) {
-                            inputs.Add("'ProjectId':'"+item.ProjectId+"'");
+                            inputs.Add("'ProjectId':'" + item.ProjectId + "'");
                         }
                     }
                 }
@@ -588,7 +603,7 @@ namespace AndroidApp1.Helpers
             {
 
                 if (taskname.Text != "") {
-                    string body = "{ \"__metadata\":{ \"type\":\"PS.TimeSheetLine\"}, 'TaskName':'"+taskname.Text+"', 'Comment':'"+ comment.Text+"'}";
+                    string body = "{ \"__metadata\":{ \"type\":\"PS.TimeSheetLine\"}, 'TaskName':'" + taskname.Text + "', 'Comment':'" + comment.Text + "'}";
 
                     Toast.MakeText(main, "Updating line...", ToastLength.Short).Show();
                     core.AddHeaders(2);
@@ -607,7 +622,7 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
-        public Android.Support.V7.App.AlertDialog ShowTimesheetWorkDialog(MainActivity main, PsCore core, string periodId, string lineId, string data, List<DateTime> days, int currentDayPosition, TimesheetFragment frag, string formDigest)
+        public Android.Support.V7.App.AlertDialog ShowTimesheetWorkDialog(MainActivity main, PsCore core, string periodId, string lineId, string taskName, string data, List<DateTime> days, int currentDayPosition, TimesheetFragment frag, string formDigest)
         {
             View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
@@ -622,6 +637,7 @@ namespace AndroidApp1.Helpers
                 {
                     case 0:
                         Intent intent = new Intent(main, typeof(TimesheetActivity));
+                        intent.PutExtra("taskName", taskName);
                         intent.PutExtra("periodId", periodId);
                         intent.PutExtra("lineId", lineId);
                         intent.PutExtra("lineWork", data);
@@ -640,7 +656,7 @@ namespace AndroidApp1.Helpers
 
                         ThreadPool.QueueUserWorkItem(async state =>
                         {
-                            main.RunOnUiThread(()=> { Toast.MakeText(main, "Deleting line ...", ToastLength.Short).Show(); builder.Dismiss(); });
+                            main.RunOnUiThread(() => { Toast.MakeText(main, "Deleting line ...", ToastLength.Short).Show(); builder.Dismiss(); });
                             bool success = await core.DeleteTimesheetLine("", periodId, lineId);
                             if (success)
                             {
@@ -673,7 +689,7 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
-        public Android.Support.V7.App.AlertDialog ShowSavedTimesheetWork(MainActivity main, List<DateTime> days, TimesheetWork.RootObject work)
+        public Android.Support.V7.App.AlertDialog ShowSavedTimesheetWork(MainActivity main, List<DateTime> days, TimesheetWork.RootObject work, string taskName, string periodId, string lineId)
         {
             View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
@@ -688,6 +704,9 @@ namespace AndroidApp1.Helpers
                 {
                     case 0:
                         Intent intent = new Intent(main, typeof(TimesheetActivity));
+                        intent.PutExtra("taskName",taskName);
+                        intent.PutExtra("periodId", periodId);
+                        intent.PutExtra("lineId", lineId);
                         intent.PutExtra("lineWork", JsonConvert.SerializeObject(work));
                         intent.PutExtra("days", JsonConvert.SerializeObject(days));
                         intent.PutExtra("identifier", false);
@@ -782,7 +801,7 @@ namespace AndroidApp1.Helpers
                 body.Append("{ '__metadata': {'type': 'PS.EnterpriseResource' }, ");
 
                 if (rName.Text != "")
-                    temp.Add("'Name':'"+rName.Text+"'");
+                    temp.Add("'Name':'" + rName.Text + "'");
 
                 if (rEmail.Text != "")
                     temp.Add("'Email':'" + rEmail.Text + "'");
@@ -819,7 +838,7 @@ namespace AndroidApp1.Helpers
             Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
 
             ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
-            List<string> items = new List<string> { "Edit Resource", "Delete Resource", "Close"};
+            List<string> items = new List<string> { "Edit Resource", "Delete Resource", "Close" };
             var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
             lvOptions.Adapter = adapter;
 
@@ -827,13 +846,13 @@ namespace AndroidApp1.Helpers
 
                 switch (e.Position) {
 
-                    case 0:EditEnterpriseResource(main, position).Show();
+                    case 0: EditEnterpriseResource(main, position).Show();
                         builder.Dismiss();
                         break;
-                    case 1:main.ModifyEnterpriseResources(2, position, "");
+                    case 1: main.ModifyEnterpriseResources(2, position, "");
                         builder.Dismiss();
                         break;
-                    case 2:builder.Dismiss();
+                    case 2: builder.Dismiss();
                         break;
 
                 }
@@ -856,6 +875,15 @@ namespace AndroidApp1.Helpers
             mRecyclerView.SetLayoutManager(mLayoutManager);
 
             Resourcez mResources = new Resourcez();
+            var projectResources = JsonConvert.DeserializeObject<ProjectResources.RootObject>(details.projectResources);
+            foreach (var item in projectResources.D.Results)
+            {
+                for (int i = 0; i < details.mEnterprise.D.Results.Count; i++) {
+                    if (details.mEnterprise.D.Results[i].Name.Equals(item.Name)) {
+                        details.mEnterprise.D.Results.RemoveAt(i);
+                    }
+                }
+            }
             foreach (var item in details.mEnterprise.D.Results) {
                 mResources.addResources(item.Name);
             }
@@ -865,43 +893,65 @@ namespace AndroidApp1.Helpers
             builder.SetButton(-2, "Add", delegate {
                 ThreadPool.QueueUserWorkItem(async state =>
                {
-                   string id = "";
-                   var data = JsonConvert.DeserializeObject<ProjectData.RootObject>(details.projectServerJson);
-                   for (int i = 0; i < data.D.Results.Count; i++)
+                   details.RunOnUiThread(() =>
                    {
-                       if (data.D.Results[i].Name.Equals(details.projectTitle))
-                           id = data.D.Results[i].Id;
-                   }
-
-                   for (int i = 0; i < mResources.temp1.Count; i++)
+                       Toast.MakeText(details, "Adding the resource...", ToastLength.Short).Show();
+                   });
+                   bool checkOutSuccess = await details.core.CheckOut("", details.id);
+                   if (checkOutSuccess)
                    {
-                       for (int j = 0; j < details.mEnterprise.D.Results.Count; j++)
+                       for (int i = 0; i < mResources.temp1.Count; i++)
                        {
-                           if (mResources.temp1[i].Equals(details.mEnterprise.D.Results[j].Name))
+                           for (int j = 0; j < details.mEnterprise.D.Results.Count; j++)
                            {
-                               details.RunOnUiThread(()=> {
-                                   Toast.MakeText(details, "Adding the resource...", ToastLength.Short).Show();
-                               });
-                               bool isSuccess = await details.core.AddProjectResource("", id, details.mEnterprise.D.Results[j].Id);
-                               if (isSuccess)
+                               if (mResources.temp1[i].Equals(details.mEnterprise.D.Results[j].Name))
                                {
-                                   details.RunOnUiThread(() =>
+
+                                   bool isSuccess = await details.core.AddProjectResource("", details.id, details.mEnterprise.D.Results[j].Id);
+                                   if (isSuccess)
                                    {
-                                       Toast.MakeText(details, "Successfully added the resource", ToastLength.Short).Show();
-                                       details.Finish();
-                                   });
+                                       details.RunOnUiThread(() =>
+                                       {
+                                           Toast.MakeText(details, "Successfully added " + details.mEnterprise.D.Results[j].Name, ToastLength.Short).Show();
+                                       });
+                                   }
+                                   else
+                                       details.RunOnUiThread(() =>
+                                       {
+                                           Toast.MakeText(details, "There was a problem adding " + details.mEnterprise.D.Results[j].Name, ToastLength.Short).Show();
+                                       });
+                                   break;
                                }
-                               else
-                                   details.RunOnUiThread(()=> {
-                                       Toast.MakeText(details, "There was a problem adding the resource", ToastLength.Short).Show();
-                                   });
-                               break;
                            }
                        }
+                       bool publishSuccess = await details.core.Publish("", details.id);
+                       if (publishSuccess)
+                       {
+                           //details.RunOnUiThread(() =>
+                           //{
+                           //    Toast.MakeText(details, "Successfully added the resource", ToastLength.Short).Show();
+                           //});
+                           Thread.Sleep(3000);
+                       }
+                       else
+                       {
+                           //details.RunOnUiThread(() =>
+                           //{
+                           //    Toast.MakeText(details, "There was a problem publishing the project", ToastLength.Short).Show();
+                           //});
+                       }
                    }
+                   else {
+                       details.RunOnUiThread(() => {
+                           Toast.MakeText(details, "There was a problem checking out the project", ToastLength.Short).Show();
+                       });
+                   }
+
+
+
                    builder.Dismiss();
                });
-                
+
             });
             builder.SetButton(-1, "Close", delegate { builder.Dismiss(); });
             builder.SetTitle("Add Resources");
@@ -910,7 +960,232 @@ namespace AndroidApp1.Helpers
             return builder;
         }
 
+        public Android.Support.V7.App.AlertDialog OpenSavedTimesheetSettings(MainActivity main, int position) {
+            View view = LayoutInflater.From(main).Inflate(Resource.Layout.empty_listview, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(main).Create();
 
+            ListView lvOptions = view.FindViewById<ListView>(Resource.Id.lvTimesheetSettings);
+            List<string> items = new List<string> { "Delete saved timesheet", "Push changes" };
+            var adapter = new ArrayAdapter(main, AndroidApp1.Resource.Layout.select_dialog_item_material, items);
+            lvOptions.Adapter = adapter;
+            lvOptions.ItemClick += async (sender, e) =>
+            {
+                switch (e.Position)
+                {
+                    case 0:
+                        await main.service.DeleteSavedTimesheet(main, position);
+                        builder.Dismiss();
+                        break;
+                    case 1:
+                        
+                        int batchCount = 0;
+                        if (!main.prefs.GetString("tobepushed", "").Equals("")) {
+                            Toast.MakeText(main, "Pushing changes...", ToastLength.Short).Show();
+                            var list = JsonConvert.DeserializeObject<List<SavedChangesModel>>(main.prefs.GetString("tobepushed", ""));
+                            foreach (var item in list) {
+                                var body = "{'parameters':{'ActualWork':'" + item.actualHours + "', 'PlannedWork':'" + item.plannedHours + "', 'Start':'" + item.startDate + "', 'NonBillableOvertimeWork':'0h', 'NonBillableWork':'0h', 'OvertimeWork':'0h'}}";
+                                
+                                bool success = await main.core.AddTimesheetLineWork(body, item.periodId, item.lineId);
+                                if (success)
+                                    batchCount++;
+
+                            }
+                            if (batchCount == list.Count)
+                            {
+                                Toast.MakeText(main, "Successfully pushed the changes!", ToastLength.Short).Show();
+                                main.prefs.Edit().Remove("tobepushed").Apply();
+                            }
+                            else {
+                                Toast.MakeText(main, "There were some changes that were not pushed", ToastLength.Short).Show();
+                                main.prefs.Edit().Remove("tobepushed").Apply();
+                            }
+                        }
+                        else
+                            Toast.MakeText(main, "You have no saved changes", ToastLength.Short).Show();
+                        
+                        break;
+
+                }
+            };
+
+            builder.SetTitle("Options");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+            builder.SetButton(-1, "CLOSE", delegate { builder.Dismiss(); });
+
+            return builder;
+        }
+
+        public Android.Support.V7.App.AlertDialog DeleteProjectResource(DetailsActivity details)
+        {
+
+            View view = LayoutInflater.From(details).Inflate(Resource.Layout.empty_recycleview, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
+
+            RecyclerView mRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(view.Context);
+            mRecyclerView.SetLayoutManager(mLayoutManager);
+
+            Resourcez mResources = new Resourcez();
+            var projectResources = JsonConvert.DeserializeObject<ProjectResources.RootObject>(details.projectResources);
+            foreach (var item in projectResources.D.Results)
+            {
+                mResources.addResources(item.Name);
+            }
+
+            DialogProjectResourceAdapter mProjectResourceAdapter = new DialogProjectResourceAdapter(mResources);
+            mRecyclerView.SetAdapter(mProjectResourceAdapter);
+
+            builder.SetButton(-2, "Remove", delegate {
+                ThreadPool.QueueUserWorkItem(async state =>
+                {
+                    details.RunOnUiThread(() =>
+                    {
+                        Toast.MakeText(details, "Removing the resource...", ToastLength.Short).Show();
+                    });
+                    bool checkOutSuccess = await details.core.CheckOut("", details.id);
+                    if (checkOutSuccess)
+                    {
+                        for (int i = 0; i < mResources.temp1.Count; i++)
+                        {
+                            for (int j = 0; j < details.mEnterprise.D.Results.Count; j++)
+                            {
+                                if (mResources.temp1[i].Equals(details.mEnterprise.D.Results[j].Name))
+                                {
+
+                                    bool isSuccess = await details.core.DeleteProjectResource("", details.id, details.mEnterprise.D.Results[j].Id);
+                                    if (isSuccess)
+                                    {
+                                        details.RunOnUiThread(() =>
+                                        {
+                                            Toast.MakeText(details, "Successfully removed " + details.mEnterprise.D.Results[j].Name, ToastLength.Short).Show();
+                                        });
+                                    }
+                                    else
+                                        details.RunOnUiThread(() =>
+                                        {
+                                            Toast.MakeText(details, "There was a problem removing " + details.mEnterprise.D.Results[j].Name, ToastLength.Short).Show();
+                                        });
+                                    break;
+                                }
+                            }
+                        }
+                        bool publishSuccess = await details.core.Publish("", details.id);
+                        if (publishSuccess)
+                        {
+                            //details.RunOnUiThread(() =>
+                            //{
+                            //    Toast.MakeText(details, "Successfully removed the resource", ToastLength.Short).Show();
+                            //});
+                            Thread.Sleep(3000);
+                        }
+                        else
+                        {
+                            //details.RunOnUiThread(() =>
+                            //{
+                            //    Toast.MakeText(details, "There was a problem publishing the project", ToastLength.Short).Show();
+                            //});
+                        }
+                    }
+                    else
+                    {
+                        details.RunOnUiThread(() =>
+                        {
+                            Toast.MakeText(details, "There was a problem checking out the project", ToastLength.Short).Show();
+                        });
+                    }
+
+
+
+                    builder.Dismiss();
+                });
+
+            });
+            builder.SetButton(-1, "Close", delegate { builder.Dismiss(); });
+            builder.SetTitle("Remove Resources");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+            return builder;
+        }
+
+        public Android.Support.V7.App.AlertDialog AddTaskAssignments(DetailsActivity details) {
+
+            View view = LayoutInflater.From(details).Inflate(Resource.Layout.two_spinner_layout, null);
+            Android.Support.V7.App.AlertDialog builder = new Android.Support.V7.App.AlertDialog.Builder(details).Create();
+
+            Spinner resources = view.FindViewById<Spinner>(Resource.Id.spnrResources);
+            Spinner tasks = view.FindViewById<Spinner>(Resource.Id.spnrTasks);
+            EditText notes = view.FindViewById<EditText>(Resource.Id.etNotes);
+
+            List<string> resourcesNameList = new List<string> { };
+            var temp1 = JsonConvert.DeserializeObject<ProjectResources.RootObject>(details.projectResources);
+            foreach (var item in temp1.D.Results) {
+                resourcesNameList.Add(item.Name);
+            }
+            var resourcesAdapter = new ArrayAdapter(details, AndroidApp1.Resource.Layout.select_dialog_item_material, resourcesNameList);
+            resources.Adapter = resourcesAdapter;
+
+            List<string> tasksNameList = new List<string> { };
+            var temp2 = JsonConvert.DeserializeObject<Taskmodel.RootObject>(details.projectTasksJson);
+            foreach (var item in temp2.D.Results)
+            {
+                tasksNameList.Add(item.Name);
+            }
+            var tasksAdapter = new ArrayAdapter(details, AndroidApp1.Resource.Layout.select_dialog_item_material, tasksNameList);
+            tasks.Adapter = tasksAdapter;
+
+
+            builder.SetButton(-2, "Add", delegate {
+                Toast.MakeText(details, "Adding assignment...", ToastLength.Short).Show();
+                string resourceId = "", taskId = "";
+
+                foreach (var item in details.mEnterprise.D.Results) {
+                    if (item.Name.Equals(resources.SelectedItem.ToString())) {
+                        resourceId = item.Id;
+                        break;
+                    }
+                }
+
+                foreach (var item in temp2.D.Results) {
+                    if (item.Name.Equals(tasks.SelectedItem.ToString())) {
+                        taskId = item.Id;
+                        break;
+                    }
+                }
+
+                var body = "{'parameters':{'Notes':'"+notes.Text+"','ResourceId':'"+resourceId+"', 'TaskId':'"+taskId+"' } }";
+
+                ThreadPool.QueueUserWorkItem(async state => {
+                    bool checkoutSuccess = await details.core.CheckOut("", details.id);
+                    if (checkoutSuccess) {
+                        bool success = await details.core.AddAssignmentOnTask(body, details.id);
+                        if (success)
+                        {
+                            bool publishSuccess = await details.core.Publish("", details.id);
+                            if (publishSuccess)
+                            {
+                                details.RunOnUiThread(() => { Toast.MakeText(details, "Successfully added the assignment", ToastLength.Short).Show(); });
+                            }
+                            else
+                                details.RunOnUiThread(() => { Toast.MakeText(details, "There was a problem adding the assignment", ToastLength.Short).Show(); });
+                        }
+                        else {
+                            details.RunOnUiThread(() => { Toast.MakeText(details, "There was a problem adding the assignment", ToastLength.Short).Show(); });
+                        }
+                    }
+                    else {
+                        details.RunOnUiThread(() => { Toast.MakeText(details, "There was a problem adding the assignment", ToastLength.Short).Show(); });
+                    }
+                });
+
+            });
+            builder.SetButton(-1, "Close", delegate { builder.Dismiss(); });
+            builder.SetTitle("Add task assignments");
+            builder.SetCanceledOnTouchOutside(false);
+            builder.SetView(view);
+            return builder;
+
+        }
 
     }
 }

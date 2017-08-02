@@ -71,7 +71,6 @@ namespace AndroidApp1.Fragments
 
         private void Adapter_ItemClick(object sender, int e)
         {
-            throw new NotImplementedException();
         }
 
         public void persist(int position)
@@ -84,11 +83,16 @@ namespace AndroidApp1.Fragments
             fillPeriodDays(position);
             fillTimesheetLines(position);
         }
-
+        
         public void ShowWTF(int position)
         {
             List<string> anotherList = wtfList2.ElementAt(currentDayPosition);
-            main.helpDialog.ShowSavedTimesheetWork(main, days, JsonConvert.DeserializeObject<TimesheetWork.RootObject>(anotherList.ElementAt(position-1))).Show();
+            main.helpDialog.ShowSavedTimesheetWork(main, days, JsonConvert.DeserializeObject<TimesheetWork.RootObject>(anotherList.ElementAt(position-1)), temp.D.Results[position-1].TaskName, wtfList[currentDayPosition].Id, temp.D.Results[position-1].Id).Show();
+            
+        }
+
+        public void OpenSettings(int position) {
+            main.helpDialog.OpenSavedTimesheetSettings(main, position).Show();
         }
 
         private void fillTimesheetLines(int position)

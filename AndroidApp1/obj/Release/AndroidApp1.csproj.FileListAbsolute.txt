@@ -41,6 +41,7 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\PInvoke.Kernel32.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\PInvoke.NCrypt.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\PInvoke.Windows.Core.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\Validation.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\AndroidApp1.csprojResolveAssemblyReference.cache
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.Annotations.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.Compat.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.Core.UI.dll.stamp
@@ -55,7 +56,6 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.v7.RecyclerView.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.Design.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.v7.CardView.dll.stamp
-D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\XbdMerge\Xamarin.Android.Support.CustomTabs.dll.stamp
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\AndroidApp1.dll
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\AndroidApp1.pdb
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\android\bin\com.refractored.navdrawer.samplecompat.apk
@@ -91,6 +91,7 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\layout\enterprise_re
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\layout\add_enterprise_resource_layout.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\layout\edit_enterprise_resource.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\layout\offline_layout.xml
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\layout\two_spinner_layout.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\values\colors.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\values\integers.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\values\strings.xml
@@ -135,6 +136,7 @@ D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\drawable\red_circle.
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\drawable\green_circle.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\drawable-hdpi\add_user.png
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\drawable-hdpi\remove_user.png
+D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\res\drawable\ic_add_24dp.xml
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\R.cs.flag
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\obj\Release\uploadflags.txt
 D:\Xamarin Projects\AndroidApp1\AndroidApp1\bin\Release\AndroidApp1.dll.mdb

@@ -17,8 +17,7 @@ using Newtonsoft.Json;
 using AndroidApp1.Fragments;
 using PScore;
 using System.Threading.Tasks;
-
-
+using Android.Widget;
 
 namespace AndroidApp1.Activities
 {
@@ -32,7 +31,8 @@ namespace AndroidApp1.Activities
         public string projectTasksJson { get; set; }
         DialogHelpers dialogs { get; set; }
         public EnterpriseResources.RootObject mEnterprise { get; set; }
-        string id;
+        public string id { get; set; }
+        bool canClick = false;
         
         public PsCore core { get; set; }
         ProjectDetailsFragment frag = new ProjectDetailsFragment();
@@ -41,7 +41,7 @@ namespace AndroidApp1.Activities
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.full_details);
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
@@ -58,8 +58,8 @@ namespace AndroidApp1.Activities
             
             SupportActionBar.Title = projectTitle;
 
-            GetTeamAsync();
-            
+             GetTeamAsync();
+             GetProjectTasks();
             //retrieving data
             SupportFragmentManager.BeginTransaction()
                         .Replace(Resource.Id.content_frame, new LoaderFragment())
@@ -88,7 +88,7 @@ namespace AndroidApp1.Activities
             SupportFragmentManager.BeginTransaction()
                 .Replace(Resource.Id.content_frame, frag)
                 .Commit();
-
+            canClick = true;
         }
 
         private async Task GetProjectTasks() {
@@ -104,11 +104,28 @@ namespace AndroidApp1.Activities
                     Finish();
                     return true;
                 case Resource.Id.mnAdd:
-                    dialogs.AddResourceToProject(this).Show();
+                    if(canClick == true)
+                        dialogs.AddResourceToProject(this).Show();
                     return true;
 
                 case Resource.Id.mnRemove:
-                    Android.Widget.Toast.MakeText(this, "to be implemented", Android.Widget.ToastLength.Short).Show() ;
+                    if (canClick == true)
+                        dialogs.DeleteProjectResource(this).Show();
+                    return true;
+
+                case Resource.Id.mnCheckin:
+                    if(canClick == true)
+                    ForceCheckInProject();
+                    return true;
+
+                case Resource.Id.mnAddTask:
+                    if(canClick == true)
+                        dialogs.AddTaskDialog(this).Show();
+                    return true;
+
+                case Resource.Id.mnAssignTask:
+                    if(canClick == true)
+                        dialogs.AddTaskAssignments(this).Show();
                     return true;
 
                 default:
@@ -116,9 +133,20 @@ namespace AndroidApp1.Activities
             }
         }
 
+        private async Task ForceCheckInProject()
+        {
+            Toast.MakeText(this, "Checking in...",ToastLength.Short).Show();
+            bool isSuccess = await core.CheckIn("", id);
+            if(isSuccess)
+                Toast.MakeText(this, "Successfully checked in", ToastLength.Short).Show();
+            else
+                Toast.MakeText(this, "There was a problem checking in the project", ToastLength.Short).Show();
+        }
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.details_menu, menu);
+            if(Intent.GetBooleanExtra("ShowOptions", false) == true)
+                MenuInflater.Inflate(Resource.Menu.details_menu, menu);
             return true;
         }
 

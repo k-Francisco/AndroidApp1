@@ -87,8 +87,10 @@ namespace AndroidApp1.Fragments
         
         public void persist(int position) {
 
-            if (position == oldPosition)
+            if (position == oldPosition) 
                 return;
+            
+                
 
             oldPosition = position;
 
@@ -112,7 +114,7 @@ namespace AndroidApp1.Fragments
                 {
                     work = await core.GetTimesheetLineWork(periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id);
                     main.RunOnUiThread(()=> {
-                        dialogs.ShowTimesheetWorkDialog(main, core, periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id, work, days, currentDayPosition, this, core.FormDigest).Show();
+                        dialogs.ShowTimesheetWorkDialog(main, core, periodList.D.Results[currentDayPosition].Id, temp.D.Results[position-1].Id, temp.D.Results[position - 1].TaskName, work, days, currentDayPosition, this, core.FormDigest).Show();
                     });
 
                 }
@@ -196,7 +198,7 @@ namespace AndroidApp1.Fragments
             string periodString = periodList.D.Results[currentDayPosition].Name + ": " + periodList.D.Results[currentDayPosition].Start.ToShortDateString() + " - " + periodList.D.Results[currentDayPosition].End.ToShortDateString();
             await main.service.AddData(main.getUserName(),JsonConvert.SerializeObject(periodList.D.Results[currentDayPosition]), JsonConvert.SerializeObject(temp), JsonConvert.SerializeObject(workList));
             Toast.MakeText(main, "Saved!", ToastLength.Short).Show();
-            main.offline = await main.service.pullData(true);
+            main.offline = await main.service.pullData(true, main.getUserName());
         }
 
 

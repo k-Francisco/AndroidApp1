@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>21/07/2017 11:49:23 AM</xs:documentation>
+    <xs:documentation>01/08/2017 2:06:48 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1216,6 +1216,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -1687,6 +1688,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -2046,6 +2048,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -2405,6 +2408,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -5053,6 +5057,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -5412,6 +5417,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -5860,6 +5866,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -6459,6 +6466,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -6818,6 +6826,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -8160,6 +8169,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -8580,6 +8590,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -8939,6 +8950,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -9388,6 +9400,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -9992,6 +10005,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -10430,6 +10444,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -10992,6 +11007,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -11554,6 +11570,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -11913,6 +11930,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -12361,6 +12379,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -13220,6 +13239,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -13668,6 +13688,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -14116,6 +14137,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -14741,6 +14763,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -15283,6 +15306,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -16190,6 +16214,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -16549,6 +16574,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -17088,6 +17114,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -17650,6 +17677,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -18098,6 +18126,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -18660,6 +18689,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -19385,6 +19415,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -19744,6 +19775,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -22186,6 +22218,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -24308,6 +24341,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -24870,6 +24904,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -25229,6 +25264,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />
@@ -25855,6 +25891,7 @@
             <xs:enumeration value="@drawable/design_password_eye" />
             <xs:enumeration value="@drawable/design_snackbar_background" />
             <xs:enumeration value="@drawable/green_circle" />
+            <xs:enumeration value="@drawable/ic_add_24dp" />
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_home_1" />
             <xs:enumeration value="@drawable/ic_home_2" />

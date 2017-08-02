@@ -32,7 +32,10 @@ namespace AndroidApp1.Fragments
             View view = inflater.Inflate(Resource.Layout.offline_layout, container, false);
 
             mText = view.FindViewById<TextView>(Resource.Id.textView1);
-            mText.Text = (Activity as MainActivity).mText;
+            if ((Activity as MainActivity) != null)
+                mText.Text = (Activity as MainActivity).mText;
+            else
+                mText.Text = "The device is offline.Please connect to the internet and restart the app";
             return view;
         }
     }

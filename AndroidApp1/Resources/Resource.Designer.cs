@@ -2217,26 +2217,26 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f020055
 			public const int avd_hide_password = 2130837589;
 			
-			// aapt resource value: 0x7f02007e
-			public const int avd_hide_password_1 = 2130837630;
-			
 			// aapt resource value: 0x7f02007f
-			public const int avd_hide_password_2 = 2130837631;
+			public const int avd_hide_password_1 = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int avd_hide_password_3 = 2130837632;
+			public const int avd_hide_password_2 = 2130837632;
+			
+			// aapt resource value: 0x7f020081
+			public const int avd_hide_password_3 = 2130837633;
 			
 			// aapt resource value: 0x7f020056
 			public const int avd_show_password = 2130837590;
 			
-			// aapt resource value: 0x7f020081
-			public const int avd_show_password_1 = 2130837633;
-			
 			// aapt resource value: 0x7f020082
-			public const int avd_show_password_2 = 2130837634;
+			public const int avd_show_password_1 = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int avd_show_password_3 = 2130837635;
+			public const int avd_show_password_2 = 2130837635;
+			
+			// aapt resource value: 0x7f020084
+			public const int avd_show_password_3 = 2130837636;
 			
 			// aapt resource value: 0x7f020057
 			public const int delete = 2130837591;
@@ -2263,97 +2263,100 @@ namespace AndroidApp1
 			public const int green_circle = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_arrow_back = 2130837599;
+			public const int ic_add_24dp = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_home_1 = 2130837600;
+			public const int ic_arrow_back = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int ic_home_2 = 2130837601;
+			public const int ic_home_1 = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_menu = 2130837602;
+			public const int ic_home_2 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int Icon = 2130837603;
+			public const int ic_menu = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int logout_nav = 2130837604;
+			public const int Icon = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int menu_background_color = 2130837605;
+			public const int logout_nav = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int more = 2130837606;
+			public const int menu_background_color = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int nav_back = 2130837607;
+			public const int more = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int navigation_empty_icon = 2130837608;
+			public const int nav_back = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notification_action_background = 2130837609;
+			public const int navigation_empty_icon = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notification_bg = 2130837610;
+			public const int notification_action_background = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int notification_bg_low = 2130837611;
+			public const int notification_bg = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int notification_bg_low_normal = 2130837612;
+			public const int notification_bg_low = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int notification_bg_low_pressed = 2130837613;
+			public const int notification_bg_low_normal = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int notification_bg_normal = 2130837614;
+			public const int notification_bg_low_pressed = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int notification_bg_normal_pressed = 2130837615;
+			public const int notification_bg_normal = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int notification_icon_background = 2130837616;
-			
-			// aapt resource value: 0x7f02007c
-			public const int notification_template_icon_bg = 2130837628;
-			
-			// aapt resource value: 0x7f02007d
-			public const int notification_template_icon_low_bg = 2130837629;
+			public const int notification_bg_normal_pressed = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int notification_tile_bg = 2130837617;
+			public const int notification_icon_background = 2130837617;
+			
+			// aapt resource value: 0x7f02007d
+			public const int notification_template_icon_bg = 2130837629;
+			
+			// aapt resource value: 0x7f02007e
+			public const int notification_template_icon_low_bg = 2130837630;
 			
 			// aapt resource value: 0x7f020072
-			public const int notify_panel_notification_icon_bg = 2130837618;
+			public const int notification_tile_bg = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int project_nav = 2130837619;
+			public const int notify_panel_notification_icon_bg = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ps_logo = 2130837620;
+			public const int project_nav = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int red_circle = 2130837621;
+			public const int ps_logo = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int refresh = 2130837622;
+			public const int red_circle = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int remove_user = 2130837623;
+			public const int refresh = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int settings_nav = 2130837624;
+			public const int remove_user = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int tasks_nav = 2130837625;
+			public const int settings_nav = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int timesheet_nav = 2130837626;
+			public const int tasks_nav = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int tools = 2130837627;
+			public const int timesheet_nav = 2130837627;
+			
+			// aapt resource value: 0x7f02007c
+			public const int tools = 2130837628;
 			
 			static Drawable()
 			{
@@ -2560,6 +2563,9 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070099
 			public const int etEditEnterpriseResourceName = 2131165337;
 			
+			// aapt resource value: 0x7f070104
+			public const int etNotes = 2131165444;
+			
 			// aapt resource value: 0x7f07007b
 			public const int etProjectDescription = 2131165307;
 			
@@ -2713,8 +2719,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f0700b0
 			public const int lvTimesheetSettings = 2131165360;
 			
-			// aapt resource value: 0x7f070103
-			public const int masked = 2131165443;
+			// aapt resource value: 0x7f070106
+			public const int masked = 2131165446;
 			
 			// aapt resource value: 0x7f0700c8
 			public const int media_actions = 2131165384;
@@ -2725,35 +2731,44 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07003e
 			public const int mini = 2131165246;
 			
-			// aapt resource value: 0x7f070104
-			public const int mnAdd = 2131165444;
+			// aapt resource value: 0x7f070108
+			public const int mnAdd = 2131165448;
 			
-			// aapt resource value: 0x7f070105
-			public const int mnRemove = 2131165445;
+			// aapt resource value: 0x7f07010a
+			public const int mnAddTask = 2131165450;
 			
-			// aapt resource value: 0x7f07010c
-			public const int mnSave = 2131165452;
+			// aapt resource value: 0x7f07010b
+			public const int mnAssignTask = 2131165451;
+			
+			// aapt resource value: 0x7f070107
+			public const int mnCheckin = 2131165447;
+			
+			// aapt resource value: 0x7f070109
+			public const int mnRemove = 2131165449;
+			
+			// aapt resource value: 0x7f070112
+			public const int mnSave = 2131165458;
 			
 			// aapt resource value: 0x7f07001a
 			public const int multiply = 2131165210;
 			
-			// aapt resource value: 0x7f070106
-			public const int nav_home_1 = 2131165446;
+			// aapt resource value: 0x7f07010c
+			public const int nav_home_1 = 2131165452;
 			
-			// aapt resource value: 0x7f070107
-			public const int nav_home_2 = 2131165447;
+			// aapt resource value: 0x7f07010d
+			public const int nav_home_2 = 2131165453;
 			
-			// aapt resource value: 0x7f070108
-			public const int nav_home_3 = 2131165448;
+			// aapt resource value: 0x7f07010e
+			public const int nav_home_3 = 2131165454;
 			
-			// aapt resource value: 0x7f070109
-			public const int nav_home_4 = 2131165449;
+			// aapt resource value: 0x7f07010f
+			public const int nav_home_4 = 2131165455;
 			
-			// aapt resource value: 0x7f07010a
-			public const int nav_home_5 = 2131165450;
+			// aapt resource value: 0x7f070110
+			public const int nav_home_5 = 2131165456;
 			
-			// aapt resource value: 0x7f07010b
-			public const int nav_home_6 = 2131165451;
+			// aapt resource value: 0x7f070111
+			public const int nav_home_6 = 2131165457;
 			
 			// aapt resource value: 0x7f0700bf
 			public const int nav_view = 2131165375;
@@ -2935,11 +2950,17 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f070088
 			public const int spnrExistingAssignments = 2131165320;
 			
+			// aapt resource value: 0x7f070102
+			public const int spnrResources = 2131165442;
+			
 			// aapt resource value: 0x7f070086
 			public const int spnrTaskScheduling = 2131165318;
 			
 			// aapt resource value: 0x7f0700af
 			public const int spnrTaskSchedulingEdit = 2131165359;
+			
+			// aapt resource value: 0x7f070103
+			public const int spnrTasks = 2131165443;
 			
 			// aapt resource value: 0x7f0700f6
 			public const int spnrTimesheetPeriod = 2131165430;
@@ -3160,8 +3181,8 @@ namespace AndroidApp1
 			// aapt resource value: 0x7f07000e
 			public const int view_offset_helper = 2131165198;
 			
-			// aapt resource value: 0x7f070102
-			public const int visible = 2131165442;
+			// aapt resource value: 0x7f070105
+			public const int visible = 2131165445;
 			
 			// aapt resource value: 0x7f0700bb
 			public const int webView = 2131165371;
@@ -3503,6 +3524,9 @@ namespace AndroidApp1
 			
 			// aapt resource value: 0x7f03005a
 			public const int toolbar = 2130903130;
+			
+			// aapt resource value: 0x7f03005b
+			public const int two_spinner_layout = 2130903131;
 			
 			static Layout()
 			{

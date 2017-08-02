@@ -168,7 +168,8 @@ namespace AndroidApp1.Adapters
                         frag.persist(e.Position);
                     };
                     if (mTimesheetPeriod.getBool() == false) {
-                        
+                        vh1.mSettings.Click += delegate { frag.OpenSettings((mTimesheetPeriod[position] as TimesheetPeriodModel).currentDayPosition); };
+                        mTimesheetPeriod.changeBool();
                     }
                     
                     break;
@@ -193,7 +194,8 @@ namespace AndroidApp1.Adapters
                     }
                     vh2.mStatus.Text = (mTimesheetPeriod[position] as TimesheetLineModel).ProcessStatus;
                     vh2.mTotalWork.Text = (mTimesheetPeriod[position] as TimesheetLineModel).TotalWork;
-                    vh2.ItemView.Click += (sender, e) => { frag.ShowWTF(position); };
+                    if(!vh2.ItemView.HasOnClickListeners)
+                        vh2.ItemView.Click += (sender, e) => { frag.ShowWTF(position); };
 
                     break;
             }
@@ -296,7 +298,8 @@ namespace AndroidApp1.Adapters
                     }
                     vh2.mStatus.Text = (mTimesheetPeriod[position] as TimesheetLineModel).ProcessStatus;
                     vh2.mTotalWork.Text = (mTimesheetPeriod[position] as TimesheetLineModel).TotalWork;
-                    vh2.ItemView.Click += (sender, e) => { frag.LongClick(position); };
+                    if(!vh2.ItemView.HasOnClickListeners)
+                        vh2.ItemView.Click += (sender, e) => { frag.LongClick(position); };
 
                     break;
             }
